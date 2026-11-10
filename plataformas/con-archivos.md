@@ -1,4 +1,4 @@
-<!-- módulo: plataforma con-archivos · núcleo GF v1.0 -->
+<!-- módulo: plataforma con-archivos · núcleo GF v1.1 -->
 
 ---
 

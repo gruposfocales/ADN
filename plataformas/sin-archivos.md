@@ -1,4 +1,4 @@
-<!-- módulo: plataforma sin-archivos · núcleo GF v1.0 -->
+<!-- módulo: plataforma sin-archivos · núcleo GF v1.1 -->
 
 ---
 

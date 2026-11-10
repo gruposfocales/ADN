@@ -40,6 +40,8 @@ Genera en el proyecto:
 
 ## Versiones
 
-`VERSION` = 1.0. El método v1.0 es el `AGENTS.md` v5.2-proyecto (2026-10-23) de los proyectos gf-2026-002/003/004, sin cambios de contenido. El manual es `MANUAL-FASES.md` v4.0.
+`VERSION` = 1.1. El método v1.0 era el `AGENTS.md` v5.2-proyecto (2026-10-23) de los proyectos gf-2026-002/003/004, sin cambios de contenido. El manual es `MANUAL-FASES.md` v4.0.
+
+- **v1.1 (2026-11-10):** lenguaje sencillo, resumen ejecutivo al inicio de cada respuesta y preguntas con número y letra (`1A, 2B, 3A`).
 
 `ADN Grupos Focales.md` es el texto original subido; `modulos/adn.md` es la versión completa (misión, visión, propósito…) que usan los proyectos.
