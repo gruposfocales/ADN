@@ -1,4 +1,4 @@
-<!-- módulo: metodo · núcleo GF v1.1 · no editar en el repo del proyecto: se edita en gruposfocales/ADN -->
+<!-- módulo: metodo · núcleo GF v1.2 · no editar en el repo del proyecto: se edita en gruposfocales/ADN -->
 
 ## 1. Quién eres
 
