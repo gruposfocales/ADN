@@ -1,0 +1,3737 @@
+{
+ "graph": {
+  "nodes": [
+   {
+    "id": "start",
+    "type": "custom",
+    "position": {
+     "x": 0,
+     "y": 0
+    },
+    "data": {
+     "type": "start",
+     "title": "Inicio",
+     "variables": [
+      {
+       "variable": "agente",
+       "label": "¿Con qué agente quieres trabajar?",
+       "type": "select",
+       "required": true,
+       "options": [
+        "Orquestador GF (bibliotecario) · orquestador",
+        "Vejez · GF-2026-001 · investigacion",
+        "Comunicación · GF-2026-002 · investigacion",
+        "En efecto noticias · GF-2026-003 · proyecto-agente",
+        "Bartolinos · GF-2026-004 · activacion-comunidad",
+        "Diseñador de agentes · disenador"
+       ],
+       "max_length": 100
+      }
+     ]
+    }
+   },
+   {
+    "id": "elegir",
+    "type": "custom",
+    "position": {
+     "x": 300,
+     "y": 0
+    },
+    "data": {
+     "type": "if-else",
+     "title": "Elegir agente",
+     "cases": [
+      {
+       "case_id": "a0",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a0c",
+         "varType": "string",
+         "variable_selector": [
+          "start",
+          "agente"
+         ],
+         "comparison_operator": "is",
+         "value": "Orquestador GF (bibliotecario) · orquestador"
+        }
+       ]
+      },
+      {
+       "case_id": "a1",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a1c",
+         "varType": "string",
+         "variable_selector": [
+          "start",
+          "agente"
+         ],
+         "comparison_operator": "is",
+         "value": "Vejez · GF-2026-001 · investigacion"
+        }
+       ]
+      },
+      {
+       "case_id": "a2",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a2c",
+         "varType": "string",
+         "variable_selector": [
+          "start",
+          "agente"
+         ],
+         "comparison_operator": "is",
+         "value": "Comunicación · GF-2026-002 · investigacion"
+        }
+       ]
+      },
+      {
+       "case_id": "a3",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a3c",
+         "varType": "string",
+         "variable_selector": [
+          "start",
+          "agente"
+         ],
+         "comparison_operator": "is",
+         "value": "En efecto noticias · GF-2026-003 · proyecto-agente"
+        }
+       ]
+      },
+      {
+       "case_id": "a4",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a4c",
+         "varType": "string",
+         "variable_selector": [
+          "start",
+          "agente"
+         ],
+         "comparison_operator": "is",
+         "value": "Bartolinos · GF-2026-004 · activacion-comunidad"
+        }
+       ]
+      },
+      {
+       "case_id": "a5",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a5c",
+         "varType": "string",
+         "variable_selector": [
+          "start",
+          "agente"
+         ],
+         "comparison_operator": "is",
+         "value": "Diseñador de agentes · disenador"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "id": "a0h0",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · SYSTEM",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h1",
+    "type": "custom",
+    "position": {
+     "x": 860,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · sistema/roles/orquestador.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/sistema/roles/orquestador.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h2",
+    "type": "custom",
+    "position": {
+     "x": 1120,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · proyectos/INDICE.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/proyectos/INDICE.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h3",
+    "type": "custom",
+    "position": {
+     "x": 1380,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · proyectos/REPOS.txt",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/proyectos/REPOS.txt?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h4",
+    "type": "custom",
+    "position": {
+     "x": 1640,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · organizacion/ESTADO-NEGOCIO.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/organizacion/ESTADO-NEGOCIO.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h5",
+    "type": "custom",
+    "position": {
+     "x": 1900,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · log.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/log.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h6",
+    "type": "custom",
+    "position": {
+     "x": 2160,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · ADN:CATALOGO.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/CATALOGO.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h7",
+    "type": "custom",
+    "position": {
+     "x": 2420,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · 2026-001-vejez:DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h8",
+    "type": "custom",
+    "position": {
+     "x": 2680,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · gf-2026-002-comunicacion:DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h9",
+    "type": "custom",
+    "position": {
+     "x": 2940,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · gf-2026-003-en-efecto-noticias:DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h10",
+    "type": "custom",
+    "position": {
+     "x": 3200,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Orquestador GF (bibl · gf-2026-004-bartolinos:DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0llm",
+    "type": "custom",
+    "position": {
+     "x": 3460,
+     "y": 0
+    },
+    "data": {
+     "type": "llm",
+     "title": "Orquestador GF (bibliote · modelo",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0.3
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a0s1",
+       "role": "system",
+       "text": "{{#a0h0.body#}}"
+      },
+      {
+       "id": "a0s2",
+       "role": "system",
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== sistema/roles/orquestador.md ===\n{{#a0h1.body#}}\n\n=== proyectos/INDICE.md ===\n{{#a0h2.body#}}\n\n=== proyectos/REPOS.txt ===\n{{#a0h3.body#}}\n\n=== organizacion/ESTADO-NEGOCIO.md ===\n{{#a0h4.body#}}\n\n=== log.md ===\n{{#a0h5.body#}}\n\n=== ADN:CATALOGO.md ===\n{{#a0h6.body#}}\n\n=== 2026-001-vejez:DASHBOARD.md ===\n{{#a0h7.body#}}\n\n=== gf-2026-002-comunicacion:DASHBOARD.md ===\n{{#a0h8.body#}}\n\n=== gf-2026-003-en-efecto-noticias:DASHBOARD.md ===\n{{#a0h9.body#}}\n\n=== gf-2026-004-bartolinos:DASHBOARD.md ===\n{{#a0h10.body#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "memory": {
+      "window": {
+       "enabled": true,
+       "size": 30
+      },
+      "query_prompt_template": "{{#sys.query#}}",
+      "role_prefix": {
+       "user": "",
+       "assistant": ""
+      }
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a0ans",
+    "type": "custom",
+    "position": {
+     "x": 3760,
+     "y": 0
+    },
+    "data": {
+     "type": "answer",
+     "title": "Orquestador GF (bibliote · respuesta",
+     "answer": "{{#a0llm.text#}}",
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h0",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · SYSTEM",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h1",
+    "type": "custom",
+    "position": {
+     "x": 860,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · index.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/index.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h2",
+    "type": "custom",
+    "position": {
+     "x": 1120,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h3",
+    "type": "custom",
+    "position": {
+     "x": 1380,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · MANUAL-FASES.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/MANUAL-FASES.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h4",
+    "type": "custom",
+    "position": {
+     "x": 1640,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · ADN.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/ADN.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h5",
+    "type": "custom",
+    "position": {
+     "x": 1900,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · POLITICA-DATOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/POLITICA-DATOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h6",
+    "type": "custom",
+    "position": {
+     "x": 2160,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · INSTRUMENTOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h7",
+    "type": "custom",
+    "position": {
+     "x": 2420,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · BITACORA.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/BITACORA.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1h8",
+    "type": "custom",
+    "position": {
+     "x": 2680,
+     "y": 400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Vejez · GF-2026-001 · evidencia/mapa-conocimiento.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a1llm",
+    "type": "custom",
+    "position": {
+     "x": 2940,
+     "y": 400
+    },
+    "data": {
+     "type": "llm",
+     "title": "Vejez · GF-2026-001 · modelo",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0.3
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a1s1",
+       "role": "system",
+       "text": "{{#a1h0.body#}}"
+      },
+      {
+       "id": "a1s2",
+       "role": "system",
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== index.md ===\n{{#a1h1.body#}}\n\n=== DASHBOARD.md ===\n{{#a1h2.body#}}\n\n=== MANUAL-FASES.md ===\n{{#a1h3.body#}}\n\n=== ADN.md ===\n{{#a1h4.body#}}\n\n=== POLITICA-DATOS.md ===\n{{#a1h5.body#}}\n\n=== INSTRUMENTOS.md ===\n{{#a1h6.body#}}\n\n=== BITACORA.md ===\n{{#a1h7.body#}}\n\n=== evidencia/mapa-conocimiento.md ===\n{{#a1h8.body#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "memory": {
+      "window": {
+       "enabled": true,
+       "size": 30
+      },
+      "query_prompt_template": "{{#sys.query#}}",
+      "role_prefix": {
+       "user": "",
+       "assistant": ""
+      }
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a1ans",
+    "type": "custom",
+    "position": {
+     "x": 3240,
+     "y": 400
+    },
+    "data": {
+     "type": "answer",
+     "title": "Vejez · GF-2026-001 · respuesta",
+     "answer": "{{#a1llm.text#}}",
+     "variables": []
+    }
+   },
+   {
+    "id": "a1if",
+    "type": "custom",
+    "position": {
+     "x": 3240,
+     "y": 560
+    },
+    "data": {
+     "type": "if-else",
+     "title": "¿Trae parche?",
+     "cases": [
+      {
+       "case_id": "true",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a1c1",
+         "varType": "string",
+         "variable_selector": [
+          "a1llm",
+          "text"
+         ],
+         "comparison_operator": "contains",
+         "value": "📥 Parche"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "id": "a1pub",
+    "type": "custom",
+    "position": {
+     "x": 3540,
+     "y": 560
+    },
+    "data": {
+     "type": "tool",
+     "title": "Parche al issue #4",
+     "desc": "",
+     "provider_id": "langgenius/github/github",
+     "provider_type": "builtin",
+     "provider_name": "langgenius/github/github",
+     "tool_name": "github_issue_comment",
+     "tool_label": "Comentar issue",
+     "tool_description": "",
+     "tool_configurations": {},
+     "tool_node_version": "2",
+     "is_team_authorization": true,
+     "paramSchemas": [],
+     "tool_parameters": {
+      "owner": {
+       "type": "mixed",
+       "value": "gruposfocales"
+      },
+      "repo": {
+       "type": "mixed",
+       "value": "2026-001-vejez"
+      },
+      "issue_number": {
+       "type": "constant",
+       "value": 4
+      },
+      "body": {
+       "type": "mixed",
+       "value": "{{#a1llm.text#}}\n\n---\n_Enviado desde Dify · Vejez · GF-2026-001_"
+      }
+     }
+    }
+   },
+   {
+    "id": "a2h0",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · SYSTEM",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h1",
+    "type": "custom",
+    "position": {
+     "x": 860,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · index.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/index.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h2",
+    "type": "custom",
+    "position": {
+     "x": 1120,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h3",
+    "type": "custom",
+    "position": {
+     "x": 1380,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · MANUAL-FASES.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/MANUAL-FASES.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h4",
+    "type": "custom",
+    "position": {
+     "x": 1640,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · organizacion/ADN.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/organizacion/ADN.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h5",
+    "type": "custom",
+    "position": {
+     "x": 1900,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · POLITICA-DATOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/POLITICA-DATOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h6",
+    "type": "custom",
+    "position": {
+     "x": 2160,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · INSTRUMENTOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h7",
+    "type": "custom",
+    "position": {
+     "x": 2420,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · BITACORA.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/BITACORA.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2h8",
+    "type": "custom",
+    "position": {
+     "x": 2680,
+     "y": 800
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Comunicación · GF-20 · evidencia/mapa-conocimiento.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a2llm",
+    "type": "custom",
+    "position": {
+     "x": 2940,
+     "y": 800
+    },
+    "data": {
+     "type": "llm",
+     "title": "Comunicación · GF-2026-0 · modelo",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0.3
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a2s1",
+       "role": "system",
+       "text": "{{#a2h0.body#}}"
+      },
+      {
+       "id": "a2s2",
+       "role": "system",
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== index.md ===\n{{#a2h1.body#}}\n\n=== DASHBOARD.md ===\n{{#a2h2.body#}}\n\n=== MANUAL-FASES.md ===\n{{#a2h3.body#}}\n\n=== organizacion/ADN.md ===\n{{#a2h4.body#}}\n\n=== POLITICA-DATOS.md ===\n{{#a2h5.body#}}\n\n=== INSTRUMENTOS.md ===\n{{#a2h6.body#}}\n\n=== BITACORA.md ===\n{{#a2h7.body#}}\n\n=== evidencia/mapa-conocimiento.md ===\n{{#a2h8.body#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "memory": {
+      "window": {
+       "enabled": true,
+       "size": 30
+      },
+      "query_prompt_template": "{{#sys.query#}}",
+      "role_prefix": {
+       "user": "",
+       "assistant": ""
+      }
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a2ans",
+    "type": "custom",
+    "position": {
+     "x": 3240,
+     "y": 800
+    },
+    "data": {
+     "type": "answer",
+     "title": "Comunicación · GF-2026-0 · respuesta",
+     "answer": "{{#a2llm.text#}}",
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h0",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · SYSTEM",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h1",
+    "type": "custom",
+    "position": {
+     "x": 860,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · index.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/index.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h2",
+    "type": "custom",
+    "position": {
+     "x": 1120,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h3",
+    "type": "custom",
+    "position": {
+     "x": 1380,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · MANUAL-FASES.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/MANUAL-FASES.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h4",
+    "type": "custom",
+    "position": {
+     "x": 1640,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · organizacion/ADN.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/organizacion/ADN.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h5",
+    "type": "custom",
+    "position": {
+     "x": 1900,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · POLITICA-DATOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/POLITICA-DATOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h6",
+    "type": "custom",
+    "position": {
+     "x": 2160,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · INSTRUMENTOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h7",
+    "type": "custom",
+    "position": {
+     "x": 2420,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · BITACORA.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/BITACORA.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h8",
+    "type": "custom",
+    "position": {
+     "x": 2680,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · evidencia/mapa-conocimiento.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h9",
+    "type": "custom",
+    "position": {
+     "x": 2940,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · expediente/00-indice.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/00-indice.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h10",
+    "type": "custom",
+    "position": {
+     "x": 3200,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · expediente/01-acta-idea.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/01-acta-idea.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h11",
+    "type": "custom",
+    "position": {
+     "x": 3460,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · expediente/03-brief-maestro.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/03-brief-maestro.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3h12",
+    "type": "custom",
+    "position": {
+     "x": 3720,
+     "y": 1200
+    },
+    "data": {
+     "type": "http-request",
+     "title": "En efecto noticias · · expediente/04-problema-pregunta.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/04-problema-pregunta.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a3llm",
+    "type": "custom",
+    "position": {
+     "x": 3980,
+     "y": 1200
+    },
+    "data": {
+     "type": "llm",
+     "title": "En efecto noticias · GF- · modelo",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0.3
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a3s1",
+       "role": "system",
+       "text": "{{#a3h0.body#}}"
+      },
+      {
+       "id": "a3s2",
+       "role": "system",
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== index.md ===\n{{#a3h1.body#}}\n\n=== DASHBOARD.md ===\n{{#a3h2.body#}}\n\n=== MANUAL-FASES.md ===\n{{#a3h3.body#}}\n\n=== organizacion/ADN.md ===\n{{#a3h4.body#}}\n\n=== POLITICA-DATOS.md ===\n{{#a3h5.body#}}\n\n=== INSTRUMENTOS.md ===\n{{#a3h6.body#}}\n\n=== BITACORA.md ===\n{{#a3h7.body#}}\n\n=== evidencia/mapa-conocimiento.md ===\n{{#a3h8.body#}}\n\n=== expediente/00-indice.md ===\n{{#a3h9.body#}}\n\n=== expediente/01-acta-idea.md ===\n{{#a3h10.body#}}\n\n=== expediente/03-brief-maestro.md ===\n{{#a3h11.body#}}\n\n=== expediente/04-problema-pregunta.md ===\n{{#a3h12.body#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "memory": {
+      "window": {
+       "enabled": true,
+       "size": 30
+      },
+      "query_prompt_template": "{{#sys.query#}}",
+      "role_prefix": {
+       "user": "",
+       "assistant": ""
+      }
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a3ans",
+    "type": "custom",
+    "position": {
+     "x": 4280,
+     "y": 1200
+    },
+    "data": {
+     "type": "answer",
+     "title": "En efecto noticias · GF- · respuesta",
+     "answer": "{{#a3llm.text#}}",
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h0",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · SYSTEM",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h1",
+    "type": "custom",
+    "position": {
+     "x": 860,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · index.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/index.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h2",
+    "type": "custom",
+    "position": {
+     "x": 1120,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · DASHBOARD.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/DASHBOARD.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h3",
+    "type": "custom",
+    "position": {
+     "x": 1380,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · MANUAL-FASES.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/MANUAL-FASES.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h4",
+    "type": "custom",
+    "position": {
+     "x": 1640,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · organizacion/ADN.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/organizacion/ADN.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h5",
+    "type": "custom",
+    "position": {
+     "x": 1900,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · POLITICA-DATOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/POLITICA-DATOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h6",
+    "type": "custom",
+    "position": {
+     "x": 2160,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · INSTRUMENTOS.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h7",
+    "type": "custom",
+    "position": {
+     "x": 2420,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · BITACORA.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/BITACORA.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h8",
+    "type": "custom",
+    "position": {
+     "x": 2680,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · evidencia/mapa-conocimiento.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4h9",
+    "type": "custom",
+    "position": {
+     "x": 2940,
+     "y": 1600
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Bartolinos · GF-2026 · expediente/paso-a-paso-guion-sesion.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/expediente/paso-a-paso-guion-sesion.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a4llm",
+    "type": "custom",
+    "position": {
+     "x": 3200,
+     "y": 1600
+    },
+    "data": {
+     "type": "llm",
+     "title": "Bartolinos · GF-2026-004 · modelo",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0.3
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a4s1",
+       "role": "system",
+       "text": "{{#a4h0.body#}}"
+      },
+      {
+       "id": "a4s2",
+       "role": "system",
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== index.md ===\n{{#a4h1.body#}}\n\n=== DASHBOARD.md ===\n{{#a4h2.body#}}\n\n=== MANUAL-FASES.md ===\n{{#a4h3.body#}}\n\n=== organizacion/ADN.md ===\n{{#a4h4.body#}}\n\n=== POLITICA-DATOS.md ===\n{{#a4h5.body#}}\n\n=== INSTRUMENTOS.md ===\n{{#a4h6.body#}}\n\n=== BITACORA.md ===\n{{#a4h7.body#}}\n\n=== evidencia/mapa-conocimiento.md ===\n{{#a4h8.body#}}\n\n=== expediente/paso-a-paso-guion-sesion.md ===\n{{#a4h9.body#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "memory": {
+      "window": {
+       "enabled": true,
+       "size": 30
+      },
+      "query_prompt_template": "{{#sys.query#}}",
+      "role_prefix": {
+       "user": "",
+       "assistant": ""
+      }
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a4ans",
+    "type": "custom",
+    "position": {
+     "x": 3500,
+     "y": 1600
+    },
+    "data": {
+     "type": "answer",
+     "title": "Bartolinos · GF-2026-004 · respuesta",
+     "answer": "{{#a4llm.text#}}",
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h0",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · SYSTEM",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h1",
+    "type": "custom",
+    "position": {
+     "x": 860,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · README.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/README.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h2",
+    "type": "custom",
+    "position": {
+     "x": 1120,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · INDICE_MAESTRO.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/INDICE_MAESTRO.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h3",
+    "type": "custom",
+    "position": {
+     "x": 1380,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/00_contexto.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/00_contexto.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h4",
+    "type": "custom",
+    "position": {
+     "x": 1640,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/01_api.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/01_api.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h5",
+    "type": "custom",
+    "position": {
+     "x": 1900,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/02_prompt_sistema.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/02_prompt_sistema.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h6",
+    "type": "custom",
+    "position": {
+     "x": 2160,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/03_rag.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/03_rag.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h7",
+    "type": "custom",
+    "position": {
+     "x": 2420,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/04_mcp_herramientas.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/04_mcp_herramientas.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h8",
+    "type": "custom",
+    "position": {
+     "x": 2680,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/05_permisos_identidad.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/05_permisos_identidad.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h9",
+    "type": "custom",
+    "position": {
+     "x": 2940,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/06_barreras.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/06_barreras.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h10",
+    "type": "custom",
+    "position": {
+     "x": 3200,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/07_cache_enrutamiento.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/07_cache_enrutamiento.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h11",
+    "type": "custom",
+    "position": {
+     "x": 3460,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/08_observabilidad.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/08_observabilidad.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5h12",
+    "type": "custom",
+    "position": {
+     "x": 3720,
+     "y": 2000
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Diseñador de agentes · cuestionario/09_datos_y_etica.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/09_datos_y_etica.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a5llm",
+    "type": "custom",
+    "position": {
+     "x": 3980,
+     "y": 2000
+    },
+    "data": {
+     "type": "llm",
+     "title": "Diseñador de agentes · modelo",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0.3
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a5s1",
+       "role": "system",
+       "text": "{{#a5h0.body#}}"
+      },
+      {
+       "id": "a5s2",
+       "role": "system",
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== README.md ===\n{{#a5h1.body#}}\n\n=== INDICE_MAESTRO.md ===\n{{#a5h2.body#}}\n\n=== cuestionario/00_contexto.md ===\n{{#a5h3.body#}}\n\n=== cuestionario/01_api.md ===\n{{#a5h4.body#}}\n\n=== cuestionario/02_prompt_sistema.md ===\n{{#a5h5.body#}}\n\n=== cuestionario/03_rag.md ===\n{{#a5h6.body#}}\n\n=== cuestionario/04_mcp_herramientas.md ===\n{{#a5h7.body#}}\n\n=== cuestionario/05_permisos_identidad.md ===\n{{#a5h8.body#}}\n\n=== cuestionario/06_barreras.md ===\n{{#a5h9.body#}}\n\n=== cuestionario/07_cache_enrutamiento.md ===\n{{#a5h10.body#}}\n\n=== cuestionario/08_observabilidad.md ===\n{{#a5h11.body#}}\n\n=== cuestionario/09_datos_y_etica.md ===\n{{#a5h12.body#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "memory": {
+      "window": {
+       "enabled": true,
+       "size": 30
+      },
+      "query_prompt_template": "{{#sys.query#}}",
+      "role_prefix": {
+       "user": "",
+       "assistant": ""
+      }
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a5ans",
+    "type": "custom",
+    "position": {
+     "x": 4280,
+     "y": 2000
+    },
+    "data": {
+     "type": "answer",
+     "title": "Diseñador de agentes · respuesta",
+     "answer": "{{#a5llm.text#}}",
+     "variables": []
+    }
+   },
+   {
+    "id": "ninguno",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 2400
+    },
+    "data": {
+     "type": "answer",
+     "title": "Sin agente",
+     "variables": [],
+     "answer": "No reconozco ese agente. Empieza una conversación nueva y elige uno de la lista."
+    }
+   }
+  ],
+  "edges": [
+   {
+    "id": "start-source-elegir",
+    "source": "start",
+    "sourceHandle": "source",
+    "target": "elegir",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h0-source-a0h1",
+    "source": "a0h0",
+    "sourceHandle": "source",
+    "target": "a0h1",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h1-source-a0h2",
+    "source": "a0h1",
+    "sourceHandle": "source",
+    "target": "a0h2",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h2-source-a0h3",
+    "source": "a0h2",
+    "sourceHandle": "source",
+    "target": "a0h3",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h3-source-a0h4",
+    "source": "a0h3",
+    "sourceHandle": "source",
+    "target": "a0h4",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h4-source-a0h5",
+    "source": "a0h4",
+    "sourceHandle": "source",
+    "target": "a0h5",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h5-source-a0h6",
+    "source": "a0h5",
+    "sourceHandle": "source",
+    "target": "a0h6",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h6-source-a0h7",
+    "source": "a0h6",
+    "sourceHandle": "source",
+    "target": "a0h7",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h7-source-a0h8",
+    "source": "a0h7",
+    "sourceHandle": "source",
+    "target": "a0h8",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h8-source-a0h9",
+    "source": "a0h8",
+    "sourceHandle": "source",
+    "target": "a0h9",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h9-source-a0h10",
+    "source": "a0h9",
+    "sourceHandle": "source",
+    "target": "a0h10",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h10-source-a0llm",
+    "source": "a0h10",
+    "sourceHandle": "source",
+    "target": "a0llm",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0llm-source-a0ans",
+    "source": "a0llm",
+    "sourceHandle": "source",
+    "target": "a0ans",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-a0-a0h0",
+    "source": "elegir",
+    "sourceHandle": "a0",
+    "target": "a0h0",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h0-source-a1h1",
+    "source": "a1h0",
+    "sourceHandle": "source",
+    "target": "a1h1",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h1-source-a1h2",
+    "source": "a1h1",
+    "sourceHandle": "source",
+    "target": "a1h2",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h2-source-a1h3",
+    "source": "a1h2",
+    "sourceHandle": "source",
+    "target": "a1h3",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h3-source-a1h4",
+    "source": "a1h3",
+    "sourceHandle": "source",
+    "target": "a1h4",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h4-source-a1h5",
+    "source": "a1h4",
+    "sourceHandle": "source",
+    "target": "a1h5",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h5-source-a1h6",
+    "source": "a1h5",
+    "sourceHandle": "source",
+    "target": "a1h6",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h6-source-a1h7",
+    "source": "a1h6",
+    "sourceHandle": "source",
+    "target": "a1h7",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h7-source-a1h8",
+    "source": "a1h7",
+    "sourceHandle": "source",
+    "target": "a1h8",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1h8-source-a1llm",
+    "source": "a1h8",
+    "sourceHandle": "source",
+    "target": "a1llm",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1llm-source-a1ans",
+    "source": "a1llm",
+    "sourceHandle": "source",
+    "target": "a1ans",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1llm-source-a1if",
+    "source": "a1llm",
+    "sourceHandle": "source",
+    "target": "a1if",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a1if-true-a1pub",
+    "source": "a1if",
+    "sourceHandle": "true",
+    "target": "a1pub",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-a1-a1h0",
+    "source": "elegir",
+    "sourceHandle": "a1",
+    "target": "a1h0",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h0-source-a2h1",
+    "source": "a2h0",
+    "sourceHandle": "source",
+    "target": "a2h1",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h1-source-a2h2",
+    "source": "a2h1",
+    "sourceHandle": "source",
+    "target": "a2h2",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h2-source-a2h3",
+    "source": "a2h2",
+    "sourceHandle": "source",
+    "target": "a2h3",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h3-source-a2h4",
+    "source": "a2h3",
+    "sourceHandle": "source",
+    "target": "a2h4",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h4-source-a2h5",
+    "source": "a2h4",
+    "sourceHandle": "source",
+    "target": "a2h5",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h5-source-a2h6",
+    "source": "a2h5",
+    "sourceHandle": "source",
+    "target": "a2h6",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h6-source-a2h7",
+    "source": "a2h6",
+    "sourceHandle": "source",
+    "target": "a2h7",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h7-source-a2h8",
+    "source": "a2h7",
+    "sourceHandle": "source",
+    "target": "a2h8",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2h8-source-a2llm",
+    "source": "a2h8",
+    "sourceHandle": "source",
+    "target": "a2llm",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a2llm-source-a2ans",
+    "source": "a2llm",
+    "sourceHandle": "source",
+    "target": "a2ans",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-a2-a2h0",
+    "source": "elegir",
+    "sourceHandle": "a2",
+    "target": "a2h0",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h0-source-a3h1",
+    "source": "a3h0",
+    "sourceHandle": "source",
+    "target": "a3h1",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h1-source-a3h2",
+    "source": "a3h1",
+    "sourceHandle": "source",
+    "target": "a3h2",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h2-source-a3h3",
+    "source": "a3h2",
+    "sourceHandle": "source",
+    "target": "a3h3",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h3-source-a3h4",
+    "source": "a3h3",
+    "sourceHandle": "source",
+    "target": "a3h4",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h4-source-a3h5",
+    "source": "a3h4",
+    "sourceHandle": "source",
+    "target": "a3h5",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h5-source-a3h6",
+    "source": "a3h5",
+    "sourceHandle": "source",
+    "target": "a3h6",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h6-source-a3h7",
+    "source": "a3h6",
+    "sourceHandle": "source",
+    "target": "a3h7",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h7-source-a3h8",
+    "source": "a3h7",
+    "sourceHandle": "source",
+    "target": "a3h8",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h8-source-a3h9",
+    "source": "a3h8",
+    "sourceHandle": "source",
+    "target": "a3h9",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h9-source-a3h10",
+    "source": "a3h9",
+    "sourceHandle": "source",
+    "target": "a3h10",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h10-source-a3h11",
+    "source": "a3h10",
+    "sourceHandle": "source",
+    "target": "a3h11",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h11-source-a3h12",
+    "source": "a3h11",
+    "sourceHandle": "source",
+    "target": "a3h12",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3h12-source-a3llm",
+    "source": "a3h12",
+    "sourceHandle": "source",
+    "target": "a3llm",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a3llm-source-a3ans",
+    "source": "a3llm",
+    "sourceHandle": "source",
+    "target": "a3ans",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-a3-a3h0",
+    "source": "elegir",
+    "sourceHandle": "a3",
+    "target": "a3h0",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h0-source-a4h1",
+    "source": "a4h0",
+    "sourceHandle": "source",
+    "target": "a4h1",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h1-source-a4h2",
+    "source": "a4h1",
+    "sourceHandle": "source",
+    "target": "a4h2",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h2-source-a4h3",
+    "source": "a4h2",
+    "sourceHandle": "source",
+    "target": "a4h3",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h3-source-a4h4",
+    "source": "a4h3",
+    "sourceHandle": "source",
+    "target": "a4h4",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h4-source-a4h5",
+    "source": "a4h4",
+    "sourceHandle": "source",
+    "target": "a4h5",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h5-source-a4h6",
+    "source": "a4h5",
+    "sourceHandle": "source",
+    "target": "a4h6",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h6-source-a4h7",
+    "source": "a4h6",
+    "sourceHandle": "source",
+    "target": "a4h7",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h7-source-a4h8",
+    "source": "a4h7",
+    "sourceHandle": "source",
+    "target": "a4h8",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h8-source-a4h9",
+    "source": "a4h8",
+    "sourceHandle": "source",
+    "target": "a4h9",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4h9-source-a4llm",
+    "source": "a4h9",
+    "sourceHandle": "source",
+    "target": "a4llm",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a4llm-source-a4ans",
+    "source": "a4llm",
+    "sourceHandle": "source",
+    "target": "a4ans",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-a4-a4h0",
+    "source": "elegir",
+    "sourceHandle": "a4",
+    "target": "a4h0",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h0-source-a5h1",
+    "source": "a5h0",
+    "sourceHandle": "source",
+    "target": "a5h1",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h1-source-a5h2",
+    "source": "a5h1",
+    "sourceHandle": "source",
+    "target": "a5h2",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h2-source-a5h3",
+    "source": "a5h2",
+    "sourceHandle": "source",
+    "target": "a5h3",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h3-source-a5h4",
+    "source": "a5h3",
+    "sourceHandle": "source",
+    "target": "a5h4",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h4-source-a5h5",
+    "source": "a5h4",
+    "sourceHandle": "source",
+    "target": "a5h5",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h5-source-a5h6",
+    "source": "a5h5",
+    "sourceHandle": "source",
+    "target": "a5h6",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h6-source-a5h7",
+    "source": "a5h6",
+    "sourceHandle": "source",
+    "target": "a5h7",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h7-source-a5h8",
+    "source": "a5h7",
+    "sourceHandle": "source",
+    "target": "a5h8",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h8-source-a5h9",
+    "source": "a5h8",
+    "sourceHandle": "source",
+    "target": "a5h9",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h9-source-a5h10",
+    "source": "a5h9",
+    "sourceHandle": "source",
+    "target": "a5h10",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h10-source-a5h11",
+    "source": "a5h10",
+    "sourceHandle": "source",
+    "target": "a5h11",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h11-source-a5h12",
+    "source": "a5h11",
+    "sourceHandle": "source",
+    "target": "a5h12",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5h12-source-a5llm",
+    "source": "a5h12",
+    "sourceHandle": "source",
+    "target": "a5llm",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a5llm-source-a5ans",
+    "source": "a5llm",
+    "sourceHandle": "source",
+    "target": "a5ans",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-a5-a5h0",
+    "source": "elegir",
+    "sourceHandle": "a5",
+    "target": "a5h0",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-false-ninguno",
+    "source": "elegir",
+    "sourceHandle": "false",
+    "target": "ninguno",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   }
+  ]
+ },
+ "features": {
+  "opening_statement": "Hola. Este es el chat de los agentes de GruposFocales. Cada agente lee en vivo sus instrucciones y archivos desde GitHub. Para cambiar de agente, abre una conversación nueva.",
+  "suggested_questions": [
+   "abrir",
+   "estado",
+   "continuar"
+  ],
+  "file_upload": {
+   "enabled": false
+  },
+  "retriever_resource": {
+   "enabled": false
+  },
+  "speech_to_text": {
+   "enabled": false
+  },
+  "text_to_speech": {
+   "enabled": false,
+   "voice": "",
+   "language": ""
+  },
+  "suggested_questions_after_answer": {
+   "enabled": false
+  },
+  "sensitive_word_avoidance": {
+   "enabled": false
+  }
+ },
+ "environment_variable_patch": {
+  "environment_variables": [
+   {
+    "id": "env-github-token",
+    "name": "GITHUB_TOKEN",
+    "value_type": "secret",
+    "value": "",
+    "description": "Token fine-grained de GitHub: Contents read en los repos de agentes.txt e Issues write para los parches."
+   }
+  ]
+ },
+ "conversation_variables": []
+}
