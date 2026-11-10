@@ -14,16 +14,16 @@
      "variables": [
       {
        "variable": "agente",
-       "label": "¿Con qué agente quieres trabajar?",
+       "label": "Elige tu agente",
        "type": "select",
        "required": true,
        "options": [
-        "Orquestador GF (bibliotecario) · orquestador",
-        "Vejez · GF-2026-001 · investigacion",
-        "Comunicación · GF-2026-002 · investigacion",
-        "En efecto noticias · GF-2026-003 · proyecto-agente",
-        "Bartolinos · GF-2026-004 · activacion-comunidad",
-        "Diseñador de agentes · disenador"
+        "🧭 Orquestador GF (bibliotecario)",
+        "🔎 Vejez · GF-2026-001",
+        "🔎 Comunicación · GF-2026-002",
+        "📰 En efecto noticias · GF-2026-003",
+        "🤝 Bartolinos · GF-2026-004",
+        "🛠️ Diseñador de agentes"
        ],
        "max_length": 100
       }
@@ -53,7 +53,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "Orquestador GF (bibliotecario) · orquestador"
+         "value": "🧭 Orquestador GF (bibliotecario)"
         }
        ]
       },
@@ -69,7 +69,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "Vejez · GF-2026-001 · investigacion"
+         "value": "🔎 Vejez · GF-2026-001"
         }
        ]
       },
@@ -85,7 +85,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "Comunicación · GF-2026-002 · investigacion"
+         "value": "🔎 Comunicación · GF-2026-002"
         }
        ]
       },
@@ -101,7 +101,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "En efecto noticias · GF-2026-003 · proyecto-agente"
+         "value": "📰 En efecto noticias · GF-2026-003"
         }
        ]
       },
@@ -117,7 +117,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "Bartolinos · GF-2026-004 · activacion-comunidad"
+         "value": "🤝 Bartolinos · GF-2026-004"
         }
        ]
       },
@@ -133,7 +133,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "Diseñador de agentes · disenador"
+         "value": "🛠️ Diseñador de agentes"
         }
        ]
       }
@@ -3695,11 +3695,11 @@
   ]
  },
  "features": {
-  "opening_statement": "Hola. Este es el chat de los agentes de GruposFocales. Cada agente lee en vivo sus instrucciones y archivos desde GitHub. Para cambiar de agente, abre una conversación nueva.",
+  "opening_statement": "Hola 👋 Soy tu equipo de agentes de GruposFocales.\n\nCada agente trabaja con los archivos vigentes de su proyecto. Tú solo apruebas o corriges.\n\nPara empezar, toca una opción. Para cambiar de agente, abre una conversación nueva.",
   "suggested_questions": [
-   "abrir",
    "estado",
-   "continuar"
+   "continuar",
+   "pendientes"
   ],
   "file_upload": {
    "enabled": false

@@ -48,8 +48,12 @@ def http(titulo, repo, ruta):
             "ssl_verify": True, "variables": []}
 
 
+ICONOS = {"orquestador": "🧭", "investigacion": "🔎", "activacion-comunidad": "🤝",
+          "proyecto-agente": "📰", "disenador": "🛠️"}
+
+
 def etiqueta(d):
-    return f"{d['nombre']} · {d['tipo']}"
+    return f"{ICONOS.get(d['tipo'], '•')} {d['nombre']}"
 
 
 def rama(n, d, y):
@@ -116,7 +120,7 @@ def generar():
     fichas = [leer_ficha(NUCLEO.parent / r) for r in repos]
     opciones = [etiqueta(d) for d in fichas]
     nodos = [nodo("start", 0, 0, {"type": "start", "title": "Inicio", "variables": [{
-        "variable": "agente", "label": "¿Con qué agente quieres trabajar?", "type": "select",
+        "variable": "agente", "label": "Elige tu agente", "type": "select",
         "required": True, "options": opciones, "max_length": 100}]})]
     casos = [{"case_id": f"a{n}", "logical_operator": "and", "conditions": [
         {"id": f"a{n}c", "varType": "string", "variable_selector": ["start", "agente"],
@@ -134,9 +138,10 @@ def generar():
         "answer": "No reconozco ese agente. Empieza una conversación nueva y elige uno de la lista."}))
     aristas.append(arista("elegir", "ninguno", "false"))
     features = {
-        "opening_statement": "Hola. Este es el chat de los agentes de GruposFocales. Cada agente lee en vivo "
-                             "sus instrucciones y archivos desde GitHub. Para cambiar de agente, abre una conversación nueva.",
-        "suggested_questions": ["abrir", "estado", "continuar"],
+        "opening_statement": "Hola 👋 Soy tu equipo de agentes de GruposFocales.\n\n"
+                             "Cada agente trabaja con los archivos vigentes de su proyecto. Tú solo apruebas o corriges.\n\n"
+                             "Para empezar, toca una opción. Para cambiar de agente, abre una conversación nueva.",
+        "suggested_questions": ["estado", "continuar", "pendientes"],
         "file_upload": {"enabled": False}, "retriever_resource": {"enabled": False},
         "speech_to_text": {"enabled": False}, "text_to_speech": {"enabled": False, "voice": "", "language": ""},
         "suggested_questions_after_answer": {"enabled": False}, "sensitive_word_avoidance": {"enabled": False}}
