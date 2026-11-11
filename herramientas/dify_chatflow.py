@@ -25,6 +25,11 @@ MODELO = {"provider": "langgenius/deepseek/deepseek", "name": "deepseek-v4-flash
 GITHUB_PLUGIN = "langgenius/github/github"
 ENV_TOKEN = {"id": "env-github-token", "name": "GITHUB_TOKEN", "value_type": "secret", "value": "",
              "description": "Token fine-grained de GitHub: Contents read en los repos de agentes.txt e Issues write para los parches."}
+ENV_KAPSO = {"id": "env-kapso-api-key", "name": "KAPSO_API_KEY", "value_type": "secret", "value": "",
+             "description": "Clave de API del proyecto Kapso GruposFocales, para exportar encuestas (módulo Encuestas)."}
+ENCUESTAS = "📋 Encuestas WhatsApp → Kapso"
+ENCUESTAS_SYSTEM = ("gruposfocales/ADN", "plataformas/kapso-encuestas/SYSTEM.md")
+TIPOS_CON_INSTRUMENTOS = ("investigacion", "activacion-comunidad", "proyecto-agente")
 
 
 def nodo(i, x, y, data):
@@ -115,16 +120,78 @@ def rama(n, d, y):
     return nodos, aristas
 
 
+def rama_encuestas(n, fichas, y):
+    """Módulo Encuestas: lee los INSTRUMENTOS.md, muestra la vista previa, pide ok y exporta a Kapso."""
+    p = f"a{n}"
+    lecturas = [("SYSTEM",) + ENCUESTAS_SYSTEM]
+    lecturas += [(f"{d['nombre']} · INSTRUMENTOS.md", d["repo"], "INSTRUMENTOS.md")
+                 for d in fichas if d["tipo"] in TIPOS_CON_INSTRUMENTOS]
+    nodos, aristas, ids, anterior, x = [], [], [], None, 600
+    for k, (titulo, r, ruta) in enumerate(lecturas):
+        i = f"{p}h{k}"
+        nodos.append(nodo(i, x, y, http(f"Encuestas · {titulo[:24]}", r, ruta)))
+        if anterior:
+            aristas.append(arista(anterior, i))
+        anterior, x = i, x + 260
+        ids.append((titulo, i))
+    archivos = "\n\n".join(f"=== {t} ===\n{{{{#{i}.body#}}}}" for t, i in ids[1:])
+    llm = f"{p}llm"
+    nodos.append(nodo(llm, x, y, {
+        "type": "llm", "title": "Encuestas · modelo", "model": MODELO,
+        "prompt_template": [
+            {"id": f"{p}s1", "role": "system", "text": f"{{{{#{ids[0][1]}.body#}}}}"},
+            {"id": f"{p}s2", "role": "system", "text":
+                "Instrumentos vigentes de cada proyecto, leídos en vivo desde GitHub (fuente de verdad):\n\n" + archivos}],
+        "context": {"enabled": False, "variable_selector": []},
+        "memory": {"window": {"enabled": True, "size": 30}, "query_prompt_template": "{{#sys.query#}}",
+                   "role_prefix": {"user": "", "assistant": ""}},
+        "vision": {"enabled": False}, "variables": [], "reasoning_format": "separated"}))
+    aristas.append(arista(anterior, llm))
+    resp, si, js, post, fin = (f"{p}{s}" for s in ("ans", "if", "json", "post", "fin"))
+    nodos.append(nodo(resp, x + 300, y, {"type": "answer", "title": "Encuestas · respuesta",
+                                         "answer": f"{{{{#{llm}.text#}}}}", "variables": []}))
+    nodos.append(nodo(si, x + 300, y + 160, {"type": "if-else", "title": "¿Trae 📤 Kapso?", "cases": [
+        {"case_id": "true", "logical_operator": "and", "conditions": [
+            {"id": f"{p}c1", "varType": "string", "variable_selector": [llm, "text"],
+             "comparison_operator": "contains", "value": "📤 Kapso"}]}]}))
+    nodos.append(nodo(js, x + 600, y + 160, {
+        "type": "llm", "title": "Encuestas · sacar JSON",
+        "model": {**MODELO, "completion_params": {"temperature": 0}},
+        "prompt_template": [
+            {"id": f"{p}j1", "role": "system", "text":
+                "Copia exactamente el objeto JSON que aparece después de la línea '📤 Kapso'. "
+                "Responde solo con ese JSON: sin ```, sin comentarios, sin texto antes ni después."},
+            {"id": f"{p}j2", "role": "user", "text": f"{{{{#{llm}.text#}}}}"}],
+        "context": {"enabled": False, "variable_selector": []},
+        "vision": {"enabled": False}, "variables": [], "reasoning_format": "separated"}))
+    nodos.append(nodo(post, x + 900, y + 160, {
+        "type": "http-request", "title": "Exportar a Kapso", "method": "post",
+        "url": "https://api.kapso.ai/platform/v1/workflows",
+        "authorization": {"type": "no-auth", "config": None},
+        "headers": "X-API-Key:{{#env.KAPSO_API_KEY#}}\nContent-Type:application/json",
+        "params": "",
+        "body": {"type": "json", "data": [{"id": f"{p}b1", "key": "", "type": "text", "value": f"{{{{#{js}.text#}}}}"}]},
+        "timeout": {"max_connect_timeout": 10, "max_read_timeout": 60, "max_write_timeout": 30},
+        "retry_config": {"retry_enabled": False, "max_retries": 0, "retry_interval": 1000},
+        "ssl_verify": True, "variables": []}))
+    nodos.append(nodo(fin, x + 1200, y + 160, {
+        "type": "answer", "title": "Resultado Kapso", "variables": [],
+        "answer": f"\n\n---\n**Kapso respondió {{{{#{post}.status_code#}}}}** (201 = creada en borrador).\n"
+                  f"Revísala en https://app.kapso.ai → Workflows.\n\n{{{{#{post}.body#}}}}"}))
+    aristas += [arista(llm, resp), arista(llm, si), arista(si, js, "true"), arista(js, post), arista(post, fin)]
+    return nodos, aristas
+
+
 def generar():
     repos = [l.split("#")[0].strip() for l in leer(NUCLEO / "agentes.txt").splitlines() if l.split("#")[0].strip()]
     fichas = [leer_ficha(NUCLEO.parent / r) for r in repos]
-    opciones = [etiqueta(d) for d in fichas]
+    opciones = [etiqueta(d) for d in fichas] + [ENCUESTAS]
     nodos = [nodo("start", 0, 0, {"type": "start", "title": "Inicio", "variables": [{
         "variable": "agente", "label": "Elige tu agente", "type": "select",
         "required": True, "options": opciones, "max_length": 100}]})]
     casos = [{"case_id": f"a{n}", "logical_operator": "and", "conditions": [
         {"id": f"a{n}c", "varType": "string", "variable_selector": ["start", "agente"],
-         "comparison_operator": "is", "value": opciones[n]}]} for n in range(len(fichas))]
+         "comparison_operator": "is", "value": opciones[n]}]} for n in range(len(opciones))]
     nodos.append(nodo("elegir", 300, 0, {"type": "if-else", "title": "Elegir agente", "cases": casos}))
     aristas = [arista("start", "elegir")]
     for n, d in enumerate(fichas):
@@ -133,7 +200,12 @@ def generar():
         nodos += ns
         aristas += as_
         aristas.append(arista("elegir", f"a{n}h0", f"a{n}"))
-    nodos.append(nodo("ninguno", 600, len(fichas) * 400, {
+    n = len(fichas)
+    ns, as_ = rama_encuestas(n, fichas, n * 400)
+    nodos += ns
+    aristas += as_
+    aristas.append(arista("elegir", f"a{n}h0", f"a{n}"))
+    nodos.append(nodo("ninguno", 600, (n + 1) * 400, {
         "type": "answer", "title": "Sin agente", "variables": [],
         "answer": "No reconozco ese agente. Empieza una conversación nueva y elige uno de la lista."}))
     aristas.append(arista("elegir", "ninguno", "false"))
@@ -146,7 +218,7 @@ def generar():
         "speech_to_text": {"enabled": False}, "text_to_speech": {"enabled": False, "voice": "", "language": ""},
         "suggested_questions_after_answer": {"enabled": False}, "sensitive_word_avoidance": {"enabled": False}}
     return {"graph": {"nodes": nodos, "edges": aristas}, "features": features,
-            "environment_variable_patch": {"environment_variables": [ENV_TOKEN]},
+            "environment_variable_patch": {"environment_variables": [ENV_TOKEN, ENV_KAPSO]},
             "conversation_variables": []}
 
 
