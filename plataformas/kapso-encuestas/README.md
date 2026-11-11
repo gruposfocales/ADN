@@ -1,13 +1,18 @@
 # Módulo · Encuestas por WhatsApp (Kapso dentro de Dify)
 
-El cliente opera todo desde Dify; Kapso hace el WhatsApp por debajo y el cliente nunca entra a Kapso.
+**Decisión (2026-11-11):** va DENTRO de la app `GF · Agentes`, como la opción "Encuestas" de la lista.
+La encuesta se construye conversando en Dify y, con "publicar", Dify la exporta a Kapso (borrador).
+Activar y enviar a personas es un paso aparte, siempre con "sí" explícito.
 
 ```
-Cliente ──chat──> Dify "GF · Encuestas" (agente DeepSeek)
-                     │  herramienta personalizada "Kapso Encuestas" (X-API-Key)
-                     ▼
-                  Kapso Platform API ──> WhatsApp +57 313 252 7143
+GF · Agentes ─ opción "Encuestas" ─> LLM arma la encuesta con el usuario
+     └─ "publicar" → LLM produce JSON de Kapso → HTTP POST /platform/v1/workflows
+                     (X-API-Key = variable de entorno KAPSO_API_KEY, secreta)
 ```
+
+Igual que los parches a GitHub: un nodo "¿Trae 📤 Publicar?" decide y un nodo HTTP envía.
+`prompt.md` trae la receta del grafo. La herramienta OpenAPI de abajo sirve si luego se quiere
+un agente con más acciones (enviar, leer respuestas).
 
 | Puede hacer | Herramienta |
 |---|---|
