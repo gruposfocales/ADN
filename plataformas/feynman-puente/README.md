@@ -13,9 +13,10 @@ Cuando termina, el informe queda en GitHub, en la rama `feynman/resultados`
    |---|---|
    | `PUENTE_TOKEN` | Clave larga inventada por ti (`openssl rand -hex 32`). La usa Dify. |
    | `GITHUB_TOKEN` | Token fine-grained **nuevo** solo para esto: Contents read+write en los repos de abajo. |
-   | `REPOS_PERMITIDOS` | `gruposfocales/gf-bibliotecario,gruposfocales/2026-001-vejez` (separados por coma) |
-   | `OPENROUTER_API_KEY` | Clave del modelo. Feynman no trae DeepSeek directo; vía OpenRouter sí. Sirve también `ANTHROPIC_API_KEY` u `OPENAI_API_KEY`. |
-   | `FEYNMAN_MODELO` | Opcional, ej. `openrouter/deepseek/deepseek-v4-pro`. Comprueba el nombre con `feynman model list`. |
+   | `REPOS_PERMITIDOS` | Opcional. Por defecto solo `gruposfocales/gf-bibliotecario`. |
+   | `DEEPSEEK_API_KEY` | Tu clave de DeepSeek (platform.deepseek.com). El puente registra DeepSeek directo en Feynman al arrancar. |
+   | `DEEPSEEK_MODELO` | Opcional: `deepseek-v4-pro` (por defecto) o `deepseek-v4-flash` (más barato). |
+   | `FEYNMAN_MODELO` | Opcional, para forzar otro modelo (ej. `anthropic/...` con `ANTHROPIC_API_KEY`). |
    | `OPENALEX_API_KEY`, `SEMANTIC_SCHOLAR_API_KEY` | Opcionales y gratis; evitan límites de búsqueda. |
 3. Domains: `feynman.gruposfocales.com`, puerto 8080, HTTPS. Deploy.
 4. Prueba: `curl https://feynman.gruposfocales.com/salud` → `{"ok":true,...}`.

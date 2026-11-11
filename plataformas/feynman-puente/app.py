@@ -11,12 +11,33 @@ from pydantic import BaseModel, Field
 
 TOKEN = os.environ["PUENTE_TOKEN"]                     # lo usa Dify en Authorization: Bearer
 GH_TOKEN = os.environ["GITHUB_TOKEN"]                  # fine-grained, Contents write
-REPOS = set(os.environ.get("REPOS_PERMITIDOS", "gruposfocales/gf-bibliotecario").split(","))
+REPOS = set(os.environ.get("REPOS_PERMITIDOS", "gruposfocales/gf-bibliotecario").split(","))  # por defecto solo bibliotecario
 RAMA = os.environ.get("RAMA_RESULTADOS", "feynman/resultados")
-MODELO = os.environ.get("FEYNMAN_MODELO", "")          # ej. openrouter/deepseek/deepseek-v4-pro
+DS_MODELO = os.environ.get("DEEPSEEK_MODELO", "deepseek-v4-pro")  # o deepseek-v4-flash (más barato)
+MODELO = os.environ.get("FEYNMAN_MODELO", f"deepseek/{DS_MODELO}" if os.environ.get("DEEPSEEK_API_KEY") else "")
 LIMITE_SEG = int(os.environ.get("LIMITE_SEGUNDOS", "2700"))
 FLUJOS = {"pregunta", "deepresearch", "lit", "compare", "summarize", "review"}
 
+
+
+def configurar_deepseek():
+    """DeepSeek directo: Feynman (Pi) acepta proveedores compatibles con OpenAI en models.json.
+    La clave no se escribe en el archivo: va como referencia $DEEPSEEK_API_KEY."""
+    if not os.environ.get("DEEPSEEK_API_KEY"):
+        return
+    import json
+    ruta = os.path.expanduser("~/.feynman/agent/models.json")
+    os.makedirs(os.path.dirname(ruta), exist_ok=True)
+    datos = json.load(open(ruta)) if os.path.exists(ruta) else {}
+    datos.setdefault("providers", {})["deepseek"] = {
+        "baseUrl": "https://api.deepseek.com/v1", "api": "openai-completions",
+        "apiKey": "$DEEPSEEK_API_KEY", "models": [{"id": DS_MODELO}]}
+    with open(ruta, "w") as f:
+        json.dump(datos, f, indent=2)
+    os.chmod(ruta, 0o600)
+
+
+configurar_deepseek()
 app = FastAPI(title="Puente Feynman", version="1.0.0")
 tareas: dict[str, dict] = {}
 cola: "queue.Queue[str]" = queue.Queue()

@@ -18,7 +18,7 @@ paths:
               properties:
                 tema: {type: string, description: Pregunta o tema a investigar}
                 flujo: {type: string, enum: [pregunta, deepresearch, lit, compare, summarize, review], default: deepresearch}
-                repo: {type: string, default: gruposfocales/gf-bibliotecario, description: Repo donde se guarda el informe}
+                repo: {type: string, default: gruposfocales/gf-bibliotecario, description: Repo donde se guarda el informe (por ahora solo gf-bibliotecario)}
       responses: {"200": {description: id y estado}}
   /tareas/{id}:
     get:
