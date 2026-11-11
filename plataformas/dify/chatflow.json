@@ -23,7 +23,8 @@
         "🔎 Comunicación · GF-2026-002",
         "📰 En efecto noticias · GF-2026-003",
         "🤝 Bartolinos · GF-2026-004",
-        "🛠️ Diseñador de agentes"
+        "🛠️ Diseñador de agentes",
+        "📋 Encuestas WhatsApp → Kapso"
        ],
        "max_length": 100
       }
@@ -134,6 +135,22 @@
          ],
          "comparison_operator": "is",
          "value": "🛠️ Diseñador de agentes"
+        }
+       ]
+      },
+      {
+       "case_id": "a6",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a6c",
+         "varType": "string",
+         "variable_selector": [
+          "start",
+          "agente"
+         ],
+         "comparison_operator": "is",
+         "value": "📋 Encuestas WhatsApp → Kapso"
         }
        ]
       }
@@ -2948,11 +2965,385 @@
     }
    },
    {
-    "id": "ninguno",
+    "id": "a6h0",
     "type": "custom",
     "position": {
      "x": 600,
      "y": 2400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Encuestas · SYSTEM",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/plataformas/kapso-encuestas/SYSTEM.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a6h1",
+    "type": "custom",
+    "position": {
+     "x": 860,
+     "y": 2400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Encuestas · Vejez · GF-2026-001 · IN",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a6h2",
+    "type": "custom",
+    "position": {
+     "x": 1120,
+     "y": 2400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Encuestas · Comunicación · GF-2026-0",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a6h3",
+    "type": "custom",
+    "position": {
+     "x": 1380,
+     "y": 2400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Encuestas · En efecto noticias · GF-",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a6h4",
+    "type": "custom",
+    "position": {
+     "x": 1640,
+     "y": 2400
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Encuestas · Bartolinos · GF-2026-004",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/INSTRUMENTOS.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a6llm",
+    "type": "custom",
+    "position": {
+     "x": 1900,
+     "y": 2400
+    },
+    "data": {
+     "type": "llm",
+     "title": "Encuestas · modelo",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0.3
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a6s1",
+       "role": "system",
+       "text": "{{#a6h0.body#}}"
+      },
+      {
+       "id": "a6s2",
+       "role": "system",
+       "text": "Instrumentos vigentes de cada proyecto, leídos en vivo desde GitHub (fuente de verdad):\n\n=== Vejez · GF-2026-001 · INSTRUMENTOS.md ===\n{{#a6h1.body#}}\n\n=== Comunicación · GF-2026-002 · INSTRUMENTOS.md ===\n{{#a6h2.body#}}\n\n=== En efecto noticias · GF-2026-003 · INSTRUMENTOS.md ===\n{{#a6h3.body#}}\n\n=== Bartolinos · GF-2026-004 · INSTRUMENTOS.md ===\n{{#a6h4.body#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "memory": {
+      "window": {
+       "enabled": true,
+       "size": 30
+      },
+      "query_prompt_template": "{{#sys.query#}}",
+      "role_prefix": {
+       "user": "",
+       "assistant": ""
+      }
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a6ans",
+    "type": "custom",
+    "position": {
+     "x": 2200,
+     "y": 2400
+    },
+    "data": {
+     "type": "answer",
+     "title": "Encuestas · respuesta",
+     "answer": "{{#a6llm.text#}}",
+     "variables": []
+    }
+   },
+   {
+    "id": "a6if",
+    "type": "custom",
+    "position": {
+     "x": 2200,
+     "y": 2560
+    },
+    "data": {
+     "type": "if-else",
+     "title": "¿Trae 📤 Kapso?",
+     "cases": [
+      {
+       "case_id": "true",
+       "logical_operator": "and",
+       "conditions": [
+        {
+         "id": "a6c1",
+         "varType": "string",
+         "variable_selector": [
+          "a6llm",
+          "text"
+         ],
+         "comparison_operator": "contains",
+         "value": "📤 Kapso"
+        }
+       ]
+      }
+     ]
+    }
+   },
+   {
+    "id": "a6json",
+    "type": "custom",
+    "position": {
+     "x": 2500,
+     "y": 2560
+    },
+    "data": {
+     "type": "llm",
+     "title": "Encuestas · sacar JSON",
+     "model": {
+      "provider": "langgenius/deepseek/deepseek",
+      "name": "deepseek-v4-flash",
+      "mode": "chat",
+      "completion_params": {
+       "temperature": 0
+      }
+     },
+     "prompt_template": [
+      {
+       "id": "a6j1",
+       "role": "system",
+       "text": "Copia exactamente el objeto JSON que aparece después de la línea '📤 Kapso'. Responde solo con ese JSON: sin ```, sin comentarios, sin texto antes ni después."
+      },
+      {
+       "id": "a6j2",
+       "role": "user",
+       "text": "{{#a6llm.text#}}"
+      }
+     ],
+     "context": {
+      "enabled": false,
+      "variable_selector": []
+     },
+     "vision": {
+      "enabled": false
+     },
+     "variables": [],
+     "reasoning_format": "separated"
+    }
+   },
+   {
+    "id": "a6post",
+    "type": "custom",
+    "position": {
+     "x": 2800,
+     "y": 2560
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Exportar a Kapso",
+     "method": "post",
+     "url": "https://api.kapso.ai/platform/v1/workflows",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "X-API-Key:{{#env.KAPSO_API_KEY#}}\nContent-Type:application/json",
+     "params": "",
+     "body": {
+      "type": "json",
+      "data": [
+       {
+        "id": "a6b1",
+        "key": "",
+        "type": "text",
+        "value": "{{#a6json.text#}}"
+       }
+      ]
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 60,
+      "max_write_timeout": 30
+     },
+     "retry_config": {
+      "retry_enabled": false,
+      "max_retries": 0,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a6fin",
+    "type": "custom",
+    "position": {
+     "x": 3100,
+     "y": 2560
+    },
+    "data": {
+     "type": "answer",
+     "title": "Resultado Kapso",
+     "variables": [],
+     "answer": "\n\n---\n**Kapso respondió {{#a6post.status_code#}}** (201 = creada en borrador).\nRevísala en https://app.kapso.ai → Workflows.\n\n{{#a6post.body#}}"
+    }
+   },
+   {
+    "id": "ninguno",
+    "type": "custom",
+    "position": {
+     "x": 600,
+     "y": 2800
     },
     "data": {
      "type": "answer",
@@ -3684,6 +4075,105 @@
     "data": {}
    },
    {
+    "id": "a6h0-source-a6h1",
+    "source": "a6h0",
+    "sourceHandle": "source",
+    "target": "a6h1",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6h1-source-a6h2",
+    "source": "a6h1",
+    "sourceHandle": "source",
+    "target": "a6h2",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6h2-source-a6h3",
+    "source": "a6h2",
+    "sourceHandle": "source",
+    "target": "a6h3",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6h3-source-a6h4",
+    "source": "a6h3",
+    "sourceHandle": "source",
+    "target": "a6h4",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6h4-source-a6llm",
+    "source": "a6h4",
+    "sourceHandle": "source",
+    "target": "a6llm",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6llm-source-a6ans",
+    "source": "a6llm",
+    "sourceHandle": "source",
+    "target": "a6ans",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6llm-source-a6if",
+    "source": "a6llm",
+    "sourceHandle": "source",
+    "target": "a6if",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6if-true-a6json",
+    "source": "a6if",
+    "sourceHandle": "true",
+    "target": "a6json",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6json-source-a6post",
+    "source": "a6json",
+    "sourceHandle": "source",
+    "target": "a6post",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a6post-source-a6fin",
+    "source": "a6post",
+    "sourceHandle": "source",
+    "target": "a6fin",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "elegir-a6-a6h0",
+    "source": "elegir",
+    "sourceHandle": "a6",
+    "target": "a6h0",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
     "id": "elegir-false-ninguno",
     "source": "elegir",
     "sourceHandle": "false",
@@ -3730,6 +4220,13 @@
     "value_type": "secret",
     "value": "",
     "description": "Token fine-grained de GitHub: Contents read en los repos de agentes.txt e Issues write para los parches."
+   },
+   {
+    "id": "env-kapso-api-key",
+    "name": "KAPSO_API_KEY",
+    "value_type": "secret",
+    "value": "",
+    "description": "Clave de API del proyecto Kapso GruposFocales, para exportar encuestas (módulo Encuestas)."
    }
   ]
  },
