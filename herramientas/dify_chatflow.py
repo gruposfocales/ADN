@@ -19,6 +19,11 @@ from ficha import leer, leer_ficha
 
 NUCLEO = pathlib.Path(__file__).resolve().parent.parent
 SALIDA = NUCLEO / "plataformas" / "dify" / "chatflow.json"
+SALIDA_MINIMO = NUCLEO / "plataformas" / "dify" / "chatflow-minimo.json"
+# Modo --minimo: cada turno lee solo el SYSTEM y el archivo de estado del agente (el primero que exista
+# en sus fuentes). El repo no cambia; lo demás (Manual, bitácora, evidencia) se trabaja fuera de Dify.
+ESTADO = ("DASHBOARD.md", "INDICE_MAESTRO.md", "organizacion/ESTADO-NEGOCIO.md")
+MINIMO = False
 
 MODELO = {"provider": "langgenius/deepseek/deepseek", "name": "deepseek-v4-flash", "mode": "chat",
           "completion_params": {"temperature": 0.3}}
@@ -68,7 +73,10 @@ def rama(n, d, y):
     org = repo.split("/")[0]
     nodos, aristas = [], []
     lecturas = [("SYSTEM", repo, "agente/SYSTEM-sin-archivos.md")]
-    for f in d["fuentes"]:
+    fuentes = d["fuentes"]
+    if MINIMO:
+        fuentes = [f for e in ESTADO for f in fuentes if f == e][:1]
+    for f in fuentes:
         otro, _, ruta = f.rpartition(":")
         lecturas.append((f, f"{org}/{otro}" if otro else repo, ruta))
     anterior, x = None, 600
@@ -223,6 +231,10 @@ def generar():
 
 
 def main():
+    global MINIMO, SALIDA
+    import sys
+    if "--minimo" in sys.argv:
+        MINIMO, SALIDA = True, SALIDA_MINIMO
     datos = generar()
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
