@@ -24,9 +24,11 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
     PH="$HOME_H"
   else
     PH="$HOME_H/profiles/$PERFIL"
-    [ -d "$PH" ] || hermes profile create "$PERFIL" >/dev/null
+    [ -d "$PH" ] || hermes profile create "$PERFIL" </dev/null >/dev/null || { echo "⚠ $PERFIL: no se pudo crear el perfil"; continue; }
   fi
-  [ -f "$DIR/AGENTS.md" ] || { echo "⚠ $REPO no tiene AGENTS.md"; continue; }
-  ln -sfn "$DIR/AGENTS.md" "$PH/SOUL.md"
-  echo "✓ $PERFIL → $REPO"
+  ALMA=""
+  for F in AGENTS.md CLAUDE.md README.md; do [ -f "$DIR/$F" ] && { ALMA="$F"; break; }; done
+  [ -n "$ALMA" ] || { echo "⚠ $REPO no tiene AGENTS.md, CLAUDE.md ni README.md"; continue; }
+  ln -sfn "$DIR/$ALMA" "$PH/SOUL.md"
+  echo "✓ $PERFIL → $REPO/$ALMA"
 done
