@@ -11,8 +11,11 @@ El repo necesita `agente/agente.txt` (ficha) y, según el método:
                           agente/SYSTEM-sin-archivos.md, MANUAL-FASES.md y la copia del ADN.
     metodo: propio      → el archivo de `instrucciones:` (por defecto AGENTS.md), escrito a mano.
                           Solo se genera agente/SYSTEM-sin-archivos.md.
+Versiones: AGENTS.md y SYSTEM-sin-archivos.md llevan `versión N · fecha` en su aviso. Si el contenido
+cambia, la versión anterior se archiva en agente/historial/<archivo>-vN.md y la nueva sube a N+1.
 Con `skills: si`, copia las skills del núcleo (skills/) a .claude/skills/.
 """
+import datetime
 import pathlib
 import re
 import sys
@@ -29,7 +32,7 @@ def sin_frontmatter(txt):
 
 def aviso(datos, editable):
     return (
-        f"<!-- Archivo armado con gruposfocales/ADN herramientas/armar.py (núcleo v{datos['nucleo']}). "
+        f"<!-- Archivo armado con gruposfocales/ADN herramientas/armar.py (núcleo v{datos['nucleo']}, versión {{VERSION}}). "
         f"No lo edites a mano: cambia {editable} en este repo o los módulos en gruposfocales/ADN, y vuelve a armar. -->"
     )
 
@@ -48,6 +51,29 @@ def armar_propio(datos, repo):
     plat = leer(NUCLEO / "plataformas" / "sin-archivos.md").strip()
     partes = [f"# SYSTEM — {datos['nombre']}", aviso(datos, instr), cuerpo, plat]
     return "\n\n".join(partes) + "\n"
+
+
+VERSIONADOS = ("AGENTS.md", "SYSTEM-sin-archivos.md")
+MARCA = re.compile(r", versión (\d+) · \d{4}-\d{2}-\d{2}\)")
+
+
+def version_de(texto):
+    m = MARCA.search(texto or "")
+    return int(m.group(1)) if m else 0
+
+
+def versionar(p, nuevo):
+    """(bytes nuevos o None si no cambió, (ruta de historial, texto viejo) o None)."""
+    viejo = p.read_text(encoding="utf-8") if p.exists() else None
+    if viejo is not None and MARCA.sub(", versión {VERSION})", viejo) == nuevo:
+        return None, None
+    n = version_de(viejo)
+    sin_marca = nuevo.replace(", versión {VERSION})", ")", 1)
+    if viejo is not None and not n and viejo == sin_marca:
+        viejo = None  # primera versión: el texto es el mismo, no hace falta archivarlo
+    final = nuevo.replace("{VERSION}", f"{n + 1} · {datetime.date.today().isoformat()}", 1)
+    carpeta = (p.parent if p.parent.name == "agente" else p.parent / "agente") / "historial"
+    return final.encode("utf-8"), ((carpeta / f"{p.stem}-v{n}.md", viejo) if viejo else None)
 
 
 def skills(repo):
@@ -89,12 +115,26 @@ def procesar(repo, revisar):
     if not (repo / "agente" / "pruebas.md").exists():
         avisos.append("falta agente/pruebas.md")
     salidas = salidas_de(repo, datos)
+    historial = {}
+    for p in [q for q in salidas if q.name in VERSIONADOS]:
+        final, hist = versionar(p, salidas[p].decode("utf-8"))
+        if final is None:
+            del salidas[p]
+        else:
+            salidas[p] = final
+            if hist:
+                historial[hist[0]] = hist[1]
     distintos = [p for p, b in salidas.items() if not p.exists() or p.read_bytes() != b]
     for p in distintos:
         print(("✏️  difiere: " if revisar else "✅ escrito: ") + f"{repo.name}/{p.relative_to(repo)}")
         if not revisar:
             p.parent.mkdir(parents=True, exist_ok=True)
             p.write_bytes(salidas[p])
+    if not revisar:
+        for h, viejo in historial.items():
+            h.parent.mkdir(parents=True, exist_ok=True)
+            h.write_text(viejo, encoding="utf-8")
+            print(f"🗄️  archivado: {repo.name}/{h.relative_to(repo)}")
     for a in avisos:
         print(f"⚠️  {repo.name}: {a}")
     if not distintos and not avisos:
