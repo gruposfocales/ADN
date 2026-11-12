@@ -28,3 +28,10 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
 ## Reglas
 - Hermes no escribe en `main`: los cambios van como parche en un issue.
 - Nunca pongas tokens ni URLs privadas en este repo ni en el chat.
+
+## Guardar cambios (rama + PR)
+Después de un `ok`, Hermes (o tú) corre:
+`sh /opt/data/ADN/plataformas/hermes/guardar.sh /opt/data/<repo> "Fase N · lote X · resumen"`
+Crea una rama `hermes/<fecha-hora>`, hace commit, la sube y abre un PR contra `main`. Nunca escribe en `main`.
+Requisitos: token con **Contents: Read and write** y **Pull requests: Read and write**, y `main` protegida
+(Settings → Rules → Rulesets → "Require a pull request before merging") en cada repo.

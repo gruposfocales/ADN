@@ -31,6 +31,12 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
   [ -n "$ALMA" ] || { echo "⚠ $REPO no tiene AGENTS.md, CLAUDE.md ni README.md"; continue; }
   # el modelo (DeepSeek) y demás ajustes salen del perfil default
   [ "$PERFIL" = default ] || cp "$HOME_H/config.yaml" "$PH/config.yaml" 2>/dev/null || true
+  # los perfiles solo leen claves de su propio .env: se escribe ahí desde el entorno del contenedor
+  if [ "$PERFIL" != default ] && [ -n "${DEEPSEEK_API_KEY:-}" ]; then
+    touch "$PH/.env" && chmod 600 "$PH/.env"
+    grep -v '^DEEPSEEK_API_KEY=' "$PH/.env" > "$PH/.env.tmp" || true
+    echo "DEEPSEEK_API_KEY=$DEEPSEEK_API_KEY" >> "$PH/.env.tmp" && mv "$PH/.env.tmp" "$PH/.env" && chmod 600 "$PH/.env"
+  fi
   ln -sfn "$DIR/$ALMA" "$PH/SOUL.md"
   echo "✓ $PERFIL → $REPO/$ALMA"
 done
