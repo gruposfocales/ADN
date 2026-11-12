@@ -18,11 +18,12 @@ SYSTEM = personalidad del proyecto  +  método común  +  reglas de la plataform
 | ADN de GruposFocales | `modulos/adn.md` | Aquí, con copia en cada proyecto |
 | Plataforma con archivos y git (Claude, Hermes, Codex) | `plataformas/con-archivos.md` | Aquí |
 | Plataforma sin archivos (Dify, ChatGPT) | `plataformas/sin-archivos.md` | Aquí |
+| Receta: Claude o ChatGPT como proyecto o chat | `plataformas/chat-proyecto.md` | Aquí |
 
 ## Tipos y catálogo
 
 - **Tipos de agente:** `modulos/tipos.md` (orquestador, investigación, activación de comunidad, proyecto de agente, diseñador).
-- **Catálogo:** `agentes.txt` lista los repos; `CATALOGO.md` (generado con `herramientas/catalogo.py`) muestra tipo, método y archivos que lee cada uno. De aquí sale el chatflow único de Dify (`herramientas/dify_chatflow.py`, una rama por agente). Cada plataforma tiene su receta corta en `plataformas/<plataforma>.md` (hoy: `dify.md`); las demás se escriben cuando se necesiten.
+- **Catálogo:** `agentes.txt` lista los repos; `CATALOGO.md` (generado con `herramientas/catalogo.py`) muestra tipo, método y archivos que lee cada uno. De aquí sale el chatflow único de Dify (`herramientas/dify_chatflow.py`, una rama por agente). Cada plataforma tiene su receta corta en `plataformas/<plataforma>.md` (hoy: `dify.md`, `hermes/` y `chat-proyecto.md`); las demás se escriben cuando se necesiten.
 
 ## La carpeta `agente/` de cada repo
 
