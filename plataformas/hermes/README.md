@@ -1,11 +1,11 @@
 # Hermes · un perfil por repo
 
-Receta para correr Hermes Agent (`nousresearch/hermes-agent:v0.22.7`) **solo**, sin Dify,
-con un perfil por cada repo de agente. Sin `-p` responde el bibliotecario.
+Receta para Hermes Agent (`nousresearch/hermes-agent:v0.22.7`) en el servicio **hermes2**,
+con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin `-p` responde el bibliotecario.
 
 ## Cómo funciona
 - `perfiles.txt`: qué perfil va con qué repo. Para un cliente, deja solo su línea (y `default`).
-- `perfiles.sh`: clona/actualiza los repos en `/opt/data/repos/` y enlaza el `SOUL.md` de cada
+- `perfiles.sh`: clona/actualiza los repos en `/opt/data/` (donde hermes2 ya los tiene) y enlaza el `SOUL.md` de cada
   perfil al `AGENTS.md` de su repo. No hay copias: un `git pull` actualiza a todos.
 - Hermes lee `SOUL.md` solo desde el home del perfil (por eso el enlace va ahí).
 
