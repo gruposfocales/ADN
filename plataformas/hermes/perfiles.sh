@@ -24,7 +24,7 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
     PH="$HOME_H"
   else
     PH="$HOME_H/profiles/$PERFIL"
-    [ -d "$PH" ] || hermes profile create "$PERFIL" >/dev/null
+    [ -d "$PH" ] || hermes profile create "$PERFIL" </dev/null >/dev/null || { echo "⚠ $PERFIL: no se pudo crear el perfil"; continue; }
   fi
   [ -f "$DIR/AGENTS.md" ] || { echo "⚠ $REPO no tiene AGENTS.md"; continue; }
   ln -sfn "$DIR/AGENTS.md" "$PH/SOUL.md"
