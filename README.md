@@ -50,6 +50,8 @@ python3 herramientas/armar.py --todos --revisar                     # todos los 
 python3 herramientas/catalogo.py                                    # regenera CATALOGO.md
 ```
 
+**Versiones.** `AGENTS.md` y `agente/SYSTEM-sin-archivos.md` llevan en su aviso `versión N · fecha`. Cada vez que `armar.py` cambia su contenido, guarda la versión anterior en `agente/historial/<archivo>-vN.md` y sube a N+1. Nunca se borra una versión vieja.
+
 Genera en el proyecto:
 - `AGENTS.md`: versión con archivos. La leen Claude Code (vía `CLAUDE.md`), Hermes y Codex.
 - `agente/SYSTEM-sin-archivos.md`: versión para pegar a mano en el SYSTEM de Dify u otra plataforma sin archivos.
