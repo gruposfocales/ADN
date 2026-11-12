@@ -36,6 +36,7 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
     touch "$PH/.env" && chmod 600 "$PH/.env"
     grep -v '^DEEPSEEK_API_KEY=' "$PH/.env" > "$PH/.env.tmp" || true
     echo "DEEPSEEK_API_KEY=$DEEPSEEK_API_KEY" >> "$PH/.env.tmp" && mv "$PH/.env.tmp" "$PH/.env" && chmod 600 "$PH/.env"
+    chown "$(stat -c %u:%g "$HOME_H")" "$PH/.env" 2>/dev/null || true   # Hermes corre con el usuario dueño de /opt/data
   fi
   ln -sfn "$DIR/$ALMA" "$PH/SOUL.md"
   echo "✓ $PERFIL → $REPO/$ALMA"
