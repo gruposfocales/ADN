@@ -1,0 +1,28 @@
+# Pega esto en Dify > Herramientas > Crear herramienta personalizada.
+# Autorización: API Key, tipo "Bearer", valor = PUENTE_TOKEN.
+openapi: 3.1.0
+info: {title: Feynman, version: 1.0.0, description: Investigación con Feynman; el informe queda en GitHub.}
+servers: [{url: https://feynman.gruposfocales.com}]
+paths:
+  /tareas:
+    post:
+      operationId: encargar_investigacion
+      summary: Encarga una investigación a Feynman y devuelve un id al instante.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tema]
+              properties:
+                tema: {type: string, description: Pregunta o tema a investigar}
+                flujo: {type: string, enum: [pregunta, deepresearch, lit, compare, summarize, review], default: deepresearch}
+                repo: {type: string, default: gruposfocales/gf-bibliotecario, description: Repo donde se guarda el informe (por ahora solo gf-bibliotecario)}
+      responses: {"200": {description: id y estado}}
+  /tareas/{id}:
+    get:
+      operationId: ver_investigacion
+      summary: Estado de una investigación y enlace al informe en GitHub cuando está lista.
+      parameters: [{name: id, in: path, required: true, schema: {type: string}}]
+      responses: {"200": {description: estado, resumen y enlace}}
