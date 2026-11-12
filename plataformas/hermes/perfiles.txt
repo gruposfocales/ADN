@@ -1,0 +1,9 @@
+# perfil         repo (gruposfocales/...)
+# "default" es el perfil que abre Hermes sin -p. Para un cliente, deja solo su línea.
+default          gf-bibliotecario
+vejez            2026-001-vejez
+comunicacion     gf-2026-002-comunicacion
+noticias         gf-2026-003-en-efecto-noticias
+bartolinos       gf-2026-004-bartolinos
+adn              ADN
+disenador        disenador-de-agentes
