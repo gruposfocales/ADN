@@ -2511,9 +2511,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Diseñador de agentes · INDICE_MAESTRO.md",
+     "title": "Diseñador de agentes · MANUAL-CAPAS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/INDICE_MAESTRO.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/MANUAL-CAPAS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2547,333 +2547,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/00_contexto.md",
+     "title": "Diseñador de agentes · INDICE_MAESTRO.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/00_contexto.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h4",
-    "type": "custom",
-    "position": {
-     "x": 1640,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/01_api.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/01_api.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h5",
-    "type": "custom",
-    "position": {
-     "x": 1900,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/02_prompt_sistema.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/02_prompt_sistema.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h6",
-    "type": "custom",
-    "position": {
-     "x": 2160,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/03_rag.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/03_rag.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h7",
-    "type": "custom",
-    "position": {
-     "x": 2420,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/04_mcp_herramientas.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/04_mcp_herramientas.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h8",
-    "type": "custom",
-    "position": {
-     "x": 2680,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/05_permisos_identidad.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/05_permisos_identidad.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h9",
-    "type": "custom",
-    "position": {
-     "x": 2940,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/06_barreras.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/06_barreras.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h10",
-    "type": "custom",
-    "position": {
-     "x": 3200,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/07_cache_enrutamiento.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/07_cache_enrutamiento.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h11",
-    "type": "custom",
-    "position": {
-     "x": 3460,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/08_observabilidad.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/08_observabilidad.md?ref=main",
-     "authorization": {
-      "type": "no-auth",
-      "config": null
-     },
-     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
-     "params": "",
-     "body": {
-      "type": "none",
-      "data": []
-     },
-     "timeout": {
-      "max_connect_timeout": 10,
-      "max_read_timeout": 30,
-      "max_write_timeout": 10
-     },
-     "retry_config": {
-      "retry_enabled": true,
-      "max_retries": 2,
-      "retry_interval": 1000
-     },
-     "ssl_verify": true,
-     "variables": []
-    }
-   },
-   {
-    "id": "a5h12",
-    "type": "custom",
-    "position": {
-     "x": 3720,
-     "y": 2000
-    },
-    "data": {
-     "type": "http-request",
-     "title": "Diseñador de agentes · cuestionario/09_datos_y_etica.md",
-     "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/cuestionario/09_datos_y_etica.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/INDICE_MAESTRO.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2902,7 +2578,7 @@
     "id": "a5llm",
     "type": "custom",
     "position": {
-     "x": 3980,
+     "x": 1640,
      "y": 2000
     },
     "data": {
@@ -2925,7 +2601,7 @@
       {
        "id": "a5s2",
        "role": "system",
-       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== README.md ===\n{{#a5h1.body#}}\n\n=== INDICE_MAESTRO.md ===\n{{#a5h2.body#}}\n\n=== cuestionario/00_contexto.md ===\n{{#a5h3.body#}}\n\n=== cuestionario/01_api.md ===\n{{#a5h4.body#}}\n\n=== cuestionario/02_prompt_sistema.md ===\n{{#a5h5.body#}}\n\n=== cuestionario/03_rag.md ===\n{{#a5h6.body#}}\n\n=== cuestionario/04_mcp_herramientas.md ===\n{{#a5h7.body#}}\n\n=== cuestionario/05_permisos_identidad.md ===\n{{#a5h8.body#}}\n\n=== cuestionario/06_barreras.md ===\n{{#a5h9.body#}}\n\n=== cuestionario/07_cache_enrutamiento.md ===\n{{#a5h10.body#}}\n\n=== cuestionario/08_observabilidad.md ===\n{{#a5h11.body#}}\n\n=== cuestionario/09_datos_y_etica.md ===\n{{#a5h12.body#}}"
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== README.md ===\n{{#a5h1.body#}}\n\n=== MANUAL-CAPAS.md ===\n{{#a5h2.body#}}\n\n=== INDICE_MAESTRO.md ===\n{{#a5h3.body#}}"
       }
      ],
      "context": {
@@ -2954,7 +2630,7 @@
     "id": "a5ans",
     "type": "custom",
     "position": {
-     "x": 4280,
+     "x": 1940,
      "y": 2000
     },
     "data": {
@@ -3967,89 +3643,8 @@
     "data": {}
    },
    {
-    "id": "a5h3-source-a5h4",
+    "id": "a5h3-source-a5llm",
     "source": "a5h3",
-    "sourceHandle": "source",
-    "target": "a5h4",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h4-source-a5h5",
-    "source": "a5h4",
-    "sourceHandle": "source",
-    "target": "a5h5",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h5-source-a5h6",
-    "source": "a5h5",
-    "sourceHandle": "source",
-    "target": "a5h6",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h6-source-a5h7",
-    "source": "a5h6",
-    "sourceHandle": "source",
-    "target": "a5h7",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h7-source-a5h8",
-    "source": "a5h7",
-    "sourceHandle": "source",
-    "target": "a5h8",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h8-source-a5h9",
-    "source": "a5h8",
-    "sourceHandle": "source",
-    "target": "a5h9",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h9-source-a5h10",
-    "source": "a5h9",
-    "sourceHandle": "source",
-    "target": "a5h10",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h10-source-a5h11",
-    "source": "a5h10",
-    "sourceHandle": "source",
-    "target": "a5h11",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h11-source-a5h12",
-    "source": "a5h11",
-    "sourceHandle": "source",
-    "target": "a5h12",
-    "targetHandle": "target",
-    "type": "custom",
-    "data": {}
-   },
-   {
-    "id": "a5h12-source-a5llm",
-    "source": "a5h12",
     "sourceHandle": "source",
     "target": "a5llm",
     "targetHandle": "target",
