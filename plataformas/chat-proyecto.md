@@ -9,7 +9,7 @@ La tercera forma de usar un agente, sin servidor: el repo del agente se lleva a 
 
 ## A. Proyecto de Claude (claude.ai) · recomendado
 
-1. Crea un proyecto con el nombre del agente (por ejemplo, "Vejez · GF-2026-001").
+1. Crea un proyecto con el nombre del agente (por ejemplo, "Vejez · INV-001").
 2. En **Instrucciones del proyecto**, pega `agente/SYSTEM-sin-archivos.md`.
 3. En **Conocimiento del proyecto**, agrega los archivos de `fuentes:`. Lo mejor es usar **Agregar desde GitHub**: eliges el repo y marcas esos archivos. Así puedes sincronizarlos cuando cambien, sin volver a subirlos.
 4. Abre un chat dentro del proyecto y escribe `abrir`.
