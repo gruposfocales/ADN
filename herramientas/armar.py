@@ -2,8 +2,8 @@
 """Arma el agente de un repo a partir de los módulos del núcleo GF.
 
 Uso:
-    python3 herramientas/armar.py ../gf-2026-002-comunicacion            # escribe los archivos
-    python3 herramientas/armar.py ../gf-2026-002-comunicacion --revisar  # solo avisa si hay diferencias
+    python3 herramientas/armar.py ../inv-002-comunicacion            # escribe los archivos
+    python3 herramientas/armar.py ../inv-002-comunicacion --revisar  # solo avisa si hay diferencias
     python3 herramientas/armar.py --todos [--revisar]                    # todos los repos de agentes.txt
 
 El repo necesita `agente/agente.txt` (ficha) y, según el método:

@@ -46,8 +46,8 @@ Las skills viven en `skills/` y el armador las copia a `.claude/skills/` de los 
 Con este repo y los de proyecto como carpetas hermanas:
 
 ```
-python3 herramientas/armar.py ../gf-2026-002-comunicacion            # arma
-python3 herramientas/armar.py ../gf-2026-002-comunicacion --revisar  # solo dice si está desalineado
+python3 herramientas/armar.py ../inv-002-comunicacion            # arma
+python3 herramientas/armar.py ../inv-002-comunicacion --revisar  # solo dice si está desalineado
 python3 herramientas/armar.py --todos --revisar                     # todos los del catálogo
 python3 herramientas/catalogo.py                                    # regenera CATALOGO.md
 ```

@@ -1,8 +1,8 @@
 # Catálogo de agentes de GruposFocales: un repo por línea (carpeta hermana de ADN).
 # El tipo, el nombre y los archivos que lee cada agente están en su agente/agente.txt.
 gf-bibliotecario
-2026-001-vejez
-gf-2026-002-comunicacion
-gf-2026-003-en-efecto-noticias
-gf-2026-004-bartolinos
+inv-001-vejez
+inv-002-comunicacion
+age-001-en-efecto-noticias
+com-001-bartolinos
 disenador-de-agentes

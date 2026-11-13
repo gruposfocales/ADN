@@ -19,10 +19,10 @@
        "required": true,
        "options": [
         "🧭 Orquestador GF (bibliotecario)",
-        "🔎 Vejez · GF-2026-001",
-        "🔎 Comunicación · GF-2026-002",
-        "📰 En efecto noticias · GF-2026-003",
-        "🤝 Bartolinos · GF-2026-004",
+        "🔎 Vejez · INV-001",
+        "🔎 Comunicación · INV-002",
+        "📰 En efecto noticias · AGE-001",
+        "🤝 Bartolinos · COM-001",
         "🛠️ Diseñador de agentes",
         "📋 Encuestas WhatsApp → Kapso"
        ],
@@ -70,7 +70,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "🔎 Vejez · GF-2026-001"
+         "value": "🔎 Vejez · INV-001"
         }
        ]
       },
@@ -86,7 +86,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "🔎 Comunicación · GF-2026-002"
+         "value": "🔎 Comunicación · INV-002"
         }
        ]
       },
@@ -102,7 +102,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "📰 En efecto noticias · GF-2026-003"
+         "value": "📰 En efecto noticias · AGE-001"
         }
        ]
       },
@@ -118,7 +118,7 @@
           "agente"
          ],
          "comparison_operator": "is",
-         "value": "🤝 Bartolinos · GF-2026-004"
+         "value": "🤝 Bartolinos · COM-001"
         }
        ]
       },
@@ -418,9 +418,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Orquestador GF (bibl · 2026-001-vejez:DASHBOARD.md",
+     "title": "Orquestador GF (bibl · inv-001-vejez:DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -454,9 +454,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Orquestador GF (bibl · gf-2026-002-comunicacion:DASHBOARD.md",
+     "title": "Orquestador GF (bibl · inv-002-comunicacion:DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -490,9 +490,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Orquestador GF (bibl · gf-2026-003-en-efecto-noticias:DASHBOARD.md",
+     "title": "Orquestador GF (bibl · age-001-en-efecto-noticias:DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -526,9 +526,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Orquestador GF (bibl · gf-2026-004-bartolinos:DASHBOARD.md",
+     "title": "Orquestador GF (bibl · com-001-bartolinos:DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -580,7 +580,7 @@
       {
        "id": "a0s2",
        "role": "system",
-       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== sistema/roles/orquestador.md ===\n{{#a0h1.body#}}\n\n=== proyectos/INDICE.md ===\n{{#a0h2.body#}}\n\n=== proyectos/REPOS.txt ===\n{{#a0h3.body#}}\n\n=== organizacion/ESTADO-NEGOCIO.md ===\n{{#a0h4.body#}}\n\n=== log.md ===\n{{#a0h5.body#}}\n\n=== ADN:CATALOGO.md ===\n{{#a0h6.body#}}\n\n=== 2026-001-vejez:DASHBOARD.md ===\n{{#a0h7.body#}}\n\n=== gf-2026-002-comunicacion:DASHBOARD.md ===\n{{#a0h8.body#}}\n\n=== gf-2026-003-en-efecto-noticias:DASHBOARD.md ===\n{{#a0h9.body#}}\n\n=== gf-2026-004-bartolinos:DASHBOARD.md ===\n{{#a0h10.body#}}"
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== sistema/roles/orquestador.md ===\n{{#a0h1.body#}}\n\n=== proyectos/INDICE.md ===\n{{#a0h2.body#}}\n\n=== proyectos/REPOS.txt ===\n{{#a0h3.body#}}\n\n=== organizacion/ESTADO-NEGOCIO.md ===\n{{#a0h4.body#}}\n\n=== log.md ===\n{{#a0h5.body#}}\n\n=== ADN:CATALOGO.md ===\n{{#a0h6.body#}}\n\n=== inv-001-vejez:DASHBOARD.md ===\n{{#a0h7.body#}}\n\n=== inv-002-comunicacion:DASHBOARD.md ===\n{{#a0h8.body#}}\n\n=== age-001-en-efecto-noticias:DASHBOARD.md ===\n{{#a0h9.body#}}\n\n=== com-001-bartolinos:DASHBOARD.md ===\n{{#a0h10.body#}}"
       }
      ],
      "context": {
@@ -628,9 +628,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · SYSTEM",
+     "title": "Vejez · INV-001 · SYSTEM",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/agente/SYSTEM-sin-archivos.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -664,9 +664,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · index.md",
+     "title": "Vejez · INV-001 · index.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/index.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/index.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -700,9 +700,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · DASHBOARD.md",
+     "title": "Vejez · INV-001 · DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -736,9 +736,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · MANUAL-FASES.md",
+     "title": "Vejez · INV-001 · MANUAL-FASES.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/MANUAL-FASES.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/MANUAL-FASES.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -772,9 +772,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · ADN.md",
+     "title": "Vejez · INV-001 · ADN.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/ADN.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/ADN.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -808,9 +808,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · POLITICA-DATOS.md",
+     "title": "Vejez · INV-001 · POLITICA-DATOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/POLITICA-DATOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/POLITICA-DATOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -844,9 +844,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · INSTRUMENTOS.md",
+     "title": "Vejez · INV-001 · INSTRUMENTOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -880,9 +880,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · BITACORA.md",
+     "title": "Vejez · INV-001 · BITACORA.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/BITACORA.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/BITACORA.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -916,9 +916,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Vejez · GF-2026-001 · evidencia/mapa-conocimiento.md",
+     "title": "Vejez · INV-001 · evidencia/mapa-conocimiento.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/evidencia/mapa-conocimiento.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -952,7 +952,7 @@
     },
     "data": {
      "type": "llm",
-     "title": "Vejez · GF-2026-001 · modelo",
+     "title": "Vejez · INV-001 · modelo",
      "model": {
       "provider": "langgenius/deepseek/deepseek",
       "name": "deepseek-v4-flash",
@@ -1004,7 +1004,7 @@
     },
     "data": {
      "type": "answer",
-     "title": "Vejez · GF-2026-001 · respuesta",
+     "title": "Vejez · INV-001 · respuesta",
      "answer": "{{#a1llm.text#}}",
      "variables": []
     }
@@ -1067,7 +1067,7 @@
       },
       "repo": {
        "type": "mixed",
-       "value": "2026-001-vejez"
+       "value": "inv-001-vejez"
       },
       "issue_number": {
        "type": "constant",
@@ -1075,7 +1075,7 @@
       },
       "body": {
        "type": "mixed",
-       "value": "{{#a1llm.text#}}\n\n---\n_Enviado desde Dify · Vejez · GF-2026-001_"
+       "value": "{{#a1llm.text#}}\n\n---\n_Enviado desde Dify · Vejez · INV-001_"
       }
      }
     }
@@ -1089,9 +1089,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · SYSTEM",
+     "title": "Comunicación · INV-0 · SYSTEM",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/agente/SYSTEM-sin-archivos.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1125,9 +1125,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · index.md",
+     "title": "Comunicación · INV-0 · index.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/index.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/index.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1161,9 +1161,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · DASHBOARD.md",
+     "title": "Comunicación · INV-0 · DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1197,9 +1197,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · MANUAL-FASES.md",
+     "title": "Comunicación · INV-0 · MANUAL-FASES.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/MANUAL-FASES.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/MANUAL-FASES.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1233,9 +1233,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · organizacion/ADN.md",
+     "title": "Comunicación · INV-0 · organizacion/ADN.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/organizacion/ADN.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/organizacion/ADN.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1269,9 +1269,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · POLITICA-DATOS.md",
+     "title": "Comunicación · INV-0 · POLITICA-DATOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/POLITICA-DATOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/POLITICA-DATOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1305,9 +1305,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · INSTRUMENTOS.md",
+     "title": "Comunicación · INV-0 · INSTRUMENTOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1341,9 +1341,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · BITACORA.md",
+     "title": "Comunicación · INV-0 · BITACORA.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/BITACORA.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/BITACORA.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1377,9 +1377,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Comunicación · GF-20 · evidencia/mapa-conocimiento.md",
+     "title": "Comunicación · INV-0 · evidencia/mapa-conocimiento.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/evidencia/mapa-conocimiento.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1413,7 +1413,7 @@
     },
     "data": {
      "type": "llm",
-     "title": "Comunicación · GF-2026-0 · modelo",
+     "title": "Comunicación · INV-002 · modelo",
      "model": {
       "provider": "langgenius/deepseek/deepseek",
       "name": "deepseek-v4-flash",
@@ -1465,7 +1465,7 @@
     },
     "data": {
      "type": "answer",
-     "title": "Comunicación · GF-2026-0 · respuesta",
+     "title": "Comunicación · INV-002 · respuesta",
      "answer": "{{#a2llm.text#}}",
      "variables": []
     }
@@ -1481,7 +1481,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · SYSTEM",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/agente/SYSTEM-sin-archivos.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1517,7 +1517,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · index.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/index.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/index.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1553,7 +1553,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1589,7 +1589,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · MANUAL-FASES.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/MANUAL-FASES.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/MANUAL-FASES.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1625,7 +1625,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · organizacion/ADN.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/organizacion/ADN.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/organizacion/ADN.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1661,7 +1661,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · POLITICA-DATOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/POLITICA-DATOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/POLITICA-DATOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1697,7 +1697,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · INSTRUMENTOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1733,7 +1733,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · BITACORA.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/BITACORA.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/BITACORA.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1769,7 +1769,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · evidencia/mapa-conocimiento.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/evidencia/mapa-conocimiento.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1805,7 +1805,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · expediente/00-indice.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/00-indice.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/expediente/00-indice.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1841,7 +1841,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · expediente/01-acta-idea.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/01-acta-idea.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/expediente/01-acta-idea.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1877,7 +1877,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · expediente/03-brief-maestro.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/03-brief-maestro.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/expediente/03-brief-maestro.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1913,7 +1913,7 @@
      "type": "http-request",
      "title": "En efecto noticias · · expediente/04-problema-pregunta.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/expediente/04-problema-pregunta.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/expediente/04-problema-pregunta.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -1947,7 +1947,7 @@
     },
     "data": {
      "type": "llm",
-     "title": "En efecto noticias · GF- · modelo",
+     "title": "En efecto noticias · AGE · modelo",
      "model": {
       "provider": "langgenius/deepseek/deepseek",
       "name": "deepseek-v4-flash",
@@ -1999,7 +1999,7 @@
     },
     "data": {
      "type": "answer",
-     "title": "En efecto noticias · GF- · respuesta",
+     "title": "En efecto noticias · AGE · respuesta",
      "answer": "{{#a3llm.text#}}",
      "variables": []
     }
@@ -2013,9 +2013,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · SYSTEM",
+     "title": "Bartolinos · COM-001 · SYSTEM",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/agente/SYSTEM-sin-archivos.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/agente/SYSTEM-sin-archivos.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2049,9 +2049,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · index.md",
+     "title": "Bartolinos · COM-001 · index.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/index.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/index.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2085,9 +2085,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · DASHBOARD.md",
+     "title": "Bartolinos · COM-001 · DASHBOARD.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/DASHBOARD.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/DASHBOARD.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2121,9 +2121,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · MANUAL-FASES.md",
+     "title": "Bartolinos · COM-001 · MANUAL-FASES.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/MANUAL-FASES.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/MANUAL-FASES.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2157,9 +2157,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · organizacion/ADN.md",
+     "title": "Bartolinos · COM-001 · organizacion/ADN.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/organizacion/ADN.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/organizacion/ADN.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2193,9 +2193,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · POLITICA-DATOS.md",
+     "title": "Bartolinos · COM-001 · POLITICA-DATOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/POLITICA-DATOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/POLITICA-DATOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2229,9 +2229,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · INSTRUMENTOS.md",
+     "title": "Bartolinos · COM-001 · INSTRUMENTOS.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2265,9 +2265,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · BITACORA.md",
+     "title": "Bartolinos · COM-001 · BITACORA.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/BITACORA.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/BITACORA.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2301,9 +2301,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · evidencia/mapa-conocimiento.md",
+     "title": "Bartolinos · COM-001 · evidencia/mapa-conocimiento.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/evidencia/mapa-conocimiento.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/evidencia/mapa-conocimiento.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2337,9 +2337,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Bartolinos · GF-2026 · expediente/paso-a-paso-guion-sesion.md",
+     "title": "Bartolinos · COM-001 · expediente/paso-a-paso-guion-sesion.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/expediente/paso-a-paso-guion-sesion.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/expediente/paso-a-paso-guion-sesion.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -2373,7 +2373,7 @@
     },
     "data": {
      "type": "llm",
-     "title": "Bartolinos · GF-2026-004 · modelo",
+     "title": "Bartolinos · COM-001 · modelo",
      "model": {
       "provider": "langgenius/deepseek/deepseek",
       "name": "deepseek-v4-flash",
@@ -2425,7 +2425,7 @@
     },
     "data": {
      "type": "answer",
-     "title": "Bartolinos · GF-2026-004 · respuesta",
+     "title": "Bartolinos · COM-001 · respuesta",
      "answer": "{{#a4llm.text#}}",
      "variables": []
     }
@@ -3009,9 +3009,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Encuestas · Vejez · GF-2026-001 · IN",
+     "title": "Encuestas · Vejez · INV-001 · INSTRU",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/2026-001-vejez/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -3045,9 +3045,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Encuestas · Comunicación · GF-2026-0",
+     "title": "Encuestas · Comunicación · INV-002 ·",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-002-comunicacion/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -3081,9 +3081,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Encuestas · En efecto noticias · GF-",
+     "title": "Encuestas · En efecto noticias · AGE",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-003-en-efecto-noticias/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -3117,9 +3117,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Encuestas · Bartolinos · GF-2026-004",
+     "title": "Encuestas · Bartolinos · COM-001 · I",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-2026-004-bartolinos/contents/INSTRUMENTOS.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/com-001-bartolinos/contents/INSTRUMENTOS.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -3171,7 +3171,7 @@
       {
        "id": "a6s2",
        "role": "system",
-       "text": "Instrumentos vigentes de cada proyecto, leídos en vivo desde GitHub (fuente de verdad):\n\n=== Vejez · GF-2026-001 · INSTRUMENTOS.md ===\n{{#a6h1.body#}}\n\n=== Comunicación · GF-2026-002 · INSTRUMENTOS.md ===\n{{#a6h2.body#}}\n\n=== En efecto noticias · GF-2026-003 · INSTRUMENTOS.md ===\n{{#a6h3.body#}}\n\n=== Bartolinos · GF-2026-004 · INSTRUMENTOS.md ===\n{{#a6h4.body#}}"
+       "text": "Instrumentos vigentes de cada proyecto, leídos en vivo desde GitHub (fuente de verdad):\n\n=== Vejez · INV-001 · INSTRUMENTOS.md ===\n{{#a6h1.body#}}\n\n=== Comunicación · INV-002 · INSTRUMENTOS.md ===\n{{#a6h2.body#}}\n\n=== En efecto noticias · AGE-001 · INSTRUMENTOS.md ===\n{{#a6h3.body#}}\n\n=== Bartolinos · COM-001 · INSTRUMENTOS.md ===\n{{#a6h4.body#}}"
       }
      ],
      "context": {
