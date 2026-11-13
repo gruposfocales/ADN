@@ -15,6 +15,7 @@ SYSTEM = personalidad del proyecto  +  método común  +  reglas de la plataform
 | Ficha del agente (repo, versión del núcleo, título) | `agente/agente.txt` | Repo del proyecto |
 | Método del arquitecto (secciones 1-10) | `modulos/metodo.md` | Aquí |
 | Manual de fases (289 ítems y gates) | `modulos/manual-fases.md` | Aquí, con copia en cada proyecto |
+| Plantillas de deep research (DR1, DR2) | `modulos/deep-research/` | Aquí, con copia en `metodo/deep-research/` de cada proyecto |
 | ADN de GruposFocales | `modulos/adn.md` | Aquí, con copia en cada proyecto |
 | Plataforma con archivos y git (Claude, Hermes, Codex) | `plataformas/con-archivos.md` | Aquí |
 | Plataforma sin archivos (Dify, ChatGPT) | `plataformas/sin-archivos.md` | Aquí |
@@ -56,7 +57,7 @@ python3 herramientas/catalogo.py                                    # regenera C
 Genera en el proyecto:
 - `AGENTS.md`: versión con archivos. La leen Claude Code (vía `CLAUDE.md`), Hermes y Codex.
 - `agente/SYSTEM-sin-archivos.md`: versión para pegar a mano en el SYSTEM de Dify u otra plataforma sin archivos.
-- `MANUAL-FASES.md` y la copia del ADN, sincronizados con este núcleo.
+- `MANUAL-FASES.md`, la copia del ADN y `metodo/deep-research/` (plantillas DR1 y DR2), sincronizados con este núcleo.
 
 ## Cambiar algo
 
@@ -65,9 +66,10 @@ Genera en el proyecto:
 
 ## Versiones
 
-`VERSION` = 1.2. El método v1.0 era el `AGENTS.md` v5.2-proyecto (2026-10-23) de los proyectos gf-2026-002/003/004, sin cambios de contenido. El manual es `MANUAL-FASES.md` v4.0.
+`VERSION` = 1.3. El método v1.0 era el `AGENTS.md` v5.2-proyecto (2026-10-23) de los proyectos gf-2026-002/003/004, sin cambios de contenido. El manual es `MANUAL-FASES.md` v4.1.
 
 - **v1.1 (2026-11-10):** lenguaje sencillo, resumen ejecutivo al inicio de cada respuesta y preguntas con número y letra (`1A, 2B, 3A`).
 - **v1.2 (2026-11-10):** tipos de agente, catálogo, ficha con `tipo` y `fuentes`, método `propio` (orquestador y diseñador), `pruebas.md`, skills en el núcleo y plataforma sin archivos para lectura en vivo desde GitHub.
+- **v1.3 (2026-11-13):** momentos de deep research como regla general del método (Manual v4.1): DR1 · mapa de conocimiento al cerrar la Fase 3 y DR2 · caracterización de la población al aprobar G1 (DR2b opcional antes de la Fase 14). No son ítems: el conteo sigue en 289. Plantillas en `modulos/deep-research/`; el armador las copia a `metodo/deep-research/` y la skill `10-arquitecto` (v4.1) las usa.
 
 `ADN Grupos Focales.md` es el texto original subido; `modulos/adn.md` es la versión completa (misión, visión, propósito…) que usan los proyectos.

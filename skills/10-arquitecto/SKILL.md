@@ -2,7 +2,7 @@
 name: arquitecto-investigacion
 description: "Diseña o continúa una investigación completa (cualitativa, cuantitativa o mixta) por fases y gates hasta un paquete listo para campo. Usar con 'continuar', 'estado', 'ir a fase N' o al abrir el repo del proyecto."
 familia: 10 · Diseño
-version: 4.0
+version: 4.1
 entra: decisión de negocio, evidencia, archivos del proyecto
 sale: DASHBOARD.md, BITACORA.md, INSTRUMENTOS.md aprobados
 siguiente: 20-campo-kapso
@@ -17,5 +17,6 @@ Esta skill no repite las reglas: las reglas vigentes viven en la raíz del repo,
 2. Lee `DASHBOARD.md` (en la raíz de este repo).
 3. Sigue el ciclo de `AGENTS.md` §5: lote → auditoría → `ok`.
 4. Cuenta el avance con `python3 herramientas/contar_avance.py DASHBOARD.md`.
+5. En los momentos de deep research del Manual (DR1 al cerrar la Fase 3, DR2 al aprobar G1), arma el comando `/deepresearch` con las plantillas de `metodo/deep-research/` y entrega solo ese bloque.
 
 Las carpetas de `pruebas/` no son evidencia de ningún proyecto.

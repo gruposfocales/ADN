@@ -1,4 +1,4 @@
-# MANUAL-FASES.md — Banco de preguntas y reglas por fase (v4.0)
+# MANUAL-FASES.md — Banco de preguntas y reglas por fase (v4.1)
 
 > Complemento de `AGENTS.md`. Define **qué se cubre, en qué orden y con qué criterio se aprueba**.
 > Formato de cada ítem: `**N.X** [★] Etiqueta — pregunta guía`. El orden de este archivo es el **orden canónico**.
@@ -8,6 +8,7 @@
 - **Sin ★ (226 ítems):** el agente propone la respuesta a partir de lo aprobado, la evidencia y el buen oficio; el usuario aprueba con `ok` o corrige. Si no hay ninguna base, se pregunta igual que un ★.
 - Se trabaja **por lotes** (una fase, o bloques de hasta 10 ítems). Nada que ya esté en los archivos se vuelve a preguntar.
 - La pregunta guía orienta; el agente la adapta al proyecto y nunca la lee de forma mecánica.
+- **Momentos de deep research (DR1, DR2):** dos pasos fijos del método en que el agente arma un comando `/deepresearch` para Feynman. No son ítems y no suman al conteo de 289 (ver *Momentos de deep research*).
 
 ---
 
@@ -92,6 +93,8 @@
 
 **Distinción obligatoria (nunca combinarlos como equivalentes):** problema empresarial (lo que duele) · problema de decisión (lo que hay que elegir) · problema de investigación (lo que hay que conocer) · síntoma (lo observable) · causa hipotética (explicación tentativa) · solución propuesta (respuesta prematura).
 
+> **→ Momento DR1 · Mapa de conocimiento** (ver *Momentos de deep research*). Se lanza al cerrar la Fase 3; su informe alimenta 4.14.
+
 ### Fase 4 · Audiencias y uso de resultados
 *Objetivo: definir quién usará los resultados y cómo.*
 
@@ -147,6 +150,8 @@
 **Búsqueda activa de defectos:** hipótesis no contrastables · preguntas que no aportan a la decisión · supuestos presentados como hechos · preguntas duplicadas, demasiado amplias o inductivas · explicaciones alternativas omitidas.
 
 > **→ Gate G1 · Definición** (ver *Gates*).
+
+> **→ Momento DR2 · Caracterización de la población** (ver *Momentos de deep research*). Se lanza al aprobar G1, antes de la Fase 7.
 
 ---
 
@@ -288,6 +293,8 @@
 ---
 
 ## BLOQUE 6 · OPERACIÓN DE CAMPO (Fases 14-18)
+
+> **→ Momento DR2b · Caracterización de la muestra (opcional)** (ver *Momentos de deep research*). Solo si la muestra de la Fase 10 difiere mucho de la población investigada.
 
 ### Fase 14 · Operación y trabajo de campo
 
@@ -456,6 +463,26 @@
 | **G2 · Diseño** | Tras Fase 13 | Evidencia requerida definida · coherencia objetivos-métodos · muestra justificada · cobertura instrumental · trazabilidad sin brechas · plan analítico · riesgos y consentimientos aplicables identificados · aprobación humana |
 | **G3 · Preparación para campo** | Tras Fase 18 | Instrumentos aprobados · materiales completos · versiones congeladas · responsables · permisos · riesgos mitigados · cronograma viable · paquete exportable · protocolo de calidad · plan de manejo de incidentes |
 | **Entrega final** | Tras Fase 20 | Auditoría sin defectos críticos ni altos abiertos · paquete generado · revisión adversarial · aprobación del usuario |
+
+---
+
+## Momentos de deep research
+
+Pasos fijos del método. El agente arma el comando con la plantilla, rellena cada `{campo}` solo con lo aprobado (`[x]`) en el DASHBOARD y entrega **únicamente** el bloque `/deepresearch "…"`, listo para pegar en la consola de Feynman. No son ítems: no suman al conteo de 289 ni al avance.
+
+| Momento | Cuándo | Requiere aprobado | Alimenta | Plantilla |
+|---|---|---|---|---|
+| **DR1 · Mapa de conocimiento** | Al cerrar la Fase 3 | 3.4, 3.11, 3.13, 3.14, 3.15 | 4.14 · evidencia para 3.3, 3.8, 3.9 y 8.11 | `metodo/deep-research/DR1-mapa-conocimiento.md` |
+| **DR2 · Caracterización de la población** | Al aprobar G1, antes de la Fase 7 | 3.4, 3.11, 3.13, 3.14, 3.15, 6.1, 6.4 | 6.6-6.8 (revisión) · 7.6-7.12, 7.14 · 8.5 · 10.4, 10.7-10.10, 10.12-10.14 · 11.4, 11.9-11.11 · 14.5-14.7 | `metodo/deep-research/DR2-caracterizacion-poblacion.md` |
+| **DR2b · Caracterización de la muestra** (opcional) | Antes de la Fase 14 | Fase 10 aprobada | Solo roles, relaciones y acceso de lo que cambió | Igual que DR2, recortada |
+
+**Reglas comunes**
+- El comando empieza siempre con `/deepresearch "` y todo el prompt va dentro de las comillas; las comillas dobles del proyecto se cambian por simples.
+- Exactamente **4 ejes independientes** (T1-T4): así Feynman lanza la búsqueda profunda con 4 agentes en paralelo. El agente propone los ejes y el usuario los aprueba con `ok` antes de lanzar.
+- Salida en `outputs/<slug>.md` con su procedencia en `outputs/<slug>.provenance.md`. Al volver, el informe se guarda en `evidencia/`.
+- El informe es **evidencia por verificar**: el agente cruza afirmación ↔ fuente y propone los ítems que alimenta; nada queda aprobado por estar en el informe.
+- DR2 entrega insumos para dinámicas (estímulos, tensiones, escenarios); por la regla de oro 8 no se convierten en preguntas de instrumento antes de la Fase 11.
+- Si falta un ítem requerido, el momento se marca pendiente en las alertas del DASHBOARD y el agente sigue con el flujo.
 
 ---
 
