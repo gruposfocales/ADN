@@ -8,7 +8,8 @@ Uso:
 
 El repo necesita `agente/agente.txt` (ficha) y, según el método:
     metodo: arquitecto  → agente/personalidad.md (sección 0). Se generan AGENTS.md,
-                          agente/SYSTEM-sin-archivos.md, MANUAL-FASES.md y la copia del ADN.
+                          agente/SYSTEM-sin-archivos.md, MANUAL-FASES.md, la copia del ADN y las
+                          plantillas de deep research (modulos/deep-research/ → metodo/deep-research/).
     metodo: propio      → el archivo de `instrucciones:` (por defecto AGENTS.md), escrito a mano.
                           Solo se genera agente/SYSTEM-sin-archivos.md.
 Versiones: AGENTS.md y SYSTEM-sin-archivos.md llevan `versión N · fecha` en su aviso. Si el contenido
@@ -91,6 +92,8 @@ def salidas_de(repo, datos):
         s[repo / "AGENTS.md"] = armar_arquitecto(datos, repo, "con-archivos")
         s[repo / "agente" / "SYSTEM-sin-archivos.md"] = armar_arquitecto(datos, repo, "sin-archivos")
         s[repo / "MANUAL-FASES.md"] = leer(NUCLEO / "modulos" / "manual-fases.md")
+        for f in sorted((NUCLEO / "modulos" / "deep-research").glob("*.md")):
+            s[repo / "metodo" / "deep-research" / f.name] = f.read_bytes()
     else:
         s[repo / "agente" / "SYSTEM-sin-archivos.md"] = armar_propio(datos, repo)
     if datos.get("adn"):

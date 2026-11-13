@@ -27,7 +27,7 @@
 | # | Comando | Familia | Versión | Estado | Entra | Sale | Siguiente |
 |---|---|---|---|---|---|---|---|
 | 00 | `/skills` | 00 · Menú | 1.0 | estable | lo que el usuario quiere hacer | la skill sugerida y su siguiente paso | — |
-| 10 | `/arquitecto-investigacion` | 10 · Diseño | 4.0 | estable | decisión de negocio, evidencia, archivos del proyecto | DASHBOARD.md, BITACORA.md, INSTRUMENTOS.md aprobados | 20-campo-kapso |
+| 10 | `/arquitecto-investigacion` | 10 · Diseño | 4.1 | estable | decisión de negocio, evidencia, archivos del proyecto | DASHBOARD.md, BITACORA.md, INSTRUMENTOS.md aprobados | 20-campo-kapso |
 | 20 | `/kapso-encuestas-whatsapp` | 20 · Campo | 1.0 | estable | instrumentos aprobados (filtro, bot, encuesta) | flujos y nodos de Kapso para WhatsApp | 30-escucha-social |
 | 30 | `/escucha-social` | 30 · Escucha | 0.1 | prueba | capítulo publicado con su ficha (constructo, pregunta en pantalla, códigos) | base de comentarios codificada y lectura por constructo | 31-scraping-apify |
 | 31 | `/scraping-apify` | 30 · Escucha | 1.0 | estable | tema, país, plataformas, ventana de fechas, tope de gasto (o la ficha de un capítulo publicado) | un JSON por plataforma con meta, transcripciones y comentarios + reporte de costos | 30-escucha-social |
