@@ -5,6 +5,7 @@
 
 | Agente | Tipo | Repo | Método | Archivos que lee |
 |---|---|---|---|---|
+| Inicio GF (pantalla de inicio y menú) | `orquestador` | `gruposfocales/gf-inicio` | propio | `gf-bibliotecario:organizacion/ESTADO-NEGOCIO.md`, `ADN:CATALOGO.md`, `ADN:skills/INDICE.md`, `disenador-de-agentes:INDICE_MAESTRO.md`, `inv-001-vejez:index.md`, `inv-002-comunicacion:index.md`, `age-001-en-efecto-noticias:index.md`, `com-001-bartolinos:index.md` |
 | Orquestador GF (bibliotecario) | `orquestador` | `gruposfocales/gf-bibliotecario` | propio | `sistema/roles/orquestador.md`, `proyectos/INDICE.md`, `proyectos/REPOS.txt`, `organizacion/ESTADO-NEGOCIO.md`, `log.md`, `ADN:CATALOGO.md`, `inv-001-vejez:DASHBOARD.md`, `inv-002-comunicacion:DASHBOARD.md`, `age-001-en-efecto-noticias:DASHBOARD.md`, `com-001-bartolinos:DASHBOARD.md` |
 | Vejez · INV-001 | `investigacion` | `gruposfocales/inv-001-vejez` | arquitecto | `index.md`, `DASHBOARD.md`, `MANUAL-FASES.md`, `ADN.md`, `POLITICA-DATOS.md`, `INSTRUMENTOS.md`, `BITACORA.md`, `evidencia/mapa-conocimiento.md` |
 | Comunicación · INV-002 | `investigacion` | `gruposfocales/inv-002-comunicacion` | arquitecto | `index.md`, `DASHBOARD.md`, `MANUAL-FASES.md`, `organizacion/ADN.md`, `POLITICA-DATOS.md`, `INSTRUMENTOS.md`, `BITACORA.md`, `evidencia/mapa-conocimiento.md` |

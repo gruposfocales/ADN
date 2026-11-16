@@ -1,5 +1,6 @@
 # Catálogo de agentes de GruposFocales: un repo por línea (carpeta hermana de ADN).
 # El tipo, el nombre y los archivos que lee cada agente están en su agente/agente.txt.
+gf-inicio
 gf-bibliotecario
 inv-001-vejez
 inv-002-comunicacion
