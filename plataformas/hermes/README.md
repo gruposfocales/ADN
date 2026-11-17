@@ -12,9 +12,15 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
   Al abrir con `--in <repo>` (los atajos lo hacen), Hermes carga ese `AGENTS.md` (o `CLAUDE.md`) como contexto del
   proyecto, una sola vez. No se deja vacío porque Hermes pondría su identidad por defecto, en inglés.
   Excepción: `adn` no tiene AGENTS.md ni CLAUDE.md, así que su SOUL sigue siendo un enlace a su `README.md`.
-- **Telegram** (perfil default, sin `--in`) no abre en ninguna carpeta: hay que decirle cuál es una vez:
-  `hermes config set terminal.cwd /opt/data/gf-inicio` y reiniciar el gateway. En la terminal no cambia nada:
-  ahí manda la carpeta del `--in`.
+- **Telegram arranca limpio y carga a pedido.** El bot (perfil default) trabaja en `/opt/data`, que no tiene
+  AGENTS.md: al abrir solo está la línea neutra del SOUL. `perfiles.sh` crea skills en `/opt/data/skills/gruposfocales/`,
+  que Hermes muestra como comandos:
+  `/menu` (menú de gf-inicio), `/pulso` (solo el pulso), `/inicio` y `/<proyecto>` (`/vejez`, `/comunicacion`…:
+  el agente lee el AGENTS.md de ese repo y trabaja en su carpeta). Para cambiar de proyecto: `/new` y el otro comando.
+  La memoria del perfil va apagada para que no se mezclen proyectos (lo importante vive en los repos).
+  Una vez en el VPS: `hermes config set terminal.cwd /opt/data`, `hermes config set memory.memory_enabled false`
+  y Restart del servicio en Dokploy. En la terminal no cambia nada: los atajos siguen abriendo con `--in`.
+  Límite: lo que carga un comando vive en la conversación, no en las reglas fijas; en sesiones largas usa `/new` seguido.
 - Comprobar: dentro de Hermes, `/context` debe mostrar `SOUL.md ✓` (pocos tokens) y `AGENTS.md ✓` (o `CLAUDE.md ✓`).
 - `perfiles.sh` también crea un **atajo de una palabra** por perfil. Cada atajo abre Hermes dentro de la
   carpeta del repo y con una **sesión nueva** (sin historial anterior):
