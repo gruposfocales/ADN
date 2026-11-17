@@ -31,9 +31,10 @@ atajo() {
 grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
   DIR="$REPOS_DIR/$REPO"
   if [ -d "$DIR/.git" ]; then
-    git -C "$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only || echo "⚠ $REPO: no se pudo actualizar"
+    git -C "$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null || echo "⚠ $REPO: no se pudo actualizar"
   else
-    git -c http.extraHeader="$AUTH" clone -q "https://github.com/$ORG/$REPO.git" "$DIR"
+    git -c http.extraHeader="$AUTH" clone -q "https://github.com/$ORG/$REPO.git" "$DIR" </dev/null \
+      || { echo "⚠ $REPO: no se pudo clonar (¿el token tiene acceso a este repo?)"; continue; }
   fi
   if [ "$PERFIL" = default ]; then
     PH="$HOME_H"
