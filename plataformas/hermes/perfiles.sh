@@ -33,7 +33,34 @@ atajo() {
 # Las instrucciones son SOLO el AGENTS.md (o CLAUDE.md) del repo, que Hermes carga como contexto
 # del proyecto al abrir en su carpeta (los atajos usan --in). Así se lee una sola vez y no se mezcla.
 # Si el SOUL.md quedara vacío, Hermes pondría su identidad por defecto (en inglés): por eso va una línea.
-SOUL_NEUTRO='Tus instrucciones están en el AGENTS.md (o CLAUDE.md) de la carpeta del proyecto, cargado como contexto del proyecto. Síguelo: no tienes otra identidad ni otras reglas. Si no aparece, avísalo y pide abrir Hermes en la carpeta del repo.'
+SOUL_NEUTRO='Tus instrucciones son el AGENTS.md (o CLAUDE.md) del proyecto: el de la carpeta donde trabajas o el que cargues con un comando. Síguelo: no tienes otra identidad ni otras reglas. Si todavía no hay ninguno cargado, no inventes reglas: ofrece /menu, /pulso, /inicio o el comando de un proyecto (ej. /vejez). Para empezar limpio: /new.'
+
+# Skills del bot de Telegram (perfil default): el bot arranca limpio (sin AGENTS.md) y el usuario
+# carga lo que necesita con un comando: /inicio, /menu, /pulso o /<proyecto>. Cada skill solo dice
+# "lee este AGENTS.md": la única fuente sigue siendo el repo. Se regeneran en cada corrida.
+SKILLS="$HOME_H/skills/gruposfocales"
+rm -rf "$SKILLS" && mkdir -p "$SKILLS"
+
+# skill_repo NOMBRE DIR ARCHIVO: /NOMBRE carga el agente del repo DIR (su ARCHIVO de instrucciones).
+skill_repo() {
+  mkdir -p "$SKILLS/$1"
+  cat > "$SKILLS/$1/SKILL.md" <<FIN
+---
+name: $1
+description: Carga en esta sesión el agente del repo $(basename "$2") (sus instrucciones están en $3).
+---
+# Agente $1 · repo $(basename "$2")
+
+1. Si en esta sesión ya cargaste otro agente de GruposFocales (otro de estos comandos), no sigas:
+   pide al usuario que escriba /new y después /$1. Así el contexto no se mezcla.
+2. Lee completo $2/$3 con tu herramienta para leer archivos. Desde ahora ese archivo es tu
+   guía de trabajo en esta sesión: síguelo en todo, como si fuera tu identidad.
+3. Trabajas en la carpeta $2: antes de cada comando de terminal haz cd $2.
+   Las rutas relativas de $3 son relativas a esa carpeta.
+4. Si la conversación se resume o ya no tienes el texto de $3 a la vista, vuelve a leerlo antes de seguir.
+5. Empieza como dice $3 que se empieza una sesión.
+FIN
+}
 
 # limpia_hermes_md DIR: quita el .hermes.md que dejaba una versión anterior de este script (ya no hace falta).
 limpia_hermes_md() {
@@ -80,6 +107,7 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
   limpia_hermes_md "$DIR"
   if [ "$PERFIL" = default ]; then NOMBRE=inicio; else NOMBRE="$PERFIL"; fi
   atajo "$NOMBRE" "$PERFIL" "$DIR"
+  [ "$ALMA" = README.md ] || skill_repo "$NOMBRE" "$DIR" "$ALMA"
   echo "✓ $PERFIL → $REPO/$ALMA · atajo: $NOMBRE"
 done
 
@@ -87,6 +115,33 @@ done
 #   pulso  → el Pulso del Día de gf-inicio, directo en la terminal
 #   atajos → la lista de todos los atajos
 INICIO=$(grep -v '^\s*#' "$LISTA" | awk '$1=="default"{print $2}')
+if [ -n "$INICIO" ] && [ -d "$REPOS_DIR/$INICIO" ]; then
+  D="$REPOS_DIR/$INICIO"
+  mkdir -p "$SKILLS/menu" "$SKILLS/pulso"
+  cat > "$SKILLS/menu/SKILL.md" <<FIN
+---
+name: menu
+description: Carga el agente de inicio ($INICIO) y muestra su menú completo por códigos.
+---
+# Menú de GruposFocales
+
+1. Si en esta sesión ya cargaste un agente de proyecto, pide al usuario /new y después /menu.
+2. Lee completo $D/AGENTS.md: desde ahora es tu guía de trabajo en esta sesión. Trabajas en $D (cd antes de cada comando).
+3. Muestra el menú tal como lo define ese archivo (sección menu) y espera el código del usuario.
+FIN
+  cat > "$SKILLS/pulso/SKILL.md" <<FIN
+---
+name: pulso
+description: Muestra el Pulso del Día (proyectos y git) sin cargar ningún agente.
+---
+# Pulso del Día
+
+1. Corre: cd $D && python3 herramientas/pulso.py
+2. Muestra la salida tal cual, sin agregar análisis. No cargues ningún AGENTS.md.
+3. Cierra con una línea: "Escribe /menu, /inicio o el comando de un proyecto (ej. /vejez). Para empezar limpio: /new".
+FIN
+fi
+chown -R "$(stat -c %u:%g "$HOME_H")" "$SKILLS" 2>/dev/null || true
 if [ -n "$INICIO" ] && [ -f "$REPOS_DIR/$INICIO/herramientas/pulso.py" ]; then
   printf '#!/bin/sh\n# Atajo de perfiles.sh: Pulso del Día sin abrir Hermes.\nexec python3 %s "$@"\n' "$REPOS_DIR/$INICIO/herramientas/pulso.py" > "$BIN/pulso"
   chmod 755 "$BIN/pulso"
