@@ -61,15 +61,16 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
 done
 
 # Atajos que NO abren Hermes (no gastan contexto ni tokens):
-#   pulzo  → el Pulso del Día de gf-inicio, directo en la terminal (también `pulso`)
+#   pulso  → el Pulso del Día de gf-inicio, directo en la terminal
 #   atajos → la lista de todos los atajos
 INICIO=$(grep -v '^\s*#' "$LISTA" | awk '$1=="default"{print $2}')
 if [ -n "$INICIO" ] && [ -f "$REPOS_DIR/$INICIO/herramientas/pulso.py" ]; then
-  printf '#!/bin/sh\n# Atajo de perfiles.sh: Pulso del Día sin abrir Hermes.\nexec python3 %s "$@"\n' "$REPOS_DIR/$INICIO/herramientas/pulso.py" > "$BIN/pulzo"
-  chmod 755 "$BIN/pulzo"
+  printf '#!/bin/sh\n# Atajo de perfiles.sh: Pulso del Día sin abrir Hermes.\nexec python3 %s "$@"\n' "$REPOS_DIR/$INICIO/herramientas/pulso.py" > "$BIN/pulso"
+  chmod 755 "$BIN/pulso"
+  rm -f "$BIN/pulzo"
   for D in /usr/local/bin "$HOME/.local/bin"; do
-    ln -sfn "$BIN/pulzo" "$D/pulzo" 2>/dev/null || true
-    ln -sfn "$BIN/pulzo" "$D/pulso" 2>/dev/null || true
+    rm -f "$D/pulzo" 2>/dev/null || true
+    ln -sfn "$BIN/pulso" "$D/pulso" 2>/dev/null || true
   done
 fi
 {
@@ -77,7 +78,7 @@ fi
   echo '# Atajo de perfiles.sh: lista de atajos (no abre Hermes).'
   echo "cat <<'FIN'"
   echo 'Atajos de GruposFocales (escribe la palabra y Enter):'
-  echo '  pulzo          Pulso del Día, sin abrir Hermes (no gasta contexto)'
+  echo '  pulso          Pulso del Día, sin abrir Hermes (no gasta contexto)'
   echo '  atajos         esta lista'
   grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
     [ "$PERFIL" = default ] && PERFIL=inicio

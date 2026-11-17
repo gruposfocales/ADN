@@ -21,7 +21,7 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
   | `bibliotecario`, `adn`, `disenador` | igual, con su perfil y su repo |
 
   Dos atajos más **no abren Hermes**, así que no gastan contexto ni tokens:
-  `pulzo` (o `pulso`) muestra el Pulso del Día de gf-inicio, y `atajos` muestra la lista de todos los atajos.
+  `pulso` muestra el Pulso del Día de gf-inicio, y `atajos` muestra la lista de todos los atajos.
 
   Se guardan en `/opt/data/bin` (el volumen) y se enlazan en `/usr/local/bin` y `~/.local/bin`.
   Aceptan más opciones de Hermes: `vejez -c` retoma la última sesión de Vejez en vez de abrir una nueva.
