@@ -58,3 +58,34 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
   atajo "$NOMBRE" "$PERFIL" "$DIR"
   echo "✓ $PERFIL → $REPO/$ALMA · atajo: $NOMBRE"
 done
+
+# Atajos que NO abren Hermes (no gastan contexto ni tokens):
+#   pulzo  → el Pulso del Día de gf-inicio, directo en la terminal (también `pulso`)
+#   atajos → la lista de todos los atajos
+INICIO=$(grep -v '^\s*#' "$LISTA" | awk '$1=="default"{print $2}')
+if [ -n "$INICIO" ] && [ -f "$REPOS_DIR/$INICIO/herramientas/pulso.py" ]; then
+  printf '#!/bin/sh\n# Atajo de perfiles.sh: Pulso del Día sin abrir Hermes.\nexec python3 %s "$@"\n' "$REPOS_DIR/$INICIO/herramientas/pulso.py" > "$BIN/pulzo"
+  chmod 755 "$BIN/pulzo"
+  for D in /usr/local/bin "$HOME/.local/bin"; do
+    ln -sfn "$BIN/pulzo" "$D/pulzo" 2>/dev/null || true
+    ln -sfn "$BIN/pulzo" "$D/pulso" 2>/dev/null || true
+  done
+fi
+{
+  echo '#!/bin/sh'
+  echo '# Atajo de perfiles.sh: lista de atajos (no abre Hermes).'
+  echo "cat <<'FIN'"
+  echo 'Atajos de GruposFocales (escribe la palabra y Enter):'
+  echo '  pulzo          Pulso del Día, sin abrir Hermes (no gasta contexto)'
+  echo '  atajos         esta lista'
+  grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
+    [ "$PERFIL" = default ] && PERFIL=inicio
+    printf '  %-14s Hermes en %s, sesión nueva\n' "$PERFIL" "$REPO"
+  done
+  echo 'Agrega -c para retomar la última sesión (ej. vejez -c). Para salir de Hermes: /exit'
+  echo 'FIN'
+} > "$BIN/atajos"
+chmod 755 "$BIN/atajos"
+for D in /usr/local/bin "$HOME/.local/bin"; do ln -sfn "$BIN/atajos" "$D/atajos" 2>/dev/null || true; done
+echo
+sh "$BIN/atajos"
