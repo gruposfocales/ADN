@@ -1,7 +1,8 @@
 #!/bin/sh
 # Crea o actualiza un perfil de Hermes por repo (lista en perfiles.txt).
 # - Clona o actualiza cada repo en $REPOS_DIR/<repo> (por defecto $HERMES_HOME) (solo lectura: pull --ff-only).
-# - El SOUL.md de cada perfil es un ENLACE al AGENTS.md de su repo: GitHub es la única fuente.
+# - El SOUL.md de cada perfil es una línea neutra; las instrucciones son solo el AGENTS.md del repo
+#   (Hermes lo carga como contexto al abrir con --in). GitHub es la única fuente.
 # - El token nunca se guarda en disco: se pasa en cada git por cabecera.
 # - Crea un atajo de una palabra por perfil (ej. `vejez`) que abre Hermes en la carpeta del repo
 #   con una sesión nueva. El default se llama `inicio`. Se guardan en $HERMES_HOME/bin (volumen).
@@ -28,22 +29,19 @@ atajo() {
   done
 }
 
-# sin_duplicado DIR ALMA: evita que el AGENTS.md (o CLAUDE.md) se cargue dos veces.
-# Hermes ya lo lee como SOUL.md (identidad) y, al abrir con --in, lo leería otra vez como contexto del
-# proyecto. Un .hermes.md corto en la raíz del repo gana la prioridad (.hermes.md > AGENTS.md > CLAUDE.md)
-# y deja fuera la copia. Va en .git/info/exclude: no se sube a GitHub ni aparece como cambio sin commit.
-# Telegram (perfil default sin --in) no cambia: no abre en la carpeta del repo y sigue con su SOUL.md.
-MARCA='<!-- generado por perfiles.sh -->'
-sin_duplicado() {
-  case "$2" in AGENTS.md|CLAUDE.md) ;; *) return 0;; esac   # README.md no se carga como contexto
+# SOUL.md neutro: el espacio de identidad de Hermes no lleva nada del proyecto.
+# Las instrucciones son SOLO el AGENTS.md (o CLAUDE.md) del repo, que Hermes carga como contexto
+# del proyecto al abrir en su carpeta (los atajos usan --in). Así se lee una sola vez y no se mezcla.
+# Si el SOUL.md quedara vacío, Hermes pondría su identidad por defecto (en inglés): por eso va una línea.
+SOUL_NEUTRO='Tus instrucciones están en el AGENTS.md (o CLAUDE.md) de la carpeta del proyecto, cargado como contexto del proyecto. Síguelo: no tienes otra identidad ni otras reglas. Si no aparece, avísalo y pide abrir Hermes en la carpeta del repo.'
+
+# limpia_hermes_md DIR: quita el .hermes.md que dejaba una versión anterior de este script (ya no hace falta).
+limpia_hermes_md() {
   H="$1/.hermes.md"
-  if [ -e "$H" ] && ! grep -qF "$MARCA" "$H"; then echo "⚠ $1/.hermes.md es propio del repo: no se toca"; return 0; fi
-  git -C "$1" ls-files --error-unmatch .hermes.md >/dev/null 2>&1 && return 0   # versionado en el repo: manda el repo
-  printf '%s\nTus instrucciones (%s de este repo) ya están cargadas como tu identidad (SOUL.md del perfil). No hace falta volver a leerlas.\n' "$MARCA" "$2" > "$H"
+  [ -f "$H" ] && grep -qF '<!-- generado por perfiles.sh -->' "$H" && rm -f "$H"
   EX="$1/.git/info/exclude"
-  mkdir -p "$(dirname "$EX")"
-  grep -qx '/.hermes.md' "$EX" 2>/dev/null || echo '/.hermes.md' >> "$EX"
-  chown "$(stat -c %u:%g "$1")" "$H" 2>/dev/null || true
+  [ -f "$EX" ] && grep -qx '/.hermes.md' "$EX" && { grep -vx '/.hermes.md' "$EX" > "$EX.tmp"; mv "$EX.tmp" "$EX"; }
+  return 0
 }
 
 grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
@@ -72,8 +70,14 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
     echo "DEEPSEEK_API_KEY=$DEEPSEEK_API_KEY" >> "$PH/.env.tmp" && mv "$PH/.env.tmp" "$PH/.env" && chmod 600 "$PH/.env"
     chown "$(stat -c %u:%g "$HOME_H")" "$PH/.env" 2>/dev/null || true   # Hermes corre con el usuario dueño de /opt/data
   fi
-  ln -sfn "$DIR/$ALMA" "$PH/SOUL.md"
-  sin_duplicado "$DIR" "$ALMA"
+  rm -f "$PH/SOUL.md"   # borra el enlace viejo antes de escribir (si no, se escribiría DENTRO del AGENTS.md del repo)
+  if [ "$ALMA" = README.md ]; then
+    ln -s "$DIR/README.md" "$PH/SOUL.md"   # sin AGENTS.md ni CLAUDE.md, Hermes no carga el README como contexto
+  else
+    printf '%s\n' "$SOUL_NEUTRO" > "$PH/SOUL.md"
+    chown "$(stat -c %u:%g "$HOME_H")" "$PH/SOUL.md" 2>/dev/null || true
+  fi
+  limpia_hermes_md "$DIR"
   if [ "$PERFIL" = default ]; then NOMBRE=inicio; else NOMBRE="$PERFIL"; fi
   atajo "$NOMBRE" "$PERFIL" "$DIR"
   echo "✓ $PERFIL → $REPO/$ALMA · atajo: $NOMBRE"
