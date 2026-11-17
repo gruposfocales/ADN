@@ -5,15 +5,17 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
 
 ## Cómo funciona
 - `perfiles.txt`: qué perfil va con qué repo. Para un cliente, deja solo su línea (y `default`).
-- `perfiles.sh`: clona/actualiza los repos en `/opt/data/` (donde hermes2 ya los tiene) y enlaza el `SOUL.md` de cada
-  perfil al `AGENTS.md` de su repo. No hay copias: un `git pull` actualiza a todos.
-- Hermes lee `SOUL.md` solo desde el home del perfil (por eso el enlace va ahí).
-- **Sin duplicado:** al abrir con `--in <repo>`, Hermes también lee el `AGENTS.md` (o `CLAUDE.md`) de esa carpeta
-  como contexto del proyecto, y no lo compara con el `SOUL.md`: el mismo texto entraba dos veces (~4k tokens de más).
-  Por eso `perfiles.sh` deja en cada repo un `.hermes.md` de una línea, que Hermes prefiere sobre `AGENTS.md`.
-  Está en `.git/info/exclude`: no se sube ni sale como cambio sin commit. Si un repo trae su propio `.hermes.md`,
-  no se toca. Telegram (perfil default, sin `--in`) no cambia.
-  Comprobar: dentro de Hermes, `/context` debe mostrar `SOUL.md ✓`, `.hermes.md ✓` y `AGENTS.md ○ (not loaded)`.
+- `perfiles.sh`: clona/actualiza los repos en `/opt/data/` (donde hermes2 ya los tiene) y deja el `SOUL.md` neutro
+  en cada perfil. No hay copias del AGENTS.md: un `git pull` actualiza a todos.
+- **AGENTS.md es la única fuente.** El `SOUL.md` de cada perfil (el espacio de identidad de Hermes, que va primero)
+  es una sola línea neutra que no habla del proyecto: "tus instrucciones están en el AGENTS.md de la carpeta".
+  Al abrir con `--in <repo>` (los atajos lo hacen), Hermes carga ese `AGENTS.md` (o `CLAUDE.md`) como contexto del
+  proyecto, una sola vez. No se deja vacío porque Hermes pondría su identidad por defecto, en inglés.
+  Excepción: `adn` no tiene AGENTS.md ni CLAUDE.md, así que su SOUL sigue siendo un enlace a su `README.md`.
+- **Telegram** (perfil default, sin `--in`) no abre en ninguna carpeta: hay que decirle cuál es una vez:
+  `hermes config set terminal.cwd /opt/data/gf-inicio` y reiniciar el gateway. En la terminal no cambia nada:
+  ahí manda la carpeta del `--in`.
+- Comprobar: dentro de Hermes, `/context` debe mostrar `SOUL.md ✓` (pocos tokens) y `AGENTS.md ✓` (o `CLAUDE.md ✓`).
 - `perfiles.sh` también crea un **atajo de una palabra** por perfil. Cada atajo abre Hermes dentro de la
   carpeta del repo y con una **sesión nueva** (sin historial anterior):
 
