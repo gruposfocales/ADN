@@ -8,13 +8,14 @@ i=0
 echo "Perfiles de Hermes:"
 for L in $NOMBRES; do
   i=$((i+1)); P=${L%%|*}; R=${L#*|}
-  [ "$P" = default ] && P="default (bibliotecario)"
+  [ "$P" = default ] && P="default (inicio)"
   echo "  $i) $P  ·  $R"
 done
 printf "Escribe el número y Enter: "
 read -r N
 case "$N" in ''|*[!0-9]*) echo "Número no válido"; exit 1;; esac
 [ "$N" -ge 1 ] && [ "$N" -le "$i" ] || { echo "Número no válido"; exit 1; }
-P=$(echo "$NOMBRES" | sed -n "${N}p"); P=${P%%|*}
-echo "Abriendo Hermes en el perfil: $P  (para salir: /exit)"
-if [ "$P" = default ]; then exec hermes; else exec hermes -p "$P"; fi
+L=$(echo "$NOMBRES" | sed -n "${N}p"); P=${L%%|*}; R=${L#*|}
+DIR="${REPOS_DIR:-${HERMES_HOME:-/opt/data}}/$R"
+echo "Abriendo Hermes en el perfil: $P, carpeta $DIR, sesión nueva  (para salir: /exit)"
+if [ "$P" = default ]; then exec hermes --in "$DIR"; else exec hermes -p "$P" --in "$DIR"; fi

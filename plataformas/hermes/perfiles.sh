@@ -3,6 +3,8 @@
 # - Clona o actualiza cada repo en $REPOS_DIR/<repo> (por defecto $HERMES_HOME) (solo lectura: pull --ff-only).
 # - El SOUL.md de cada perfil es un ENLACE al AGENTS.md de su repo: GitHub es la única fuente.
 # - El token nunca se guarda en disco: se pasa en cada git por cabecera.
+# - Crea un atajo de una palabra por perfil (ej. `vejez`) que abre Hermes en la carpeta del repo
+#   con una sesión nueva. El default se llama `inicio`. Se guardan en $HERMES_HOME/bin (volumen).
 # Uso (dentro del contenedor): sh perfiles.sh [perfiles.txt]
 set -eu
 HOME_H="${HERMES_HOME:-/opt/data}"
@@ -12,6 +14,19 @@ ORG="${GITHUB_ORG:-gruposfocales}"
 AUTH="Authorization: Basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
 REPOS_DIR="${REPOS_DIR:-$HOME_H}"   # en hermes2 los repos ya están en /opt/data
 mkdir -p "$REPOS_DIR"
+BIN="$HOME_H/bin"                   # atajos en el volumen: sobreviven a un redeploy
+mkdir -p "$BIN"
+
+# atajo NOMBRE PERFIL DIR: script de una línea; sin -c ni --resume, así que cada vez es una sesión nueva
+atajo() {
+  if [ "$2" = default ]; then P=""; else P="-p $2 "; fi
+  printf '#!/bin/sh\n# Atajo de perfiles.sh: Hermes en %s, sesión nueva.\nexec hermes %s--in %s "$@"\n' "$3" "$P" "$3" > "$BIN/$1"
+  chmod 755 "$BIN/$1"
+  # al PATH: /usr/local/bin y ~/.local/bin (este último reemplaza el alias que crea `hermes profile create`)
+  for D in /usr/local/bin "$HOME/.local/bin"; do
+    mkdir -p "$D" 2>/dev/null && ln -sfn "$BIN/$1" "$D/$1" 2>/dev/null || true
+  done
+}
 
 grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
   DIR="$REPOS_DIR/$REPO"
@@ -39,5 +54,7 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
     chown "$(stat -c %u:%g "$HOME_H")" "$PH/.env" 2>/dev/null || true   # Hermes corre con el usuario dueño de /opt/data
   fi
   ln -sfn "$DIR/$ALMA" "$PH/SOUL.md"
-  echo "✓ $PERFIL → $REPO/$ALMA"
+  if [ "$PERFIL" = default ]; then NOMBRE=inicio; else NOMBRE="$PERFIL"; fi
+  atajo "$NOMBRE" "$PERFIL" "$DIR"
+  echo "✓ $PERFIL → $REPO/$ALMA · atajo: $NOMBRE"
 done

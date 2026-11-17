@@ -8,6 +8,21 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
 - `perfiles.sh`: clona/actualiza los repos en `/opt/data/` (donde hermes2 ya los tiene) y enlaza el `SOUL.md` de cada
   perfil al `AGENTS.md` de su repo. No hay copias: un `git pull` actualiza a todos.
 - Hermes lee `SOUL.md` solo desde el home del perfil (por eso el enlace va ahí).
+- `perfiles.sh` también crea un **atajo de una palabra** por perfil. Cada atajo abre Hermes dentro de la
+  carpeta del repo y con una **sesión nueva** (sin historial anterior):
+
+  | Atajo | Equivale a |
+  |---|---|
+  | `inicio` | `hermes --in /opt/data/gf-inicio` |
+  | `vejez` | `hermes -p vejez --in /opt/data/inv-001-vejez` |
+  | `comunicacion` | `hermes -p comunicacion --in /opt/data/inv-002-comunicacion` |
+  | `noticias` | `hermes -p noticias --in /opt/data/age-001-en-efecto-noticias` |
+  | `bartolinos` | `hermes -p bartolinos --in /opt/data/com-001-bartolinos` |
+  | `bibliotecario`, `adn`, `disenador` | igual, con su perfil y su repo |
+
+  Se guardan en `/opt/data/bin` (el volumen) y se enlazan en `/usr/local/bin` y `~/.local/bin`.
+  Aceptan más opciones de Hermes: `vejez -c` retoma la última sesión de Vejez en vez de abrir una nueva.
+  Después de un redeploy, corre `perfiles.sh` otra vez para volver a enlazarlos (o usa `/opt/data/bin/vejez`).
 
 ## Instalar (Dokploy)
 1. Servicio Compose con este `docker-compose.yml`.
@@ -23,6 +38,7 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
 ## Validar
 - `hermes` → "estado" responde el bibliotecario.
 - `hermes -p vejez` → "estado" responde con el formato de Vejez.
+- `vejez` → abre en `/opt/data/inv-001-vejez` sin el historial de la sesión anterior.
 - Cambia una línea del `AGENTS.md` de Vejez en GitHub, corre `perfiles.sh`, y el perfil la refleja.
 
 ## Reglas
