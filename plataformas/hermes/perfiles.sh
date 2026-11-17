@@ -28,6 +28,24 @@ atajo() {
   done
 }
 
+# sin_duplicado DIR ALMA: evita que el AGENTS.md (o CLAUDE.md) se cargue dos veces.
+# Hermes ya lo lee como SOUL.md (identidad) y, al abrir con --in, lo leería otra vez como contexto del
+# proyecto. Un .hermes.md corto en la raíz del repo gana la prioridad (.hermes.md > AGENTS.md > CLAUDE.md)
+# y deja fuera la copia. Va en .git/info/exclude: no se sube a GitHub ni aparece como cambio sin commit.
+# Telegram (perfil default sin --in) no cambia: no abre en la carpeta del repo y sigue con su SOUL.md.
+MARCA='<!-- generado por perfiles.sh -->'
+sin_duplicado() {
+  case "$2" in AGENTS.md|CLAUDE.md) ;; *) return 0;; esac   # README.md no se carga como contexto
+  H="$1/.hermes.md"
+  if [ -e "$H" ] && ! grep -qF "$MARCA" "$H"; then echo "⚠ $1/.hermes.md es propio del repo: no se toca"; return 0; fi
+  git -C "$1" ls-files --error-unmatch .hermes.md >/dev/null 2>&1 && return 0   # versionado en el repo: manda el repo
+  printf '%s\nTus instrucciones (%s de este repo) ya están cargadas como tu identidad (SOUL.md del perfil). No hace falta volver a leerlas.\n' "$MARCA" "$2" > "$H"
+  EX="$1/.git/info/exclude"
+  mkdir -p "$(dirname "$EX")"
+  grep -qx '/.hermes.md' "$EX" 2>/dev/null || echo '/.hermes.md' >> "$EX"
+  chown "$(stat -c %u:%g "$1")" "$H" 2>/dev/null || true
+}
+
 grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
   DIR="$REPOS_DIR/$REPO"
   if [ -d "$DIR/.git" ]; then
@@ -55,6 +73,7 @@ grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
     chown "$(stat -c %u:%g "$HOME_H")" "$PH/.env" 2>/dev/null || true   # Hermes corre con el usuario dueño de /opt/data
   fi
   ln -sfn "$DIR/$ALMA" "$PH/SOUL.md"
+  sin_duplicado "$DIR" "$ALMA"
   if [ "$PERFIL" = default ]; then NOMBRE=inicio; else NOMBRE="$PERFIL"; fi
   atajo "$NOMBRE" "$PERFIL" "$DIR"
   echo "✓ $PERFIL → $REPO/$ALMA · atajo: $NOMBRE"
