@@ -6,13 +6,13 @@ Uso: python3 herramientas/catalogo.py [--revisar]
 import pathlib
 import sys
 
-from ficha import leer, leer_ficha
+from ficha import agentes, leer, leer_ficha
 
 NUCLEO = pathlib.Path(__file__).resolve().parent.parent
 
 
 def main():
-    repos = [l.split("#")[0].strip() for l in leer(NUCLEO / "agentes.txt").splitlines() if l.split("#")[0].strip()]
+    repos = agentes()
     filas = []
     for nombre in repos:
         d = leer_ficha(NUCLEO.parent / nombre)

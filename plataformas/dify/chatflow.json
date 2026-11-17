@@ -219,9 +219,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Inicio GF (pantalla  · gf-bibliotecario:organizacion/ESTADO-NEGOCIO.md",
+     "title": "Inicio GF (pantalla  · ADN:agentes.txt",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/organizacion/ESTADO-NEGOCIO.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/agentes.txt?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -255,9 +255,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Inicio GF (pantalla  · ADN:CATALOGO.md",
+     "title": "Inicio GF (pantalla  · gf-bibliotecario:organizacion/ESTADO-NEGOCIO.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/CATALOGO.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/organizacion/ESTADO-NEGOCIO.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -291,9 +291,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Inicio GF (pantalla  · ADN:skills/INDICE.md",
+     "title": "Inicio GF (pantalla  · ADN:CATALOGO.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/skills/INDICE.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/CATALOGO.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -327,9 +327,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Inicio GF (pantalla  · disenador-de-agentes:INDICE_MAESTRO.md",
+     "title": "Inicio GF (pantalla  · ADN:skills/INDICE.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/INDICE_MAESTRO.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/skills/INDICE.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -363,9 +363,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Inicio GF (pantalla  · inv-001-vejez:index.md",
+     "title": "Inicio GF (pantalla  · disenador-de-agentes:INDICE_MAESTRO.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/index.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/disenador-de-agentes/contents/INDICE_MAESTRO.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -399,9 +399,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Inicio GF (pantalla  · inv-002-comunicacion:index.md",
+     "title": "Inicio GF (pantalla  · inv-001-vejez:index.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/index.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-001-vejez/contents/index.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -435,9 +435,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Inicio GF (pantalla  · age-001-en-efecto-noticias:index.md",
+     "title": "Inicio GF (pantalla  · inv-002-comunicacion:index.md",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/index.md?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/inv-002-comunicacion/contents/index.md?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -467,6 +467,42 @@
     "type": "custom",
     "position": {
      "x": 2680,
+     "y": 0
+    },
+    "data": {
+     "type": "http-request",
+     "title": "Inicio GF (pantalla  · age-001-en-efecto-noticias:index.md",
+     "method": "get",
+     "url": "https://api.github.com/repos/gruposfocales/age-001-en-efecto-noticias/contents/index.md?ref=main",
+     "authorization": {
+      "type": "no-auth",
+      "config": null
+     },
+     "headers": "Accept:application/vnd.github.raw\nAuthorization:Bearer {{#env.GITHUB_TOKEN#}}\nX-GitHub-Api-Version:2022-11-28\nUser-Agent:dify-gf-agentes",
+     "params": "",
+     "body": {
+      "type": "none",
+      "data": []
+     },
+     "timeout": {
+      "max_connect_timeout": 10,
+      "max_read_timeout": 30,
+      "max_write_timeout": 10
+     },
+     "retry_config": {
+      "retry_enabled": true,
+      "max_retries": 2,
+      "retry_interval": 1000
+     },
+     "ssl_verify": true,
+     "variables": []
+    }
+   },
+   {
+    "id": "a0h9",
+    "type": "custom",
+    "position": {
+     "x": 2940,
      "y": 0
     },
     "data": {
@@ -502,7 +538,7 @@
     "id": "a0llm",
     "type": "custom",
     "position": {
-     "x": 2940,
+     "x": 3200,
      "y": 0
     },
     "data": {
@@ -525,7 +561,7 @@
       {
        "id": "a0s2",
        "role": "system",
-       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== gf-bibliotecario:organizacion/ESTADO-NEGOCIO.md ===\n{{#a0h1.body#}}\n\n=== ADN:CATALOGO.md ===\n{{#a0h2.body#}}\n\n=== ADN:skills/INDICE.md ===\n{{#a0h3.body#}}\n\n=== disenador-de-agentes:INDICE_MAESTRO.md ===\n{{#a0h4.body#}}\n\n=== inv-001-vejez:index.md ===\n{{#a0h5.body#}}\n\n=== inv-002-comunicacion:index.md ===\n{{#a0h6.body#}}\n\n=== age-001-en-efecto-noticias:index.md ===\n{{#a0h7.body#}}\n\n=== com-001-bartolinos:index.md ===\n{{#a0h8.body#}}"
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== ADN:agentes.txt ===\n{{#a0h1.body#}}\n\n=== gf-bibliotecario:organizacion/ESTADO-NEGOCIO.md ===\n{{#a0h2.body#}}\n\n=== ADN:CATALOGO.md ===\n{{#a0h3.body#}}\n\n=== ADN:skills/INDICE.md ===\n{{#a0h4.body#}}\n\n=== disenador-de-agentes:INDICE_MAESTRO.md ===\n{{#a0h5.body#}}\n\n=== inv-001-vejez:index.md ===\n{{#a0h6.body#}}\n\n=== inv-002-comunicacion:index.md ===\n{{#a0h7.body#}}\n\n=== age-001-en-efecto-noticias:index.md ===\n{{#a0h8.body#}}\n\n=== com-001-bartolinos:index.md ===\n{{#a0h9.body#}}"
       }
      ],
      "context": {
@@ -554,7 +590,7 @@
     "id": "a0ans",
     "type": "custom",
     "position": {
-     "x": 3240,
+     "x": 3500,
      "y": 0
     },
     "data": {
@@ -681,9 +717,9 @@
     },
     "data": {
      "type": "http-request",
-     "title": "Orquestador GF (bibl · proyectos/REPOS.txt",
+     "title": "Orquestador GF (bibl · ADN:agentes.txt",
      "method": "get",
-     "url": "https://api.github.com/repos/gruposfocales/gf-bibliotecario/contents/proyectos/REPOS.txt?ref=main",
+     "url": "https://api.github.com/repos/gruposfocales/ADN/contents/agentes.txt?ref=main",
      "authorization": {
       "type": "no-auth",
       "config": null
@@ -987,7 +1023,7 @@
       {
        "id": "a1s2",
        "role": "system",
-       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== sistema/roles/orquestador.md ===\n{{#a1h1.body#}}\n\n=== proyectos/INDICE.md ===\n{{#a1h2.body#}}\n\n=== proyectos/REPOS.txt ===\n{{#a1h3.body#}}\n\n=== organizacion/ESTADO-NEGOCIO.md ===\n{{#a1h4.body#}}\n\n=== log.md ===\n{{#a1h5.body#}}\n\n=== ADN:CATALOGO.md ===\n{{#a1h6.body#}}\n\n=== inv-001-vejez:DASHBOARD.md ===\n{{#a1h7.body#}}\n\n=== inv-002-comunicacion:DASHBOARD.md ===\n{{#a1h8.body#}}\n\n=== age-001-en-efecto-noticias:DASHBOARD.md ===\n{{#a1h9.body#}}\n\n=== com-001-bartolinos:DASHBOARD.md ===\n{{#a1h10.body#}}"
+       "text": "Archivos vigentes, leídos en vivo desde GitHub en este turno (fuente de verdad). Si un archivo dice 404 o Not Found, di \"No lo encuentro\" y sigue.\n\n=== sistema/roles/orquestador.md ===\n{{#a1h1.body#}}\n\n=== proyectos/INDICE.md ===\n{{#a1h2.body#}}\n\n=== ADN:agentes.txt ===\n{{#a1h3.body#}}\n\n=== organizacion/ESTADO-NEGOCIO.md ===\n{{#a1h4.body#}}\n\n=== log.md ===\n{{#a1h5.body#}}\n\n=== ADN:CATALOGO.md ===\n{{#a1h6.body#}}\n\n=== inv-001-vejez:DASHBOARD.md ===\n{{#a1h7.body#}}\n\n=== inv-002-comunicacion:DASHBOARD.md ===\n{{#a1h8.body#}}\n\n=== age-001-en-efecto-noticias:DASHBOARD.md ===\n{{#a1h9.body#}}\n\n=== com-001-bartolinos:DASHBOARD.md ===\n{{#a1h10.body#}}"
       }
      ],
      "context": {
@@ -3519,8 +3555,17 @@
     "data": {}
    },
    {
-    "id": "a0h8-source-a0llm",
+    "id": "a0h8-source-a0h9",
     "source": "a0h8",
+    "sourceHandle": "source",
+    "target": "a0h9",
+    "targetHandle": "target",
+    "type": "custom",
+    "data": {}
+   },
+   {
+    "id": "a0h9-source-a0llm",
+    "source": "a0h9",
     "sourceHandle": "source",
     "target": "a0llm",
     "targetHandle": "target",

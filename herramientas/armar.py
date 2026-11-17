@@ -21,7 +21,7 @@ import pathlib
 import re
 import sys
 
-from ficha import leer, leer_ficha
+from ficha import agentes, leer, leer_ficha
 
 NUCLEO = pathlib.Path(__file__).resolve().parent.parent
 
@@ -149,7 +149,7 @@ def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     revisar = "--revisar" in sys.argv
     if "--todos" in sys.argv:
-        repos = [NUCLEO.parent / l.split("#")[0].strip() for l in leer(NUCLEO / "agentes.txt").splitlines() if l.split("#")[0].strip()]
+        repos = [NUCLEO.parent / r for r in agentes()]
     elif len(args) == 1:
         repos = [pathlib.Path(args[0]).resolve()]
     else:

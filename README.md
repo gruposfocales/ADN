@@ -24,7 +24,7 @@ SYSTEM = personalidad del proyecto  +  método común  +  reglas de la plataform
 ## Tipos y catálogo
 
 - **Tipos de agente:** `modulos/tipos.md` (orquestador, investigación, activación de comunidad, proyecto de agente, diseñador).
-- **Catálogo:** `agentes.txt` lista los repos; `CATALOGO.md` (generado con `herramientas/catalogo.py`) muestra tipo, método y archivos que lee cada uno. De aquí sale el chatflow único de Dify (`herramientas/dify_chatflow.py`, una rama por agente). Cada plataforma tiene su receta corta en `plataformas/<plataforma>.md` (hoy: `dify.md`, `hermes/` y `chat-proyecto.md`); las demás se escriben cuando se necesiten.
+- **Catálogo:** `agentes.txt` es la lista única de repos (repo, clase y perfil de Hermes): la leen todos los scripts de ADN, gf-inicio y gf-bibliotecario; `CATALOGO.md` (generado con `herramientas/catalogo.py`) muestra tipo, método y archivos que lee cada uno. De aquí sale el chatflow único de Dify (`herramientas/dify_chatflow.py`, una rama por agente). Cada plataforma tiene su receta corta en `plataformas/<plataforma>.md` (hoy: `dify.md`, `hermes/` y `chat-proyecto.md`); las demás se escriben cuando se necesiten.
 
 ## La carpeta `agente/` de cada repo
 

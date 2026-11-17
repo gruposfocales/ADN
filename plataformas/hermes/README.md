@@ -4,7 +4,7 @@ Receta para Hermes Agent (`nousresearch/hermes-agent:v0.22.7`) en el servicio **
 con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin `-p` responde gf-inicio (pantalla de inicio y menú).
 
 ## Cómo funciona
-- `perfiles.txt`: qué perfil va con qué repo. Para un cliente, deja solo su línea (y `default`).
+- `ADN/agentes.txt` (la lista única de repos): la columna `perfil` dice qué perfil va con qué repo. Para un cliente, deja solo sus líneas (y la de `default`).
 - `perfiles.sh`: clona/actualiza los repos en `/opt/data/` (donde hermes2 ya los tiene) y deja el `SOUL.md` neutro
   en cada perfil. No hay copias del AGENTS.md: un `git pull` actualiza a todos.
 - **AGENTS.md es la única fuente.** El `SOUL.md` de cada perfil (el espacio de identidad de Hermes, que va primero)
@@ -47,7 +47,7 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
    y `DEEPSEEK_API_KEY`. Cada variable nueva debe estar también en la lista `environment:`.
 3. Deploy. Luego, en la terminal del contenedor:
    `hermes model` (elige DeepSeek) y `sh /ruta/a/perfiles.sh`.
-   (Copia `perfiles.sh` y `perfiles.txt` al volumen o clona ADN.)
+   (Clona ADN: `perfiles.sh` lee `../../agentes.txt`.)
 
 ## Actualizar
 `sh perfiles.sh` otra vez: hace `pull --ff-only` y rehace los enlaces.
