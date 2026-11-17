@@ -1,7 +1,7 @@
 # Hermes · un perfil por repo
 
 Receta para Hermes Agent (`nousresearch/hermes-agent:v0.22.7`) en el servicio **hermes2**,
-con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin `-p` responde el bibliotecario.
+con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin `-p` responde gf-inicio (pantalla de inicio y menú).
 
 ## Cómo funciona
 - `perfiles.txt`: qué perfil va con qué repo. Para un cliente, deja solo su línea (y `default`).
@@ -53,7 +53,7 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
 `sh perfiles.sh` otra vez: hace `pull --ff-only` y rehace los enlaces.
 
 ## Validar
-- `hermes` → "estado" responde el bibliotecario.
+- `inicio` → muestra solo la lista de atajos de gf-inicio; `pulso` da el Pulso del Día.
 - `hermes -p vejez` → "estado" responde con el formato de Vejez.
 - `vejez` → abre en `/opt/data/inv-001-vejez` sin el historial de la sesión anterior.
 - Cambia una línea del `AGENTS.md` de Vejez en GitHub, corre `perfiles.sh`, y el perfil la refleja.
