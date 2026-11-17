@@ -8,6 +8,12 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
 - `perfiles.sh`: clona/actualiza los repos en `/opt/data/` (donde hermes2 ya los tiene) y enlaza el `SOUL.md` de cada
   perfil al `AGENTS.md` de su repo. No hay copias: un `git pull` actualiza a todos.
 - Hermes lee `SOUL.md` solo desde el home del perfil (por eso el enlace va ahí).
+- **Sin duplicado:** al abrir con `--in <repo>`, Hermes también lee el `AGENTS.md` (o `CLAUDE.md`) de esa carpeta
+  como contexto del proyecto, y no lo compara con el `SOUL.md`: el mismo texto entraba dos veces (~4k tokens de más).
+  Por eso `perfiles.sh` deja en cada repo un `.hermes.md` de una línea, que Hermes prefiere sobre `AGENTS.md`.
+  Está en `.git/info/exclude`: no se sube ni sale como cambio sin commit. Si un repo trae su propio `.hermes.md`,
+  no se toca. Telegram (perfil default, sin `--in`) no cambia.
+  Comprobar: dentro de Hermes, `/context` debe mostrar `SOUL.md ✓`, `.hermes.md ✓` y `AGENTS.md ○ (not loaded)`.
 - `perfiles.sh` también crea un **atajo de una palabra** por perfil. Cada atajo abre Hermes dentro de la
   carpeta del repo y con una **sesión nueva** (sin historial anterior):
 
