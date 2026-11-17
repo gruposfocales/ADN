@@ -74,11 +74,14 @@ limpia_hermes_md() {
 grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
   DIR="$REPOS_DIR/$REPO"
   if [ -d "$DIR/.git" ]; then
-    git -C "$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null || echo "⚠ $REPO: no se pudo actualizar"
+    git -C "$DIR" -c safe.directory="$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null || echo "⚠ $REPO: no se pudo actualizar"
   else
     git -c http.extraHeader="$AUTH" clone -q "https://github.com/$ORG/$REPO.git" "$DIR" </dev/null \
       || { echo "⚠ $REPO: no se pudo clonar (¿el token tiene acceso a este repo?)"; continue; }
   fi
+  # Hermes corre como el dueño de /opt/data; este script suele correr como root. Se devuelve el repo a ese
+  # dueño para que Hermes pueda leerlo y escribirlo, y safe.directory evita el "dubious ownership" de git.
+  chown -R "$(stat -c %u:%g "$HOME_H")" "$DIR" 2>/dev/null || true
   if [ "$PERFIL" = default ]; then
     PH="$HOME_H"
   else
