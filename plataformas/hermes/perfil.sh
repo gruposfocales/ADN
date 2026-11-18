@@ -1,9 +1,9 @@
 #!/bin/sh
-# Menú con números para abrir Hermes en un perfil (lista en perfiles.txt).
+# Menú con números para abrir Hermes en un perfil (lista única: ADN/agentes.txt, columna perfil).
 # Uso (Terminal del contenedor): sh /opt/data/ADN/plataformas/hermes/perfil.sh
 set -eu
-LISTA="${1:-$(dirname "$0")/perfiles.txt}"
-NOMBRES=$(grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | awk '{print $1 "|" $2}')
+LISTA="${1:-$(dirname "$0")/../../agentes.txt}"
+NOMBRES=$(sed 's/#.*//' "$LISTA" | awk 'NF >= 3 && $3 != "-" {print $3 "|" $1}')
 i=0
 echo "Perfiles de Hermes:"
 for L in $NOMBRES; do

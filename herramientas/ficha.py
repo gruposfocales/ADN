@@ -1,6 +1,8 @@
-"""Lee la ficha `agente/agente.txt` de un repo. La usan armar.py y catalogo.py."""
+"""Lee la ficha `agente/agente.txt` de un repo y la lista única `agentes.txt`. La usan armar.py, catalogo.py y dify_chatflow.py."""
 import pathlib
 import sys
+
+NUCLEO = pathlib.Path(__file__).resolve().parent.parent
 
 TIPOS = ("orquestador", "investigacion", "activacion-comunidad", "proyecto-agente", "disenador")
 OBLIGATORIOS = ("repo", "tipo", "nombre", "nucleo", "metodo", "fuentes")
@@ -8,6 +10,24 @@ OBLIGATORIOS = ("repo", "tipo", "nombre", "nucleo", "metodo", "fuentes")
 
 def leer(p):
     return pathlib.Path(p).read_text(encoding="utf-8")
+
+
+def lista(clase=None):
+    """Filas de agentes.txt como (repo, clase, perfil). Con clase, solo esa (o esas, si es una tupla)."""
+    filas = []
+    for l in leer(NUCLEO / "agentes.txt").splitlines():
+        c = l.split("#")[0].split()
+        if not c:
+            continue
+        fila = (c[0], c[1] if len(c) > 1 else "sistema", c[2] if len(c) > 2 else "-")
+        if clase is None or fila[1] in ((clase,) if isinstance(clase, str) else clase):
+            filas.append(fila)
+    return filas
+
+
+def agentes():
+    """Repos que son agentes (todo menos el núcleo), en el orden de agentes.txt."""
+    return [r for r, clase, _ in lista() if clase != "nucleo"]
 
 
 def leer_ficha(repo):

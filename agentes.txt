@@ -1,9 +1,19 @@
-# Catálogo de agentes de GruposFocales: un repo por línea (carpeta hermana de ADN).
-# El tipo, el nombre y los archivos que lee cada agente están en su agente/agente.txt.
-gf-inicio
-gf-bibliotecario
-inv-001-vejez
-inv-002-comunicacion
-age-001-en-efecto-noticias
-com-001-bartolinos
-disenador-de-agentes
+# Lista única de repos de GruposFocales (carpetas hermanas de ADN). Todos los scripts la leen:
+#   ADN: armar.py, catalogo.py, dify_chatflow.py, plataformas/hermes/perfiles.sh y perfil.sh
+#   gf-inicio: pulso.py y git_pr.py · gf-bibliotecario: repos_proyecto.py (informe, panel, inicio del día)
+# Columnas (separadas por espacios):
+#   repo    nombre del repo en github.com/gruposfocales
+#   clase   proyecto = lleva ficha index.md y sale en el menú (1A, 1B… en este orden)
+#           sistema  = agente de apoyo (inicio, bibliotecario, diseñador)
+#           nucleo   = no es agente (ADN): no va al catálogo ni a Dify
+#   perfil  perfil y atajo de Hermes ("default" = el atajo inicio; "-" = sin perfil)
+# Proyecto nuevo: una línea aquí, y en el VPS correr perfiles.sh. Para un cliente, deja solo sus líneas.
+# repo                        clase     perfil
+gf-inicio                     sistema   default
+gf-bibliotecario              sistema   bibliotecario
+inv-001-vejez                 proyecto  vejez
+inv-002-comunicacion          proyecto  comunicacion
+age-001-en-efecto-noticias    proyecto  noticias
+com-001-bartolinos            proyecto  bartolinos
+disenador-de-agentes          sistema   disenador
+ADN                           nucleo    adn

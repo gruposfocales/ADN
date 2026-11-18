@@ -1,15 +1,17 @@
 #!/bin/sh
-# Crea o actualiza un perfil de Hermes por repo (lista en perfiles.txt).
+# Crea o actualiza un perfil de Hermes por repo (lista única: ADN/agentes.txt, columna perfil).
 # - Clona o actualiza cada repo en $REPOS_DIR/<repo> (por defecto $HERMES_HOME) (solo lectura: pull --ff-only).
 # - El SOUL.md de cada perfil es una línea neutra; las instrucciones son solo el AGENTS.md del repo
 #   (Hermes lo carga como contexto al abrir con --in). GitHub es la única fuente.
 # - El token nunca se guarda en disco: se pasa en cada git por cabecera.
 # - Crea un atajo de una palabra por perfil (ej. `vejez`) que abre Hermes en la carpeta del repo
 #   con una sesión nueva. El default se llama `inicio`. Se guardan en $HERMES_HOME/bin (volumen).
-# Uso (dentro del contenedor): sh perfiles.sh [perfiles.txt]
+# Uso (dentro del contenedor): sh perfiles.sh [agentes.txt]
 set -eu
 HOME_H="${HERMES_HOME:-/opt/data}"
-LISTA="${1:-$(dirname "$0")/perfiles.txt}"
+LISTA="${1:-$(dirname "$0")/../../agentes.txt}"
+# filas "REPO CLASE PERFIL" sin comentarios ni repos sin perfil (perfil "-")
+filas() { sed 's/#.*//' "$LISTA" | awk 'NF >= 3 && $3 != "-" {print $1, $2, $3}'; }
 ORG="${GITHUB_ORG:-gruposfocales}"
 : "${GITHUB_TOKEN:?Falta GITHUB_TOKEN}"
 AUTH="Authorization: Basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
@@ -71,7 +73,7 @@ limpia_hermes_md() {
   return 0
 }
 
-grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
+filas | while read -r REPO CLASE PERFIL; do
   DIR="$REPOS_DIR/$REPO"
   if [ -d "$DIR/.git" ]; then
     git -C "$DIR" -c safe.directory="$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null || echo "⚠ $REPO: no se pudo actualizar"
@@ -117,7 +119,7 @@ done
 # Atajos que NO abren Hermes (no gastan contexto ni tokens):
 #   pulso  → el Pulso del Día de gf-inicio, directo en la terminal
 #   atajos → la lista de todos los atajos
-INICIO=$(grep -v '^\s*#' "$LISTA" | awk '$1=="default"{print $2}')
+INICIO=$(filas | awk '$3=="default"{print $1}')
 if [ -n "$INICIO" ] && [ -d "$REPOS_DIR/$INICIO" ]; then
   D="$REPOS_DIR/$INICIO"
   mkdir -p "$SKILLS/menu" "$SKILLS/pulso"
@@ -161,7 +163,7 @@ fi
   echo 'Atajos de GruposFocales (escribe la palabra y Enter):'
   echo '  pulso          Pulso del Día, sin abrir Hermes (no gasta contexto)'
   echo '  atajos         esta lista'
-  grep -v '^\s*#' "$LISTA" | grep -v '^\s*$' | while read -r PERFIL REPO; do
+  filas | while read -r REPO CLASE PERFIL; do
     [ "$PERFIL" = default ] && PERFIL=inicio
     printf '  %-14s Hermes en %s, sesión nueva\n' "$PERFIL" "$REPO"
   done

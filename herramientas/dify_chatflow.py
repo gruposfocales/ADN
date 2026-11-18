@@ -15,7 +15,7 @@ que se llena a mano en Dify. Ver plataformas/dify.md.
 import json
 import pathlib
 
-from ficha import leer, leer_ficha
+from ficha import agentes, leer, leer_ficha
 
 NUCLEO = pathlib.Path(__file__).resolve().parent.parent
 SALIDA = NUCLEO / "plataformas" / "dify" / "chatflow.json"
@@ -183,7 +183,7 @@ def rama_encuestas(n, fichas, y):
 
 
 def generar():
-    repos = [l.split("#")[0].strip() for l in leer(NUCLEO / "agentes.txt").splitlines() if l.split("#")[0].strip()]
+    repos = agentes()
     fichas = [leer_ficha(NUCLEO.parent / r) for r in repos]
     opciones = [etiqueta(d) for d in fichas] + [ENCUESTAS]
     nodos = [nodo("start", 0, 0, {"type": "start", "title": "Inicio", "variables": [{
