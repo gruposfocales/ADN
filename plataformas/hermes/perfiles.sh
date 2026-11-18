@@ -139,18 +139,26 @@ done
 INICIO=$(filas | awk '$3=="default"{print $1}')
 if [ -n "$INICIO" ] && [ -d "$REPOS_DIR/$INICIO" ]; then
   D="$REPOS_DIR/$INICIO"
-  mkdir -p "$SKILLS/menu" "$SKILLS/pulso"
-  cat > "$SKILLS/menu/SKILL.md" <<FIN
+  mkdir -p "$SKILLS/pulso"
+  # skill_atajo NOMBRE ATAJO: /NOMBRE carga el agente de inicio y hace su atajo ATAJO (así cada línea
+  # de la lista de atajos es un enlace que funciona en Telegram).
+  skill_atajo() {
+    mkdir -p "$SKILLS/$1"
+    cat > "$SKILLS/$1/SKILL.md" <<FIN2
 ---
-name: menu
-description: Carga el agente de inicio ($INICIO) y muestra su menú completo por códigos.
+name: $1
+description: Carga el agente de inicio ($INICIO) y hace su atajo $2.
 ---
-# Menú de GruposFocales
+# Atajo $2 de GruposFocales
 
-1. Si en esta sesión ya cargaste un agente de proyecto, pide al usuario /new y después /menu.
-2. Lee completo $D/AGENTS.md: desde ahora es tu guía de trabajo en esta sesión. Trabajas en $D (cd antes de cada comando).
-3. Muestra el menú tal como lo define ese archivo (sección menu) y espera el código del usuario.
-FIN
+1. Si en esta sesión ya cargaste un agente de proyecto (no el de inicio), pide al usuario /new y después /$1.
+2. Si aún no lo leíste en esta sesión, lee completo $D/AGENTS.md: es tu guía de trabajo. Trabajas en $D (cd antes de cada comando).
+3. Haz el atajo \`$2\` tal como lo define ese archivo y responde solo con eso.
+FIN2
+  }
+  skill_atajo menu menu
+  for A in bloqueos nuevo cerrar fabrica repos prs guardar actualizar; do skill_atajo "$A" "$A"; done
+  skill_atajo herramientas skills   # /skills es un comando propio de Hermes: por eso /herramientas
   cat > "$SKILLS/pulso/SKILL.md" <<FIN
 ---
 name: pulso
