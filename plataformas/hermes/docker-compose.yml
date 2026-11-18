@@ -8,6 +8,8 @@ services:
     environment:
       - HERMES_HOME=/opt/data
       - GITHUB_TOKEN=${GITHUB_TOKEN}
+      # El mismo token con otro nombre: Hermes le quita GITHUB_TOKEN a su terminal, y gf-inicio (git_pr.py) lo necesita.
+      - GF_GITHUB_TOKEN=${GITHUB_TOKEN}
       - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
     volumes:
       - hermes-data:/opt/data

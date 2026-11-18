@@ -50,6 +50,8 @@ con un perfil por cada repo de agente. Sin `-p` responde gf-inicio (pantalla de 
 1. Servicio Compose con este `docker-compose.yml`.
 2. Environment: `GITHUB_TOKEN` (fine-grained, Contents: read, solo los repos de la lista)
    y `DEEPSEEK_API_KEY`. Cada variable nueva debe estar también en la lista `environment:`.
+   El compose lo pasa también como `GF_GITHUB_TOKEN`: Hermes le quita `GITHUB_TOKEN` a su terminal y gf-inicio
+   (`git_pr.py`: actualizar, PRs) lee ese otro nombre. `perfiles.sh` deja los remotos sin token pegado en la URL.
 3. Deploy. Luego, en la terminal del contenedor:
    `hermes model` (elige DeepSeek) y `sh /ruta/a/perfiles.sh`.
    (Clona ADN: `perfiles.sh` lee `../../agentes.txt`.)
