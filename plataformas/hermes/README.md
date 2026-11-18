@@ -1,7 +1,7 @@
 # Hermes · un perfil por repo
 
 Receta para Hermes Agent (`nousresearch/hermes-agent:v0.22.7`) en el servicio **hermes2**,
-con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin `-p` responde gf-inicio (pantalla de inicio y menú).
+con un perfil por cada repo de agente. Sin `-p` responde gf-inicio (pantalla de inicio y menú).
 
 ## Cómo funciona
 - `ADN/agentes.txt` (la lista única de repos): la columna `perfil` dice qué perfil va con qué repo. Para un cliente, deja solo sus líneas (y la de `default`). Perfil `-` = el repo se trae pero no lleva perfil ni atajo (ej. gf-bibliotecario, que es solo datos); si antes tenía atajo, `perfiles.sh` lo quita.

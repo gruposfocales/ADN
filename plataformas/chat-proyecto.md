@@ -1,6 +1,6 @@
 # Receta · Usar un agente en Claude o ChatGPT (proyecto o chat)
 
-La tercera forma de usar un agente, sin servidor: el repo del agente se lleva a un **Proyecto** de Claude o de ChatGPT, o a un chat suelto. No hay que instalar nada. El agente responde igual que en Dify. Como no puede escribir en GitHub, cada "ok" sale como un **📥 Parche** en el chat.
+La tercera forma de usar un agente, sin servidor: el repo del agente se lleva a un **Proyecto** de Claude o de ChatGPT, o a un chat suelto. No hay que instalar nada. Como no puede escribir en GitHub, cada "ok" sale como un **📥 Parche** en el chat.
 
 ## Qué archivos se usan
 
@@ -40,5 +40,4 @@ Para una consulta rápida. En el primer mensaje, pega el contenido de `SYSTEM-si
 | Proyecto de Claude | Sin servidor; sincroniza desde GitHub | Los parches se aplican a mano |
 | Proyecto de ChatGPT | Sin servidor; el cliente ya lo tiene | Hay que volver a subir archivos tras cada cambio |
 | Chat suelto | Inmediato | No guarda contexto entre chats |
-| Dify (`dify.md`) | Lee GitHub en vivo y deja el parche en un issue | Requiere VPS |
 | Hermes (`hermes/`) | Lee el repo y puede usar git | Requiere VPS |

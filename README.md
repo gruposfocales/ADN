@@ -1,6 +1,6 @@
 # ADN · Núcleo de los agentes de GruposFocales
 
-Este repo es la fuente de los módulos comunes. **Cada repo de proyecto es un agente**, en cualquier plataforma (Claude, Hermes, Dify, ChatGPT…). La plataforma solo lo ejecuta: todo lo que el agente es y sabe vive en GitHub.
+Este repo es la fuente de los módulos comunes. **Cada repo de proyecto es un agente**, en cualquier plataforma (Claude, Hermes, ChatGPT…). La plataforma solo lo ejecuta: todo lo que el agente es y sabe vive en GitHub.
 
 ## Cómo se arma un agente
 
@@ -18,13 +18,13 @@ SYSTEM = personalidad del proyecto  +  método común  +  reglas de la plataform
 | Plantillas de deep research (DR1, DR2) | `modulos/deep-research/` | Aquí, con copia en `metodo/deep-research/` de cada proyecto |
 | ADN de GruposFocales | `modulos/adn.md` | Aquí, con copia en cada proyecto |
 | Plataforma con archivos y git (Claude, Hermes, Codex) | `plataformas/con-archivos.md` | Aquí |
-| Plataforma sin archivos (Dify, ChatGPT) | `plataformas/sin-archivos.md` | Aquí |
+| Plataforma sin archivos (proyecto o chat de Claude o ChatGPT) | `plataformas/sin-archivos.md` | Aquí |
 | Receta: Claude o ChatGPT como proyecto o chat | `plataformas/chat-proyecto.md` | Aquí |
 
 ## Tipos y catálogo
 
 - **Tipos de agente:** `modulos/tipos.md` (orquestador, investigación, activación de comunidad, proyecto de agente, diseñador).
-- **Catálogo:** `agentes.txt` es la lista única de repos (repo, clase y perfil de Hermes): la leen los scripts de ADN y de gf-inicio (gf-bibliotecario es clase `datos`: catálogo, log y plantillas, sin agente); `CATALOGO.md` (generado con `herramientas/catalogo.py`) muestra tipo, método y archivos que lee cada uno. De aquí sale el chatflow único de Dify (`herramientas/dify_chatflow.py`, una rama por agente). Cada plataforma tiene su receta corta en `plataformas/<plataforma>.md` (hoy: `dify.md`, `hermes/` y `chat-proyecto.md`); las demás se escriben cuando se necesiten.
+- **Catálogo:** `agentes.txt` es la lista única de repos (repo, clase y perfil de Hermes): la leen los scripts de ADN y de gf-inicio (gf-bibliotecario es clase `datos`: catálogo, log y plantillas, sin agente); `CATALOGO.md` (generado con `herramientas/catalogo.py`) muestra tipo, método y archivos que lee cada uno. Cada plataforma tiene su receta corta en `plataformas/<plataforma>.md` (hoy: `hermes/` y `chat-proyecto.md`); las demás se escriben cuando se necesiten.
 
 ## La carpeta `agente/` de cada repo
 
@@ -32,7 +32,7 @@ SYSTEM = personalidad del proyecto  +  método común  +  reglas de la plataform
 |---|---|---|
 | `agente.txt` | Ficha: `repo`, `tipo`, `nombre`, `metodo` (`arquitecto` o `propio`), `fuentes` (archivos que lee en vivo, `repo:ruta` si son de otro repo), `adn`, `skills` | A mano |
 | `personalidad.md` | Sección 0 (solo `metodo: arquitecto`) | A mano |
-| `SYSTEM-sin-archivos.md` | Instrucciones completas para Dify y otras plataformas sin archivos | `armar.py` |
+| `SYSTEM-sin-archivos.md` | Instrucciones completas para plataformas sin archivos (proyecto o chat de Claude o ChatGPT) | `armar.py` |
 | `pruebas.md` | 4-6 preguntas con lo que debe pasar. Se corren tras cada cambio | A mano |
 
 Con `metodo: propio` (orquestador y diseñador) las instrucciones siguen escritas a mano en su `AGENTS.md` o `CLAUDE.md`; el armador solo genera su SYSTEM.
@@ -56,13 +56,13 @@ python3 herramientas/catalogo.py                                    # regenera C
 
 Genera en el proyecto:
 - `AGENTS.md`: versión con archivos. La leen Claude Code (vía `CLAUDE.md`), Hermes y Codex.
-- `agente/SYSTEM-sin-archivos.md`: versión para pegar a mano en el SYSTEM de Dify u otra plataforma sin archivos.
+- `agente/SYSTEM-sin-archivos.md`: versión para pegar a mano en un proyecto o chat de Claude o ChatGPT (plataformas sin archivos).
 - `MANUAL-FASES.md`, la copia del ADN y `metodo/deep-research/` (plantillas DR1 y DR2), sincronizados con este núcleo.
 
 ## Cambiar algo
 
 - **Lo de un proyecto** (rol, tono, qué cuida): edita `agente/personalidad.md` en su repo y vuelve a armar.
-- **El método, el manual o una plataforma**: edita aquí, sube `VERSION` y vuelve a armar cada proyecto. Dify y las plataformas sin archivos leen el SYSTEM en vivo desde GitHub: no hay que pegar nada.
+- **El método, el manual o una plataforma**: edita aquí, sube `VERSION` y vuelve a armar cada proyecto. En las plataformas sin archivos, vuelve a pegar el `SYSTEM-sin-archivos.md` nuevo.
 
 ## Versiones
 
