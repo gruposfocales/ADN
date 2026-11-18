@@ -1,4 +1,4 @@
-"""Lee la ficha `agente/agente.txt` de un repo y la lista única `agentes.txt`. La usan armar.py, catalogo.py y dify_chatflow.py."""
+"""Lee la ficha `agente/agente.txt` de un repo y la lista única `agentes.txt`. La usan armar.py y catalogo.py."""
 import pathlib
 import sys
 

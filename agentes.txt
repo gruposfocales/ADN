@@ -1,12 +1,12 @@
 # Lista única de repos de GruposFocales (carpetas hermanas de ADN). Todos los scripts la leen:
-#   ADN: armar.py, catalogo.py, dify_chatflow.py, plataformas/hermes/perfiles.sh y perfil.sh
+#   ADN: armar.py, catalogo.py, plataformas/hermes/perfiles.sh y perfil.sh
 #   gf-inicio: repos.py (pulso, menú, informe, git_pr, validar, nuevo proyecto)
 # Columnas (separadas por espacios):
 #   repo    nombre del repo en github.com/gruposfocales
 #   clase   proyecto = lleva ficha index.md y sale en el menú (1A, 1B… en este orden)
 #           sistema  = agente de apoyo (inicio = el orquestador, diseñador)
 #           datos    = no es agente: solo datos (gf-bibliotecario: catálogo, log, plantillas). Se trae, sin perfil
-#           nucleo   = no es agente (ADN): no va al catálogo ni a Dify (datos tampoco)
+#           nucleo   = no es agente (ADN): no va al catálogo (datos tampoco)
 #   perfil  perfil y atajo de Hermes ("default" = el atajo inicio; "-" = sin perfil)
 # Proyecto nuevo: una línea aquí, y en el VPS correr perfiles.sh. Para un cliente, deja solo sus líneas.
 # repo                        clase     perfil
