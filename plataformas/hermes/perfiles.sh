@@ -97,6 +97,8 @@ limpia_hermes_md() {
 filas | while read -r REPO CLASE PERFIL; do
   DIR="$REPOS_DIR/$REPO"
   if [ -d "$DIR/.git" ]; then
+    # remoto limpio: clones viejos tenían el token pegado en la URL (quedaba guardado en .git/config)
+    git -C "$DIR" -c safe.directory="$DIR" remote set-url origin "https://github.com/$ORG/$REPO.git"
     if ! git -C "$DIR" -c safe.directory="$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null; then
       echo "⚠ $REPO: no se pudo actualizar"
       SUCIOS=$(git -C "$DIR" -c safe.directory="$DIR" status --porcelain | awk '$1=="M"{print $2}' | tr '\n' ' ')
