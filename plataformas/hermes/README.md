@@ -23,6 +23,8 @@ con un perfil por cada repo de agente. Sin `-p` responde gf-inicio (pantalla de 
   La memoria del perfil va apagada para que no se mezclen proyectos (lo importante vive en los repos).
   Una vez en el VPS: `hermes config set terminal.cwd /opt/data`, `hermes config set memory.memory_enabled false`
   y Restart del servicio en Dokploy. En la terminal no cambia nada: los atajos siguen abriendo con `--in`.
+  IPv6: el contenedor no tiene IPv6 útil y el bot quedaba mudo. `perfiles.sh` agrega a `/etc/gai.conf` la línea
+  `precedence ::ffff:0:0/96 100` (prefiere IPv4). Un Redeploy la borra: después de un Redeploy, corre `perfiles.sh` y Restart.
   Límite: lo que carga un comando vive en la conversación, no en las reglas fijas; en sesiones largas usa `/new` seguido.
 - Comprobar: dentro de Hermes, `/context` debe mostrar `SOUL.md ✓` (pocos tokens) y `AGENTS.md ✓` (o `CLAUDE.md ✓`).
 - `perfiles.sh` también crea un **atajo de una palabra** por perfil. Cada atajo abre Hermes dentro de la

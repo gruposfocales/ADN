@@ -27,6 +27,15 @@ if [ -z "${PERFILES_RELANZADO:-}" ] && [ -d "$NUCLEO_DIR/.git" ]; then
     PERFILES_RELANZADO=1 exec sh "$0" "$@"
   fi
 fi
+# Telegram: el IPv6 del contenedor no sirve y el bot quedaba mudo ("connect timed out").
+# Esta línea hace que prefiera IPv4. Vive fuera del volumen, así que un Redeploy la borra:
+# por eso se vuelve a poner aquí en cada corrida (y luego Restart del servicio).
+if grep -qs '^precedence ::ffff:0:0/96' /etc/gai.conf; then :
+elif echo 'precedence ::ffff:0:0/96 100' >> /etc/gai.conf 2>/dev/null; then
+  echo "✓ Telegram: IPv4 preferido (/etc/gai.conf). Haz Restart del servicio para que el bot lo tome."
+else
+  echo "⚠ Telegram: no pude escribir /etc/gai.conf (corre este script como root)"
+fi
 REPOS_DIR="${REPOS_DIR:-$HOME_H}"   # en hermes2 los repos ya están en /opt/data
 mkdir -p "$REPOS_DIR"
 BIN="$HOME_H/bin"                   # atajos en el volumen: sobreviven a un redeploy
