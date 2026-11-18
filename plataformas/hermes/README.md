@@ -17,6 +17,9 @@ con un perfil por cada repo de agente. Sin `-p` responde gf-inicio (pantalla de 
   que Hermes muestra como comandos:
   `/menu` (menú de gf-inicio), `/pulso` (solo el pulso), `/inicio` y `/<proyecto>` (`/vejez`, `/comunicacion`…:
   el agente lee el AGENTS.md de ese repo y trabaja en su carpeta). Para cambiar de proyecto: `/new` y el otro comando.
+  Cada atajo de gf-inicio también es comando (`/bloqueos`, `/nuevo`, `/cerrar`, `/herramientas`, `/fabrica`, `/repos`,
+  `/prs`, `/guardar`, `/actualizar`), así la lista de atajos es una columna de enlaces que se tocan en Telegram.
+  Un toque no puede hacer `/new` y otro comando a la vez (Telegram envía un comando por toque): son dos toques.
   La memoria del perfil va apagada para que no se mezclen proyectos (lo importante vive en los repos).
   Una vez en el VPS: `hermes config set terminal.cwd /opt/data`, `hermes config set memory.memory_enabled false`
   y Restart del servicio en Dokploy. En la terminal no cambia nada: los atajos siguen abriendo con `--in`.
