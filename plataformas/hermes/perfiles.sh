@@ -15,6 +15,18 @@ filas() { sed 's/#.*//' "$LISTA" | awk 'NF >= 3 {print $1, $2, $3}'; }
 ORG="${GITHUB_ORG:-gruposfocales}"
 : "${GITHUB_TOKEN:?Falta GITHUB_TOKEN}"
 AUTH="Authorization: Basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
+# El ADN (este script y agentes.txt) se trae primero. Si cambió, el script se vuelve a correr con la versión
+# nueva: así nunca corre con reglas viejas (antes el ADN se actualizaba al final, ya tarde).
+NUCLEO_DIR=$(cd "$(dirname "$0")/../.." && pwd)
+if [ -z "${PERFILES_RELANZADO:-}" ] && [ -d "$NUCLEO_DIR/.git" ]; then
+  ANTES=$(git -C "$NUCLEO_DIR" -c safe.directory="$NUCLEO_DIR" rev-parse HEAD)
+  git -C "$NUCLEO_DIR" -c safe.directory="$NUCLEO_DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null \
+    || echo "⚠ ADN: no se pudo actualizar (sigo con la versión que hay)"
+  if [ "$(git -C "$NUCLEO_DIR" -c safe.directory="$NUCLEO_DIR" rev-parse HEAD)" != "$ANTES" ]; then
+    echo "↻ ADN actualizado: vuelvo a correr con la versión nueva"
+    PERFILES_RELANZADO=1 exec sh "$0" "$@"
+  fi
+fi
 REPOS_DIR="${REPOS_DIR:-$HOME_H}"   # en hermes2 los repos ya están en /opt/data
 mkdir -p "$REPOS_DIR"
 BIN="$HOME_H/bin"                   # atajos en el volumen: sobreviven a un redeploy
@@ -76,7 +88,11 @@ limpia_hermes_md() {
 filas | while read -r REPO CLASE PERFIL; do
   DIR="$REPOS_DIR/$REPO"
   if [ -d "$DIR/.git" ]; then
-    git -C "$DIR" -c safe.directory="$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null || echo "⚠ $REPO: no se pudo actualizar"
+    if ! git -C "$DIR" -c safe.directory="$DIR" -c http.extraHeader="$AUTH" pull -q --ff-only </dev/null; then
+      echo "⚠ $REPO: no se pudo actualizar"
+      SUCIOS=$(git -C "$DIR" -c safe.directory="$DIR" status --porcelain | awk '$1=="M"{print $2}' | tr '\n' ' ')
+      [ -n "$SUCIOS" ] && echo "  Tiene cambios locales: $SUCIOS. Si son archivos generados, descártalos (una línea): git -C $DIR -c safe.directory=$DIR checkout -- $SUCIOS"
+    fi
   else
     git -c http.extraHeader="$AUTH" clone -q "https://github.com/$ORG/$REPO.git" "$DIR" </dev/null \
       || { echo "⚠ $REPO: no se pudo clonar (¿el token tiene acceso a este repo?)"; continue; }
