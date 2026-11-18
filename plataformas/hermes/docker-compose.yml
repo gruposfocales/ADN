@@ -1,4 +1,4 @@
-# Hermes solo (sin Dify). Un perfil por repo; el default es el bibliotecario.
+# Hermes solo (sin Dify). Un perfil por repo; el default es gf-inicio (el orquestador).
 # Los valores van en el panel de Dokploy (Environment) o en un .env local, NUNCA en el repo.
 services:
   hermes:

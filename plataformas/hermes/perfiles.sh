@@ -10,8 +10,8 @@
 set -eu
 HOME_H="${HERMES_HOME:-/opt/data}"
 LISTA="${1:-$(dirname "$0")/../../agentes.txt}"
-# filas "REPO CLASE PERFIL" sin comentarios ni repos sin perfil (perfil "-")
-filas() { sed 's/#.*//' "$LISTA" | awk 'NF >= 3 && $3 != "-" {print $1, $2, $3}'; }
+# filas "REPO CLASE PERFIL" sin comentarios. Un repo con perfil "-" (ej. el de datos) se trae, pero no lleva perfil ni atajo.
+filas() { sed 's/#.*//' "$LISTA" | awk 'NF >= 3 {print $1, $2, $3}'; }
 ORG="${GITHUB_ORG:-gruposfocales}"
 : "${GITHUB_TOKEN:?Falta GITHUB_TOKEN}"
 AUTH="Authorization: Basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')"
@@ -84,6 +84,7 @@ filas | while read -r REPO CLASE PERFIL; do
   # Hermes corre como el dueño de /opt/data; este script suele correr como root. Se devuelve el repo a ese
   # dueño para que Hermes pueda leerlo y escribirlo, y safe.directory evita el "dubious ownership" de git.
   chown -R "$(stat -c %u:%g "$HOME_H")" "$DIR" 2>/dev/null || true
+  [ "$PERFIL" = "-" ] && { echo "✓ $REPO (sin perfil: solo datos)"; continue; }
   if [ "$PERFIL" = default ]; then
     PH="$HOME_H"
   else
@@ -164,6 +165,7 @@ fi
   echo '  pulso          Pulso del Día, sin abrir Hermes (no gasta contexto)'
   echo '  atajos         esta lista'
   filas | while read -r REPO CLASE PERFIL; do
+    [ "$PERFIL" = "-" ] && continue
     [ "$PERFIL" = default ] && PERFIL=inicio
     printf '  %-14s Hermes en %s, sesión nueva\n' "$PERFIL" "$REPO"
   done
@@ -171,6 +173,16 @@ fi
   echo 'FIN'
 } > "$BIN/atajos"
 chmod 755 "$BIN/atajos"
+# Atajos viejos: si un repo ya no tiene perfil en agentes.txt (ej. bibliotecario), se quita su atajo.
+VIGENTES=" $(filas | awk '$3 != "-" {print ($3 == "default" ? "inicio" : $3)}' | tr '\n' ' ') "
+for F in "$BIN"/*; do
+  N=$(basename "$F")
+  grep -q '^# Atajo de perfiles.sh: Hermes en' "$F" 2>/dev/null || continue
+  case "$VIGENTES" in *" $N "*) continue ;; esac
+  rm -f "$F"
+  for D in /usr/local/bin "$HOME/.local/bin"; do [ -L "$D/$N" ] && rm -f "$D/$N"; done
+  echo "🗑 atajo viejo quitado: $N (su perfil de Hermes queda sin uso)"
+done
 for D in /usr/local/bin "$HOME/.local/bin"; do ln -sfn "$BIN/atajos" "$D/atajos" 2>/dev/null || true; done
 echo
 sh "$BIN/atajos"

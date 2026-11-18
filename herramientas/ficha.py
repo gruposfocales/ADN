@@ -26,8 +26,8 @@ def lista(clase=None):
 
 
 def agentes():
-    """Repos que son agentes (todo menos el núcleo), en el orden de agentes.txt."""
-    return [r for r, clase, _ in lista() if clase != "nucleo"]
+    """Repos que son agentes (todo menos el núcleo y los repos de datos), en el orden de agentes.txt."""
+    return [r for r, clase, _ in lista() if clase not in ("nucleo", "datos")]
 
 
 def leer_ficha(repo):

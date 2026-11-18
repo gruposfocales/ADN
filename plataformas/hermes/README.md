@@ -4,7 +4,7 @@ Receta para Hermes Agent (`nousresearch/hermes-agent:v0.22.7`) en el servicio **
 con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin `-p` responde gf-inicio (pantalla de inicio y menú).
 
 ## Cómo funciona
-- `ADN/agentes.txt` (la lista única de repos): la columna `perfil` dice qué perfil va con qué repo. Para un cliente, deja solo sus líneas (y la de `default`).
+- `ADN/agentes.txt` (la lista única de repos): la columna `perfil` dice qué perfil va con qué repo. Para un cliente, deja solo sus líneas (y la de `default`). Perfil `-` = el repo se trae pero no lleva perfil ni atajo (ej. gf-bibliotecario, que es solo datos); si antes tenía atajo, `perfiles.sh` lo quita.
 - `perfiles.sh`: clona/actualiza los repos en `/opt/data/` (donde hermes2 ya los tiene) y deja el `SOUL.md` neutro
   en cada perfil. No hay copias del AGENTS.md: un `git pull` actualiza a todos.
 - **AGENTS.md es la única fuente.** El `SOUL.md` de cada perfil (el espacio de identidad de Hermes, que va primero)
@@ -32,7 +32,7 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
   | `comunicacion` | `hermes -p comunicacion --in /opt/data/inv-002-comunicacion` |
   | `noticias` | `hermes -p noticias --in /opt/data/age-001-en-efecto-noticias` |
   | `bartolinos` | `hermes -p bartolinos --in /opt/data/com-001-bartolinos` |
-  | `bibliotecario`, `adn`, `disenador` | igual, con su perfil y su repo |
+  | `adn`, `disenador` | igual, con su perfil y su repo |
 
   Dos atajos más **no abren Hermes**, así que no gastan contexto ni tokens:
   `pulso` muestra el Pulso del Día de gf-inicio, y `atajos` muestra la lista de todos los atajos.

@@ -31,9 +31,9 @@ Eres un **arquitecto senior de investigación** (cualitativa, cuantitativa y mix
 
 **El núcleo: 8 archivos.** Todo proyecto se sostiene en: (1) `AGENTS.md`, (2) `MANUAL-FASES.md`, (3) `DASHBOARD.md`, (4) `INSTRUMENTOS.md`, (5) `BITACORA.md`, (6) `POLITICA-DATOS.md` (bloqueo legal: sin política aprobada y revisada no se sale a campo con personas), (7) `organizacion/ADN.md` (identidad y tono) y (8) `evidencia/mapa-conocimiento.md` (base de evidencia, ítem 4.14). Todos están en este repo (el 7 en `organizacion/`).
 
-**El bibliotecario** vive en el repo `gf-bibliotecario` y solo lee la ficha `index.md` de este repo (OKF 0.2). Al `cerrar`, deja la ficha al día (estado, fase, último gate, *Seguimiento*, `generated`, `stale_after`). No editas nada del bibliotecario.
+**El orquestador** (repo `gf-inicio`) solo lee la ficha `index.md` de este repo (OKF 0.2) y la resume en el catálogo de `gf-bibliotecario`. Al `cerrar`, deja la ficha al día (estado, fase, último gate, *Seguimiento*, `generated`, `stale_after`). No editas nada de `gf-inicio` ni de `gf-bibliotecario`.
 
-**OKF es solo del bibliotecario.** El diseño de la investigación no usa OKF: ningún documento interno del proyecto (DASHBOARD, BITACORA, INSTRUMENTOS, evidencia) necesita encabezado YAML. Solo la ficha `index.md` lo lleva (norma en `gf-bibliotecario/plantillas/NORMA-OKF.md`). En una plataforma sin skills ni scripts, la ficha es opcional: si falta, se avisa y se sigue.
+**OKF es solo de la capa de organización.** El diseño de la investigación no usa OKF: ningún documento interno del proyecto (DASHBOARD, BITACORA, INSTRUMENTOS, evidencia) necesita encabezado YAML. Solo la ficha `index.md` lo lleva (norma en `gf-bibliotecario/plantillas/NORMA-OKF.md`). En una plataforma sin skills ni scripts, la ficha es opcional: si falta, se avisa y se sigue.
 
 Si falta `MANUAL-FASES.md` o no tiene 289 ítems, detente y pídelo. No inventes preguntas, fases ni criterios.
 
