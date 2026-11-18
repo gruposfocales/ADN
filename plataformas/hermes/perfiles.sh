@@ -163,6 +163,46 @@ description: Muestra el Pulso del Día (proyectos y git) sin cargar ningún agen
 3. Cierra con una línea: "Escribe /menu, /inicio o el comando de un proyecto (ej. /vejez). Para empezar limpio: /new".
 FIN
 fi
+# /feynman: encarga investigaciones al puente Feynman (otro servicio de Dokploy). Ver ../feynman-puente/README.md
+# El token se lee de FEYNMAN_TOKEN o del archivo $HOME_H/.feynman_token (por si Hermes no pasa variables a la terminal).
+cat > "$BIN/feynman-tarea" <<'FIN'
+#!/bin/sh
+# Atajo de perfiles.sh: habla con el puente Feynman. Uso:
+#   feynman-tarea nueva <flujo> "<tema>"   (flujo: pregunta|deepresearch|lit|compare|summarize|review)
+#   feynman-tarea estado <id>
+URL="${FEYNMAN_URL:-https://feynman.gruposfocales.com}"
+TOK="${FEYNMAN_TOKEN:-$(cat "${HERMES_HOME:-/opt/data}/.feynman_token" 2>/dev/null)}"
+[ -n "$TOK" ] || { echo "Falta el token del puente (FEYNMAN_TOKEN o .feynman_token)"; exit 1; }
+case "$1" in
+  nueva)  python3 -c 'import json,sys;print(json.dumps({"flujo":sys.argv[1],"tema":sys.argv[2]}))' "$2" "$3" |
+          curl -sS -m 30 -X POST "$URL/tareas" -H "Authorization: Bearer $TOK" -H 'Content-Type: application/json' -d @- ;;
+  estado) curl -sS -m 30 "$URL/tareas/$2" -H "Authorization: Bearer $TOK" ;;
+  *) sed -n 3,4p "$0"; exit 1 ;;
+esac
+echo
+FIN
+chmod 755 "$BIN/feynman-tarea"
+for D in /usr/local/bin "$HOME/.local/bin"; do ln -sfn "$BIN/feynman-tarea" "$D/feynman-tarea" 2>/dev/null || true; done
+mkdir -p "$SKILLS/feynman"
+cat > "$SKILLS/feynman/SKILL.md" <<FIN
+---
+name: feynman
+description: Encarga una investigación a Feynman (agente de investigación en otro contenedor) y consulta su estado. El informe queda en GitHub.
+---
+# Feynman · investigación por encargo
+
+Feynman corre aparte y tarda entre 5 y 40 minutos. Tú solo encargas y consultas; no esperes en bucle.
+
+1. Pide (o deduce) el tema y el flujo: pregunta (respuesta corta), deepresearch (por defecto), lit (revisión de literatura),
+   compare, summarize o review. Confirma con el usuario en una línea antes de encargar: cada tarea gasta tokens de DeepSeek.
+2. Encarga con la terminal: $BIN/feynman-tarea nueva <flujo> "<tema>"
+   Muestra el id que devuelve y di: "Pregunta 'estado <id>' cuando quieras".
+3. Para el estado: $BIN/feynman-tarea estado <id>. Si está listo, da el resumen en 3-5 líneas y el enlace a GitHub.
+   Si dice error, muéstralo tal cual y no reintentes sin permiso.
+4. El informe llega sin revisar (rama feynman/resultados de gf-bibliotecario): es insumo, no evidencia aprobada.
+   Nunca lo copies a un proyecto ni a main sin un ok del usuario.
+FIN
+
 chown -R "$(stat -c %u:%g "$HOME_H")" "$SKILLS" 2>/dev/null || true
 if [ -n "$INICIO" ] && [ -f "$REPOS_DIR/$INICIO/herramientas/pulso.py" ]; then
   printf '#!/bin/sh\n# Atajo de perfiles.sh: Pulso del Día sin abrir Hermes.\nexec python3 %s "$@"\n' "$REPOS_DIR/$INICIO/herramientas/pulso.py" > "$BIN/pulso"

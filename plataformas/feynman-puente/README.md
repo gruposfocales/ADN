@@ -21,7 +21,10 @@ Cuando termina, el informe queda en GitHub, en la rama `feynman/resultados`
 3. Domains: `feynman.gruposfocales.com`, puerto 8080, HTTPS. Deploy.
 4. Prueba: `curl https://feynman.gruposfocales.com/salud` → `{"ok":true,...}`.
 
-## Conectar a Dify
+## Conectar a Hermes (principal)
+Ver `../hermes/README.md`, sección Feynman: comando `/feynman` y script `feynman-tarea`.
+
+## Conectar a Dify (opcional)
 Herramientas > Crear herramienta personalizada > pega `openapi-dify.yaml` >
 Autorización API Key, Bearer, valor `PUENTE_TOKEN`. Salen dos herramientas:
 `encargar_investigacion` y `ver_investigacion`. Úsalas desde un nodo Agente o Herramienta.

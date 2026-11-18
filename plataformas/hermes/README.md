@@ -58,6 +58,14 @@ con un perfil por cada repo de agente (el MCP de Dify existente no se toca). Sin
 - `vejez` → abre en `/opt/data/inv-001-vejez` sin el historial de la sesión anterior.
 - Cambia una línea del `AGENTS.md` de Vejez en GitHub, corre `perfiles.sh`, y el perfil la refleja.
 
+## Feynman (investigación por encargo)
+`perfiles.sh` crea el comando `/feynman` y el script `feynman-tarea`. Hermes encarga la investigación al
+**puente Feynman** (otro servicio de Dokploy, ver `../feynman-puente/README.md`) por HTTPS y luego pregunta el estado.
+El informe queda en la rama `feynman/resultados` de gf-bibliotecario.
+- Token: el mismo `PUENTE_TOKEN` del puente, guardado en el contenedor de Hermes en `/opt/data/.feynman_token`
+  (o como variable `FEYNMAN_TOKEN`). Nunca en el repo.
+- Probar en la terminal: `feynman-tarea nueva pregunta "qué es el ahorro voluntario"` y luego `feynman-tarea estado <id>`.
+
 ## Reglas
 - Hermes no escribe en `main`: los cambios van como parche en un issue.
 - Nunca pongas tokens ni URLs privadas en este repo ni en el chat.
